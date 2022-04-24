@@ -1,0 +1,298 @@
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
+.h-custom {
+  height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+  .h-custom {
+    height: 100%;
+  }
+}
+.profile-pic {
+    width: 200px;
+    max-height: 200px;
+    display: inline-block;
+}
+
+.file-upload {
+    display: none;
+}
+.circle {
+    border-radius: 100% !important;
+    overflow: hidden;
+    width: 128px;
+    height: 128px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    position: absolute;
+    top: 72px;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+.p-image {
+  position: absolute;
+  top: 67px;
+  right: 30px;
+  color: #666666;
+  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+}
+.p-image:hover {
+  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+}
+.upload-button {
+  font-size: 1.2em;
+}
+
+.upload-button:hover {
+  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+  color: #999;
+}
+
+@main-bg:rgb(40,40,59);
+@calendar-border:rgb(220,220,255);
+@calendar-bg:#fff;
+@calendar-standout:rgb(40,40,59);
+@calendar-color:#444;
+@calendar-fade-color:#c0c0c0;
+@body-color:#444;
+
+html, body {
+  height:100%;
+}
+body {
+  font-size:100%;
+  line-height:1.5;
+  font-family: "Roboto Condensed", sans-serif;
+  background:@main-bg;
+  background-image:linear-gradient(@main-bg 0%, darken(@main-bg,12%) 100%);
+  color:@body-color;
+}
+
+*, *:before, *:after {
+  box-sizing:border-box;
+}
+
+.group {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+img {
+  max-width:100%;
+  height:auto;
+  vertical-align:baseline;
+}
+
+a {
+  text-decoration:none;
+}
+
+.max(@maxWidth;
+  @rules) {
+    @media only screen and (max-width: @maxWidth) {
+      @rules();
+    }
+  }
+
+.min(@minWidth;
+  @rules) {
+    @media only screen and (min-width: @minWidth) {
+      @rules();
+    }
+  }
+
+
+.calendar-wrapper {
+  width:360px;
+  margin:3em auto;
+  padding:2em;
+  border:1px solid @calendar-border;
+  border-radius:5px;
+  background:@calendar-bg;
+
+}
+table {
+  clear:both;
+  width:100%;
+  border:1px solid @calendar-border;
+  border-radius:3px;
+  border-collapse:collapse;
+  color:@calendar-color;
+}
+td {
+  height:48px;
+  text-align:center;
+  vertical-align:middle;
+  border-right:1px solid @calendar-border;
+  border-top:1px solid @calendar-border;
+  width:100% / 7;
+}
+td.not-current {
+  color:@calendar-fade-color;;
+}
+td.normal {}
+td.today {
+  font-weight:700;
+  color:@calendar-standout;
+  font-size:1.5em;
+}
+thead td {
+  border:none;
+  color:@calendar-standout;
+  text-transform:uppercase;
+  font-size:1.5em;
+}
+#btnPrev {
+  float:left;
+  margin-bottom:20px;
+  &:before {
+    content:'\f104';
+    font-family:FontAwesome;
+    padding-right:4px;
+  }
+}
+#btnNext {
+  float:right;
+  margin-bottom:20px;
+  &:after {
+    content:'\f105';
+    font-family:FontAwesome;
+    padding-left:4px;
+  }
+}
+#btnPrev, #btnNext {
+  background:transparent;
+  border:none;
+  outline:none;
+  font-size:1em;
+  color:@calendar-fade-color;
+  cursor:pointer;
+  font-family:"Roboto Condensed", sans-serif;
+  text-transform:uppercase;
+  transition:all 0.3s ease;
+  &:hover {
+    color:@calendar-standout;
+    font-weight:bold;
+  }
+}
+
+@dropdown-bg: #FFFFFF;
+@dropdown-divider-bg: #E0E0E0;
+
+.dropdown-menu {
+  background-color: @dropdown-bg;
+  border: none;
+  box-shadow: 1px 2px 6px rgba(0, 0, 0, .2);
+  margin-top: 2px;
+
+  .divider {
+    background-color: @dropdown-divider-bg;
+  }
+}
+
+/**
+ * Buttons
+ */
+
+@btn-padding-lr: 1.2em;
+
+.btn {
+  border: 1px solid rgba(0,0,0,0);
+  border-radius: 2px;
+  box-shadow: 0 1px 5px rgba(0,0,0,.4);
+  padding-left: @btn-padding-lr;
+  padding-right: @btn-padding-lr;
+
+  &:hover, &:focus, &:active, &:active &:focus {
+    border: 1px solid rgba(0,0,0,0);
+    outline: none !important;
+  }
+}
+
+.btn-flat-style(@color, @hover-color) {
+  background-color: inherit;
+  box-shadow: none;
+  color: @color;
+  font-weight: bold;
+  &:hover {
+    color: @color;
+    background-color: @hover-color;
+  }
+  &:focus {
+    color: @color;
+  }
+}
+
+@btn-hover-percent: 2.5%;
+.btn-style(@bg-color) {
+  background-color: @bg-color;
+
+  &:hover {
+    background-color: darken(@bg-color, @btn-hover-percent);
+  }
+
+  &:focus {
+    background-color: @bg-color;
+  }
+}
+
+@btn-default-color: #FFFFFF;
+.btn-default {
+  .btn-style(@btn-default-color);
+}
+.btn-flat-default {
+  .btn-flat-style(#000, lighten(#000, 90%));
+}
+
+@btn-primary-color: #2196F3;
+.btn-primary {
+  .btn-style(@btn-primary-color);
+}
+.btn-flat-primary {
+  .btn-flat-style(@btn-primary-color, lighten(@btn-primary-color, 40%));
+}
+
+@btn-success-color: #4CAF50;
+.btn-success {
+  .btn-style(@btn-success-color);
+}
+.btn-flat-success {
+  .btn-flat-style(@btn-success-color, lighten(@btn-success-color, 40%));
+}
+
+@btn-info-color: #00BCD4;
+.btn-info {
+  .btn-style(@btn-info-color);
+}
+.btn-flat-info {
+  .btn-flat-style(@btn-info-color,  lighten(@btn-info-color, 50%));
+}
+
+@btn-warning-color: #FF9800;
+bt-warning {
+  .btn-style(@btn-warning-color);
+}
+.btn-flat-warning {
+  .btn-flat-style(@btn-warning-color,  lighten(@btn-warning-color, 40%));
+}
+
+@btn-danger-color: #F44336;
+.btn-danger {
+  .btn-style(@btn-danger-color);
+}
+.btn-flat-danger {
+  .btn-flat-style(@btn-danger-color,  lighten(@btn-danger-color, 35%));
+}
+
+.btn-link {
+  box-shadow: none;
+}

@@ -1,0 +1,76 @@
+{% extends 'main-register-choose.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="wrapper fadeInDown">
+        <div id="formContent" style="max-width:900px">
+            <div class="fadeIn first">
+                <img src="{% static 'images/petcircle.jpg' %}" id="icon" alt="User Icon"
+                     style="border-radius: 50%;margin-top:15px;width: 20%"/>
+            </div>
+            <!-- Card description -->
+            <form>
+                <h3 style="color:white"> Pet Lover User: </h3>
+                <p class="text-justify" style="color:white;margin-right: 40px;margin-left:40px"> Petlovers are the pet
+                    owners in the system. These are ordinary people which has cats or dogs (or both).
+                    Pet owners can create alter profiles their pets. They can load their pets informations’
+                    and images in the system. In this way every animal has virtual tags.
+                    Also, they can see the part of business users’ information if they need.
+                    They can create forum and comment forum/blogs on the website. </p>
+                <br>
+                <a href="{% url 'register-petlover' %}" style="margin-top: 20px;">
+                    <button type="button" style="padding: 10px 15px;margin-top:55px;    background-color: #56baed;
+    border: none;
+    color: white;
+    padding: 15px 80px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 13px;
+    -webkit-box-shadow: 0 10px 30px 0 rgb(95 186 233 / 40%);
+    box-shadow: 0 10px 30px 0 rgb(95 186 233 / 40%);
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    margin: 5px 20px 40px 20px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;" class="fadeIn fourth">Select
+                    </button>
+                </a>
+                <h3 style="color:white"> Business Account: </h3>
+                <p class="text-justify" style="color:white;margin-right: 40px;margin-left:40px"> They may be pet shops,
+                    pet stylists, pet hotels, pet doctors or something else.
+                    Petlovers can connect with them easily who search for business close to his/her house.
+                    Business users can write the blog and answers the forum questions. </p>
+                <br>
+                <a href="{% url 'register-business' %}" style="margin-top: 20px;">
+                    <button type="button" style="padding: 10px 15px;margin-top:35px;    background-color: #56baed;
+    border: none;
+    color: white;
+    padding: 15px 80px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 13px;
+    -webkit-box-shadow: 0 10px 30px 0 rgb(95 186 233 / 40%);
+    box-shadow: 0 10px 30px 0 rgb(95 186 233 / 40%);
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    margin: 5px 20px 40px 20px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;" class="fadeIn fourth">Select
+                    </button>
+                </a>
+            </form>
+        </div>
+    </div>
+
+{% endblock content %}
