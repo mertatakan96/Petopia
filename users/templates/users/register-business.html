@@ -1,0 +1,76 @@
+{% extends 'main-register-users.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form action="#">
+			<input type="text" id="ntext" class="form-control form-control-lg" placeholder="Business Type">
+			<input type="text" id="login" class="fadeIn second" name="loginbusinessname" placeholder="Business Name">
+			<input type="text" id="natext" class="form-control form-control-lg" placeholder="Tax ID">
+			<input type="text" id="fotext" class="form-control form-control-lg" placeholder="Founder">
+			<br>
+			<input type="submit" class="fadeIn fourth" value="Register">
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form action="#">
+			<div class="social-container">
+				<a href="{% url 'register-choose' %}" style="margin-bottom: -10px;"><h2  class="inactive underlineHover"> Back</h2></a>
+				<br>
+
+				<a href='#' > <h2  class="inactive underlineHover"> Sign In</h2></a>
+				<a href='' > <h2 class="active">Sign Up </h2></a>
+			</div>
+			<input type="text" id="loginname" class="fadeIn second" name="name" placeholder="Name">
+			<input type="text" id="loginsurname" class="fadeIn second" name="surname" placeholder="Surname">
+			<input type="text" id="loginmail" class="fadeIn second" name="loginmail" placeholder="E-mail">
+			<input type="password" id="password" class="fadeIn third" name="login" placeholder="password">
+			<input type="text" id="tckn" class="fadeIn second" name="tckn" placeholder="TCKN">
+
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h4>Business Account</h4>
+				<div class="p-image">
+       <i class="fa fa-camera upload-button"></i>
+					<input accept="image/*" type="file"  class="file-upload" ></input></div>
+				<input type="text" id="ad" class="fadeIn second" name="add" placeholder="Address" style="padding: 30px 20px" >
+				<input type="text" id="add" class="fadeIn second" name="add" placeholder="Information"  style="padding: 30px 20px" >
+				<button type="submit" id="signIn" class="ghost" value="Previous" style="margin-top: 20px;">Previous</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				 <img src="{% static 'images/petcircle.jpg' %}" id="icon" alt="User Icon" style="border-radius: 50%;" />
+				<input type="date" id="birthday" name="birthday" style="border-radius:8%; background-color:#f6f6f6">
+				<input type="integer" id="phonetext" style="background-color:#f6f6f6" class="form-control form-control-lg" placeholder="+( )___ ___ __ __">
+				<br>
+				<div class="control">
+					<label class="radio"> <input type="radio" name="answer"> Female </label>
+					<label class="radio"> <input type="radio" name="answer"> Male </label>
+				</div>
+				<br>
+				<button type="submit" id="signUp" class="ghost" value="Next">Next</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Card için var -->
+<script>
+	const signUpButton = document.getElementById('signUp');
+const signInButton = document.getElementById('signIn');
+const container = document.getElementById('container');
+
+signUpButton.addEventListener('click', () => {
+	container.classList.add("right-panel-active");
+});
+
+signInButton.addEventListener('click', () => {
+	container.classList.remove("right-panel-active");
+});
+</script>
+
+{% endblock %}

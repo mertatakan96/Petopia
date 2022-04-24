@@ -1,0 +1,99 @@
+{% extends 'main-register-users.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form action="#">
+                <input type="text" id="ntext" class="form-control form-control-lg" placeholder="Pet Name">
+                <input type="text" id="login" class="fadeIn second" name="loginbusinessname" placeholder="Height">
+                <input type="text" id="nhtext" class="form-control form-control-lg" placeholder="Weight">
+                <input type="text" id="add" class="fadeIn second" name="add" placeholder="Type"
+                       style="padding: 20px 20px">
+                <br>
+                <div class="control">
+                    <label class="radio"> <input type="radio" name="answer"> Female </label>
+                    <label class="radio"> <input type="radio" name="answer"> Male </label>
+                </div>
+                <input type="submit" class="fadeIn fourth" value="Register">
+            </form>
+        </div>
+
+        <div class="form-container sign-in-container">
+            <form action="#">
+                <div class="social-container">
+                    <a href="{% url 'register-choose' %}" style="margin-bottom: -10px;"><h2
+                            class="inactive underlineHover"> Back</h2></a>
+                    <br>
+
+
+                    <a href='#'><h2 class="inactive underlineHover"> Sign In</h2></a>
+                    <a href=''><h2 class="active">Sign Up </h2></a>
+                </div>
+                <input type="text" id="loginname" class="fadeIn second" name="name" placeholder="Name & Surname">
+                <input type="text" id="loginsurname" class="fadeIn second" name="surname" placeholder="Address">
+                <input type="text" id="loginmail" class="fadeIn second" name="loginmail" placeholder="E-mail">
+                <input type="password" id="password" class="fadeIn third" name="login" placeholder="password">
+                <input type="text" id="tckn" class="fadeIn second" name="tckn" placeholder="TCKN">
+
+            </form>
+        </div>
+
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h4>Sub Pet Profile</h4>
+                    <img src="{% static 'images/petprof.png' %}" id="iconn" alt="User Icon"
+                         style="border-radius: 50%;"/>
+                    <div class="control">
+                        <label class="radio"> <input type="radio" name="answer"> Cat </label>
+                        <label class="radio"> <input type="radio" name="answer"> Dog </label>
+                    </div>
+                    <div class="p-image">
+                        <i class="fa fa-camera upload-button"></i>
+                        <input accept="image/*" type="file" class="file-upload"></input></div>
+                    <input type="date" id="birthhday" name="birthday"
+                           style="border-radius:8%; background-color:#f6f6f6">
+
+
+                    <button type="submit" id="signIn" class="ghost" value="Previous" style="margin-top: 20px;">
+                        Previous
+                    </button>
+                </div>
+
+                <div class="overlay-panel overlay-right">
+                    <img src="{% static 'images/petcircle.jpg' %}" id="icon" alt="User Icon"
+                         style="border-radius: 50%;"/>
+                    <input type="date" id="birthday" name="birthday" style="border-radius:8%; background-color:#f6f6f6">
+                    <input type="integer" id="phonetext" style="background-color:#f6f6f6"
+                           class="form-control form-control-lg" placeholder="+( )___ ___ __ __">
+                    <br>
+                    <div class="control">
+                        <label class="radio"> <input type="radio" name="answer"> Female </label>
+                        <label class="radio"> <input type="radio" name="answer"> Male </label>
+                    </div>
+                    <br>
+                    <button type="submit" id="signUp" class="ghost" value="Next">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card için var -->
+    <script>
+        const signUpButton = document.getElementById('signUp');
+        const signInButton = document.getElementById('signIn');
+        const container = document.getElementById('container');
+
+        signUpButton.addEventListener('click', () => {
+            container.classList.add("right-panel-active");
+        });
+
+        signInButton.addEventListener('click', () => {
+            container.classList.remove("right-panel-active");
+        });
+    </script>
+{% endblock content %}
