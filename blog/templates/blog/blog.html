@@ -1,0 +1,101 @@
+{% extends 'main-forum-blog.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="app-canvas">
+    <div class="container">
+        <div class="blog-page">
+            <div class="row">
+                <!-- blog card -->
+                <div class="col-xs-12 col-md-8">
+                    <div class="container" style="margin-bottom:10%">
+                        <div class="row">
+                            <div clasS="col-md-8">
+                                <div class="card radius-15" style="background:white;height: 147%;">
+                                    <div class="card-body" style="height:500px">
+                                        <div class="widget-latest-posts widget">
+                                            <div class="card-title">
+                                                <h5 class="mb-0" style="margin-left:10px">Blog </h5>
+                                            </div>
+                                            <hr>
+
+                                            <a href="blogDetail.html" class="latest-post" style="margin-left:10px">
+                                                <figure class="imgAsBg"
+                                                        style="background-image: url('{% static 'images/dog1.jpg' %}');">
+                                                    <img src="{% static 'images/dog1.jpg' %}" alt="dummy">
+                                                </figure>
+                                                <span>
+                                            Post 1
+                                    <p>Writer : Doğa </p>
+                                    <time datetime="2017-02-14">20 Nov, 2015</time>
+                                        </span>
+                                            </a>
+
+                                            <a href="blogDetail.html" class="latest-post" style="margin-left:10px">
+                                                <figure class="imgAsBg" style="background-image: url('{% static 'images/dog2.jpg' %}');">
+                                                    <img src="{% static 'images/dog2.jpg' %}" alt="dummy">
+                                                </figure>
+                                                <span>
+                                            Post 2
+                                    <p>Writer : Atakan </p>
+                                    <time datetime="2017-02-14">20 Nov, 2015</time>
+                                        </span>
+                                            </a>
+
+
+                                            <nav aria-label="Page navigation example">
+                                                <ul class="pagination round-pagination">
+                                                    <li class="page-item"><a class="page-link" href="javascript:;">Previous</a>
+                                                    </li>
+                                                    <li class="page-item"><a class="page-link"
+                                                                             href="javascript:;javascript:;">1</a>
+                                                    </li>
+                                                    <li class="page-item active"><a class="page-link"
+                                                                                    href="javascript:;">2</a>
+                                                    </li>
+                                                    <li class="page-item"><a class="page-link" href="javascript:;">3</a>
+                                                    </li>
+                                                    <li class="page-item"><a class="page-link"
+                                                                             href="javascript:;">Next</a>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- publish card -->
+                <div class="col-xs-12 col-md-4">
+                    <aside class="card radius-15 sidebar">
+                        <div class="widget-about widget">
+                            <header>
+                                <h4>Share Post</h4>
+                            </header>
+                            <img src="{% static 'images/petcircle.jpg' %}" id="icon" alt="User Icon"
+                                 style="border-radius: 50%;margin-top:10px;max-width: 80%;"/>
+                            <div class="p-image" style="margin-top:20px;">
+                                <i class="fa fa-camera upload-button"></i>
+                                <input accept="image/*" type="file" class="file-upload"></input></div>
+                            <input type="text" id="login" style="margin-top:10px" class="fadeIn second" name="login"
+                                   placeholder="Title">
+                            <textarea id="ad" name="a" cols="30" placeholder="Information"
+                                      style="padding: 30px 20px;margin-top:20px;"></textarea>
+                            <input type="submit" class="fadeIn fourth" value="Share" style="margin-top:20px">
+                        </div>
+
+
+                    </aside>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

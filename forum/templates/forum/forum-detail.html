@@ -1,0 +1,168 @@
+{% extends 'main-details.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="app-canvas">
+    <div class="container">
+        <div class="blog-page">
+            <div class="row">
+                <!-- forum detail -->
+                <div class="col-xs-12 col-md-8">
+                    <div class="blog-posts">
+                        <article class="blog-post">
+                            <figure>
+                                <img src="{% static 'images/dog1.jpg' %}" alt="dummy">
+                            </figure>
+                            <header>
+                                <h3>Forum Question Title</h3>
+                                <ul class="info-list">
+                                    <li><a href="">Doğa Özyağci</a></li>
+                                </ul>
+                            </header>
+                            <div class="blog-content">
+
+                                <p>Text </p>
+                                <br>
+                                <p>Text</p>
+                                <br>
+
+                                <br>
+
+                            </div>
+
+                        </article>
+                        <div class="blog-post-comments">
+                            <header><h3>Answers</h3></header>
+                            <ul class="comments">
+                                <li class="comment">
+                                    <div class="inner">
+                                        <figure><a href=""><img src="{% static 'images/profile.jpg' %}" alt="dummy"></a>
+                                        </figure>
+                                        <header>
+                                            <h6><a href="">Mahir & Mantar</a>
+                                                <time datetime="2022-03-28">March 28, 2022</time>
+                                            </h6>
+
+                                        </header>
+                                        <p>Text</p>
+                                    </div>
+
+                                </li>
+                                <li class="comment">
+                                    <div class="inner">
+                                        <figure><a href=""><img src="{% static 'images/profile.jpg' %}" alt="dummy"></a></figure>
+                                        <header>
+                                            <h6><a href="">Atakan Duduoğlu</a>
+                                                <time datetime="2017-02-14">December 04, 2022</time>
+                                            </h6>
+
+                                        </header>
+                                        <p>Answer Text</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="add-comment">
+                            <header><h3>Leave an Answer</h3></header>
+                            <form action="/" class="clearfix">
+                                <div class="fields-grid clearfix">
+                                    <div class="fields-grid-ele">
+
+                                    </div>
+                                    <div class="fields-grid-ele">
+
+                                    </div>
+                                    <div class="fields-grid-ele">
+
+                                    </div>
+                                    <div class="fields-grid-ele">
+
+                                    </div>
+                                </div>
+                                <div class="labeled-input">
+
+                                    <textarea id="addComment005"></textarea>
+                                </div>
+                                <button class="btn btn-green btn-small">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- about me -->
+                <div class="col-xs-12 col-md-4">
+                    <aside class="sidebar">
+                        <div class="widget-about widget">
+                            <header>
+                                <h4>About Me</h4>
+                            </header>
+                            <figure><img src="{% static 'images/petcircle.jpg' %}" alt="dummy"></figure>
+                            <p>Text here. </p>
+                            <footer>
+                            </footer>
+                        </div>
+
+
+                        <div class="widget-latest-posts widget">
+                            <header>
+                                <h4>Latest questions</h4>
+                            </header>
+
+                            <a href="forumDetail.html" class="latest-post">
+                                <figure class="imgAsBg"
+                                        style="background-image: url('{% static 'images/petcircle.jpg' %}');">
+                                    <img src="{% static 'images/petcircle.jpg' %}" alt="dummy">
+                                </figure>
+                                <span>
+                                            Title
+                                            <time datetime="2017-02-14">20 Jan, 2022</time>
+                                        </span>
+                            </a>
+
+                            <a href="forumDetail.html" class="latest-post">
+                                <figure class="imgAsBg"
+                                        style="background-image: url('{% static 'images/petcircle.jpg' %}');">
+                                    <img src="{% static 'images/petcircle.jpg' %}" alt="dummy">
+                                </figure>
+                                <span>
+                                            Title two
+                                            <time datetime="2017-02-14">20 Feb, 2022</time>
+                                        </span>
+                            </a>
+
+
+                            <a href="forumDetail.html" class="latest-post">
+                                <figure class="imgAsBg"
+                                        style="background-image: url('{% static 'images/petcircle.jpg' %}')">
+                                    <img src="{% static 'images/petcircle.jpg' %}" alt="dummy">
+                                </figure>
+                                <span>
+                                            Title three
+                                            <time datetime="2017-02-14">25 Feb, 2022</time>
+                                        </span>
+                            </a>
+
+                            <a href="forumDetail.html" class="latest-post">
+                                <figure class="imgAsBg"
+                                        style="background-image: url('{% static 'images/petcircle.jpg' %}');">
+                                    <img src="{% static 'images/petcircle.jpg' %}" alt="dummy">
+                                </figure>
+                                <span>
+                                            Title four
+                                            <time datetime="2017-02-14">5 March, 2022</time>
+                                        </span>
+                            </a>
+
+
+                        </div>
+
+
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
