@@ -7,17 +7,17 @@
             <div class="inner">
                 <div class="app-logo centered">
                     <button class="mobile-control mob-menu-trigger"><i class="adicon-hamburger"></i></button>
-                    <a href=""><img src="{% static 'images/logo.png' %}" alt="adspot"></a>
+                    <a href="{% url 'home-page' %}"><img src="{% static 'images/logo.png' %}" alt="adspot"></a>
                 </div>
                 <div class="clearfix">
                     <ul class="quick-actions-2 left">
                         <li>
-                            <a class="modal-trigger" href="">
+                            <a class="modal-trigger" href="{% url 'home-page' %}">
                                 <span>Home</span> <i class="fa fa-lock"></i>
                             </a>
                         </li>
                         <li>
-                            <a class="modal-trigger" href = "mailto: dogaozyagci@icloud.com">
+                            <a class="modal-trigger" href = "#">
                                 <span>Contact</span> <i class="fa fa-lock"></i>
                             </a>
                         </li>
@@ -25,12 +25,12 @@
 
                     <ul class="quick-actions-2 right">
                         <li>
-                            <a class="modal-trigger" href="">
+                            <a class="modal-trigger" href="{% url 'login' %}">
                                 <span>Login</span> <i class="fa fa-lock"></i>
                             </a>
                         </li>
                         <li>
-                            <a class="modal-trigger" href="">
+                            <a class="modal-trigger" href="{% url 'register-choose' %}">
                                 <span>Register</span> <i class="fa fa-lock"></i>
                             </a>
                         </li>

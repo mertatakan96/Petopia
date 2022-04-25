@@ -1,7 +1,223 @@
 {% extends 'main.html' %}
+{% load static %}
 
 {% block content %}
 
-    <h1>HomePage</h1>
+    <div class="web-app">
+
+        <div class="app-canvas">
+            <div class="main-banner imgAsBg hero-banner"
+                 style="background-image: url('{% static 'images/slideDog.jpg' %}'); height: 582.43px;">
+                <img src="{% static 'images/slideDog.jpg' %}" alt="dummy">
+                <div class="inner">
+
+                </div>
+            </div>
+            <!-- profile, announcements (lost, adopt,found) -->
+            <div class="section">
+                <div class="container">
+                    <div class="heading text-center">
+                    </div>
+                    <!-- profile , announcements -->
+                    <div class="category-thumbs clearfix">
+                        <div class="cat-thumb">
+                            <img src="{% static 'images/imag.jpg' %}" alt="dummy">
+                            <a href="">go to category</a>
+                            <div class="cat-caption">
+                                <div class="bg2">
+                                    <h3>Profile</h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cat-thumb">
+                            <img src="{% static 'images/lostpetnew.jpg' %}" alt="dummy">
+                            <a href="">go to category</a>
+                            <div class="cat-caption">
+                                <div class="bg2">
+                                    <h3>Lost Anoucements</h3>
+                                    <span>2,768 Anouncements</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cat-thumb">
+                            <img src="{% static 'images/adoptnew.jpg' %}" alt="dummy">
+                            <a href="">go to category</a>
+                            <div class="cat-caption">
+                                <div class="bg2">
+                                    <h3>Adoptment Anoucements</h3>
+                                    <span>2,768 Anouncements</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cat-thumb">
+                            <img src="{% static 'images/foundednew.jpg' %}" alt="dummy">
+                            <a href="">go to category</a>
+                            <div class="cat-caption">
+                                <div class="bg2">
+                                    <h3>Founded Anouncements</h3>
+                                    <span>2,768 Anouncements</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr style="margin-bottom:30px">
+        <!-- blog, post cards -->
+        <div class="container" style="margin-bottom:10%">
+            <div class="row">
+                <div clasS="col-md-6">
+                    <div class="card radius-15" style="background:white">
+                        <div class="card-body" style="height:500px">
+                            <div class="widget-latest-posts widget">
+                                <div class="card-title">
+                                    <h5 class="mb-0" style="margin-left:10px">Blog </h5>
+                                </div>
+
+                                <a href="blog.html" class="latest-post" style="margin-left:10px">
+                                    <figure class="imgAsBg"
+                                            style="background-image: url('{% static 'images/dog1.jpg' %}');">
+                                        <img src="{% static 'images/dog1.jpg' %}" alt="dummy">
+                                    </figure>
+                                    <span>
+                                            Blog Post 1
+                                    <p>Writer : Doğa </p>
+                                    <time datetime="2017-02-14">20 Nov, 2015</time>
+                                        </span>
+                                </a>
+
+                                <a href="blog.html" class="latest-post" style="margin-left:10px">
+                                    <figure class="imgAsBg"
+                                            style="background-image: url('{% static 'images/dog2.jpg' %}');">
+                                        <img src="{% static 'images/dog2.jpg' %}" alt="dummy">
+                                    </figure>
+                                    <span>
+                                            Blog Post 2
+                                    <p>Writer : Atakan </p>
+                                    <time datetime="2017-02-14">20 Nov, 2015</time>
+                                        </span>
+                                </a>
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination round-pagination">
+                                        <li class="page-item"><a class="page-link" href="javascript:;">Previous</a>
+                                        </li>
+                                        <li class="page-item"><a class="page-link" href="javascript:;javascript:;">1</a>
+                                        </li>
+                                        <li class="page-item active"><a class="page-link" href="javascript:;">2</a>
+                                        </li>
+                                        <li class="page-item"><a class="page-link" href="javascript:;">3</a>
+                                        </li>
+                                        <li class="page-item"><a class="page-link" href="javascript:;">Next</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card radius-15" style="background:white">
+                        <div class="card-body" style="height:500px">
+                            <div class="card-title">
+                                <h5 class="mb-0" style="margin-left:10px">Forum </h5>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table class="table mb-0">
+                                    <thead class="thead-dark">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Title</th>
+                                        <th>Views</th>
+
+                                        <th>Answer</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td><a href="forum.html" target="_blank">Forum Question 1</a>
+                                        </td>
+                                        <td>660</td>
+
+                                        <td>45</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td><a href="forum.html" target="_blank">Forum Question 2</a>
+                                        </td>
+                                        <td>352</td>
+
+                                        <td>25</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td><a href="forum.html" target="_blank">Forum Question 3</a>
+                                        </td>
+                                        <td>101</td>
+
+                                        <td>44</td>
+                                    </tr>
+
+
+                                    </tbody>
+
+                                </table>
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination round-pagination">
+                                        <li class="page-item"><a class="page-link" href="javascript:;">Previous</a>
+                                        </li>
+                                        <li class="page-item"><a class="page-link" href="javascript:;javascript:;">1</a>
+                                        </li>
+                                        <li class="page-item active"><a class="page-link" href="javascript:;">2</a>
+                                        </li>
+                                        <li class="page-item"><a class="page-link" href="javascript:;">3</a>
+                                        </li>
+                                        <li class="page-item"><a class="page-link" href="javascript:;">Next</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+        <!-- footer  -->
+        <footer class="doc-footer style2">
+            <div class="row">
+                <div class="col-xs-12 col-sm-4">
+                    <h6>Contact Us: Petopia@support.com</h6>
+                    <ul>
+
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <h6>Petopia will be implemented as everything is little, little terminology.</h6>
+                    <div class="text-widget">
+
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <h6>Petopia going to contains many of features together, unlike other pet websites.</h6>
+                    <div class="widget-recent-items">
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+
+            </div>
+        </footer>
+    </div>
 
 {% endblock content %}
