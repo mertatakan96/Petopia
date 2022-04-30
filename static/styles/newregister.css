@@ -71,7 +71,7 @@ button.ghost {
 }
 
 form {
-	background-color: #DF4A70;
+	background-color: #faebf1;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -162,7 +162,7 @@ input {
 .overlay {
 	background: white;
 	background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-	background: gray;
+	background: #faebf1;
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 0;

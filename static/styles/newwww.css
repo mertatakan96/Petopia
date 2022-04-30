@@ -42,7 +42,7 @@ h2 {
 #formContent {
   -webkit-border-radius: 10px 10px 10px 10px;
   border-radius: 10px 10px 10px 10px;
-  background:#DF4A70;
+  background:#faebf1;
   width: 100%;
   max-width: 450px;
   position: relative;
@@ -64,7 +64,7 @@ h2 {
 /* TABS */
 
 h2.inactive {
-  color: white;
+  color: #a3a3a3;
 }
 
 h2.active {
@@ -114,7 +114,7 @@ input[type=text] {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;
-  padding: 15px 32px;
+  padding: 15px 5px;
   text-align: center;
   text-decoration: none;
   display: inline-block;

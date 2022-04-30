@@ -1,3 +1,67 @@
+import uuid
 from django.db import models
+from django.contrib.auth.models import User
 
-# Create your models here.
+
+class PetLover(models.Model):
+    GENDER_CHOICES = (
+        ('Male', 'Male'),
+        ('Female', 'Female'),
+    )
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    username = models.CharField(max_length=200, blank=True, null=True)
+    full_name = models.CharField(max_length=200, blank=True, null=True)
+    location = models.CharField(max_length=200, blank=True, null=True)
+    email = models.EmailField(max_length=200, blank=True, null=True)
+    tckn = models.CharField(max_length=11, null=True, unique=True)
+    phone = models.CharField(max_length=11, null=True, unique=True)
+    birthDate = models.DateField(null=True)
+    gender = models.CharField(max_length=20, choices=GENDER_CHOICES, null=True)
+    user_type = models.CharField(max_length=20, default="pet_lover", editable=False)
+    profile_image = models.ImageField(null=True, blank=True, upload_to='profiles/', default="profiles/user-default.jpg")
+    created = models.DateTimeField(auto_now_add=True)
+    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
+
+    def __str__(self):
+        return str(self.full_name)
+
+
+class Business(models.Model):
+    BUSINESS_TYPE = (
+        ('Pet Shop', 'Pet Shop'),
+        ('Pet Stylists', 'Pet Stylists'),
+        ('Pet Hotel', 'Pet Stylists'),
+        ('Veterinary', 'Veterinary'),
+        ('Other', 'Other'),
+    )
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    email = models.EmailField(max_length=200, blank=True, null=True, unique=True)
+    business_name = models.CharField(max_length=200, blank=True, null=True)
+    tax_id = models.CharField(max_length=11, null=True, unique=True)
+    phone = models.CharField(max_length=11, null=True, unique=True)
+    information = models.TextField(max_length=500, blank=True, null=True)
+    address = models.TextField(max_length=500, blank=True, null=True)
+    logo = models.ImageField(null=True, blank=True, upload_to='profiles/', default="profiles/store-default.png")
+    user_type = models.CharField(max_length=20, default="business", editable=False)
+    business_type = models.CharField(max_length=20, choices=BUSINESS_TYPE, null=True)
+    created = models.DateTimeField(auto_now_add=True)
+    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+
+    def __str__(self):
+        return str(self.business_name)
+
+class Admin(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    username = models.CharField(max_length=200, blank=True, null=True)
+    email = models.EmailField(max_length=200, blank=True, null=True)
+    full_name = models.CharField(max_length=200, blank=True, null=True)
+    profile_image = models.ImageField(null=True, blank=True, upload_to='profiles/', default="profiles/user-default.jpg")
+    user_type = models.CharField(max_length=20, default="admin", editable=False)
+    created = models.DateTimeField(auto_now_add=True)
+    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
+
+    def __str__(self):
+        return str(self.full_name)
