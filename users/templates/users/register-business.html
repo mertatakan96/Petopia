@@ -6,13 +6,7 @@
 
     <div class="container" id="container" style="height:1000px;margin-top:35px">
         <div class="form-container sign-in-container" style="background-color:#faebf1">
-            <div class="social-container">
-                <a href="{% url 'register-choose' %}" style="margin-bottom: -20px;">
-                    <h2 class="inactive underlineHover" style="margin-left: 173px;"> Back</h2></a>
-                <br>
-                <a href='{% url 'login' %}'><h2 class="inactive underlineHover" style="margin-left: 123px;"> Sign In</h2></a>
-                <a href='#'><h2 class="active">Sign Up </h2></a>
-            </div>
+
             <form action="#">
 
                 {% for field in form %}
@@ -27,6 +21,12 @@
             <div class="overlay">
 
                 <div class="overlay-panel overlay-right" style="background: url('{% static 'images/petssss.jpg' %}')">
+
+                      <div class="social-container">
+                <a href="{% url 'register-choose' %}" style="margin-bottom: -20px;">
+                    <button class="btn btn-secondary" style="margin-left:65px;" >BACK</button>
+                </a>
+     </div>
                 </div>
             </div>
         </div>
