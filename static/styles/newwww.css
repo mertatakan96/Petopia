@@ -282,3 +282,11 @@ input[type=password] {
     -webkit-border-radius: 5px 5px 5px 5px;
     border-radius: 5px 5px 5px 5px;
 }
+
+input[class=unicorn] {
+  display: block;
+  width: 120%;
+  height:20px;
+  background-color: #f6f6f6;
+  background-clip: padding-box;
+  }
