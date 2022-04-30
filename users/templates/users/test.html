@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>TEST</h1>
+
+<form action="" method="post">
+
+    {% for fields in forms %}
+
+        {{ field.label }}
+        {{ fields }}
+
+    {% endfor %}
+
+</form>
+
+</body>
+</html>

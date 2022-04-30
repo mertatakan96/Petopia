@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import PetLover, Business, Admin
 
-# Register your models here.
+admin.site.register(PetLover)
+admin.site.register(Business)
+admin.site.register(Admin)
