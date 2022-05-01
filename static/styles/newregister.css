@@ -249,8 +249,8 @@ form.myform {
 	justify-content: center;
 	flex-direction: column;
 	padding: 0 50px;
-	height: 80%;
+	height: 86%;
 	overflow: auto;
 	text-align: center;
-	margin-top: 96px;
+	margin-top: -3px;
 }
