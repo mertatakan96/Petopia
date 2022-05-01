@@ -16,6 +16,8 @@
             <div class="overlay">
                 <!--pet card -->
                 <div class="overlay-panel overlay-left">
+                <br>
+                <h5>Pet Profile</h5>
                     <form action="#" style="overflow: auto;height: 770px;width: 384px;" class="myform">
                     <br><br><br><br>
                         {% for field in formPet %}
@@ -24,11 +26,11 @@
                         {% endfor %}
 
                         <input type="submit" class="fadeIn fourth" value="Register">
-                        <button type="submit" id="signIn" class="ghost" value="Previous"
-                            style="margin-bottom: 50px;color: black;border-color: black;color: black;">Previous
-                        </button>
-                    </form>
 
+                    </form>
+                 <button type="submit" id="signIn" class="ghost" value="Previous"
+                            style="margin-bottom: 50px;color: black;border-color: black;color: black; margin-bottom: 8px;">Previous
+                        </button>
                 </div>
 
                 <!-- user card -->
@@ -43,7 +45,7 @@
                         <a href='#'><h2 class="active">Sign Up </h2></a>
                     </div>
                     <form class="myform" action="#" style="overflow: auto;height: 670px;width: 384px;">
-                    <br><br><br><br><br><br><br><br><br><br><br><br><br>
+                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                         {% for field in formUser %}
                             {{ field.label }}
                             {{ field }}
