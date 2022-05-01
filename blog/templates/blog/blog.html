@@ -82,14 +82,21 @@
                             </header>
                             <img src="{% static 'images/petcircle.jpg' %}" id="icon" alt="User Icon"
                                  style="border-radius: 50%;margin-top:10px;max-width: 80%;"/>
+                            <form>
+
                             <div class="p-image" style="margin-top:20px;">
                                 <i class="fa fa-camera upload-button"></i>
-                                <input accept="image/*" type="file" class="file-upload"></input></div>
-                            <input type="text" id="login" style="margin-top:10px" class="fadeIn second" name="login"
+                                <input accept="image/*" type="file" class="file-upload"></input>
+                            </div>
+                            <input type="text" id="login" style="margin-top:10px" class="fadeIn second"
                                    placeholder="Title">
                             <textarea id="ad" name="a" cols="30" placeholder="Information"
-                                      style="padding: 30px 20px;margin-top:20px;"></textarea>
+                                      style="padding: 30px 20px;margin-top:20px;">
+
+                            </textarea>
                             <input type="submit" class="fadeIn fourth" value="Share" style="margin-top:20px">
+                            </form>
+
                         </div>
 
 

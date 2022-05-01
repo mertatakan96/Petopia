@@ -85,17 +85,22 @@
                             <header>
                                 <h4>Ask Question</h4>
                             </header>
-                            <img src="{% static 'images/petcircle.jpg' %}" id="icon" alt="User Icon"
-                                 style="border-radius: 50%;margin-top:10px;max-width: 80%;"/>
-                            <div class="p-image" style="margin-top:20px;">
+                            <img src="{% static 'images/petcircle.jpg' %}" id="icon" alt="User Icon" style="border-radius: 50%;margin-top:10px;max-width: 80%;"/>
+                            <form>
+                                <div class="p-image" style="margin-top:20px;">
                                 <i class="fa fa-camera upload-button"></i>
-                                <input accept="image/*" type="file" class="file-upload"></input></div>
+                                <input accept="image/*" type="file" class="file-upload"></input>
+                            </div>
                             <input type="text" id="login" style="margin-top:10px" class="fadeIn second" name="login"
                                    placeholder="Title">
 
                             <textarea id="address" name="address" cols="30" placeholder="Description"
-                                      style="padding: 30px 20px;margin-top:20px;"></textarea>
+                                      style="padding: 30px 20px;margin-top:20px;">
+
+                            </textarea>
                             <input type="submit" class="fadeIn fourth" value="Ask" style="margin-top:20px">
+                            </form>
+
                         </div>
 
 
