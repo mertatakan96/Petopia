@@ -16,7 +16,7 @@
             <div class="overlay">
                 <!--pet card -->
                 <div class="overlay-panel overlay-left">
-                    <form action="#" style="overflow: auto;height: 720px;width: 384px;" class="myform">
+                    <form action="#" style="overflow: auto;height: 770px;width: 384px;" class="myform">
                     <br><br><br><br>
                         {% for field in formPet %}
                             {{ field.label }}
@@ -24,11 +24,11 @@
                         {% endfor %}
 
                         <input type="submit" class="fadeIn fourth" value="Register">
-
-                    </form>
-                    <button type="submit" id="signIn" class="ghost" value="Previous"
+                        <button type="submit" id="signIn" class="ghost" value="Previous"
                             style="margin-bottom: 50px;color: black;border-color: black;color: black;">Previous
-                    </button>
+                        </button>
+                    </form>
+
                 </div>
 
                 <!-- user card -->
@@ -42,7 +42,7 @@
                         <a href='{% url 'login' %}'><h2 class="inactive underlineHover"> Sign In</h2></a>
                         <a href='#'><h2 class="active">Sign Up </h2></a>
                     </div>
-                    <form class="myform" action="#" style="overflow: auto;height: 585px;width: 384px;">
+                    <form class="myform" action="#" style="overflow: auto;height: 670px;width: 384px;">
                     <br><br><br><br><br><br><br><br><br><br><br><br><br>
                         {% for field in formUser %}
                             {{ field.label }}
@@ -50,10 +50,11 @@
                         {% endfor %}
                     <br>
                     <br>
-                    </form>
-                    <button type="submit" id="signUp" class="ghost" value="Next"
+                     <button type="submit" id="signUp" class="ghost" value="Next"
                             style="color: black;margin-bottom: 15px;border-color: black;color: black;">Next
                     </button>
+                    </form>
+
                 </div>
             </div>
         </div>
