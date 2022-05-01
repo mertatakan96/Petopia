@@ -1,6 +1,46 @@
 {% load static %}
 
 <header>
+
+    {% if request.user.is_authenticated %}
+
+            <!-- nav -->
+<div class="doc-header style2">
+        <div class="container">
+            <div class="inner">
+                <div class="app-logo centered">
+                    <button class="mobile-control mob-menu-trigger"><i class="adicon-hamburger"></i></button>
+                    <a href="{% url 'home-page' %}"><img src="{% static 'images/logo.png' %}" alt="adspot"></a>
+                </div>
+                <div class="clearfix">
+                    <ul class="quick-actions-2 left">
+                        <li>
+                            <a class="modal-trigger" href="{% url 'home-page' %}">
+                                <span>Home</span> <i class="fa fa-lock"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="modal-trigger" href = "#">
+                                <span>Contact</span> <i class="fa fa-lock"></i>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="quick-actions-2 right">
+                        <li>
+
+                                <span>{{ request.user.email }}</span> <i class="fa fa-lock"></i>
+
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- nav end -->
+
+    {% else %}
     <!-- nav -->
 <div class="doc-header style2">
         <div class="container">
@@ -40,4 +80,5 @@
         </div>
     </div>
 <!-- nav end -->
+    {% endif %}
 </header>

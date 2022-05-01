@@ -12,7 +12,9 @@
                         <a href='{% url 'login' %}'><h2 class="inactive underlineHover" style="margin-left: 119px;"> Sign In</h2></a>
                         <a href='#'><h2 class="active">Sign Up </h2></a>
                     </div>
-            <form class="myform" action="#" style="overflow: auto;">
+
+            <form class="myform" action="" method="post" style="overflow: auto;">
+                {% csrf_token %}
 
                 {% for field in form %}
                     {{ field.label }}
@@ -22,6 +24,7 @@
                 <input type="submit" class="fadeIn fourth" style="margin-bottom: -100px;" value="Register">
             <br> <br>
             </form>
+
         </div>
         <div class="overlay-container">
             <div class="overlay">
