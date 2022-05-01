@@ -9,7 +9,7 @@ class BusinessCreationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2', 'business_name',
-                          'business_type', 'tax_id', 'phone', 'address', 'information']
+                          'business_type', 'tax_id', 'phone', 'address', 'information', 'logo']
         widgets = {
             'username': forms.TextInput(attrs={'class': 'unicorn'}),
             'email': forms.TextInput(attrs={'class': 'unicorn'}),
@@ -26,7 +26,8 @@ class BusinessCreationForm(UserCreationForm):
 class PetLoverUserCreationForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ['username', 'email', 'full_name', 'password1', 'password2', 'location', 'tckn', 'phone', 'birthDate', 'gender']
+        fields = ['username', 'email', 'full_name', 'password1', 'password2',
+                  'location', 'tckn', 'phone', 'birthDate', 'gender', 'profile_image']
         widgets = {
             'username': forms.TextInput(attrs={'class': 'unicorn'}),
             'full_name': forms.TextInput(attrs={'class': 'unicorn'}),

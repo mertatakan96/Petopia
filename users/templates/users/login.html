@@ -15,10 +15,10 @@
             </div>
 
             <!-- Login Form -->
-            <form>
-
-                <input type="text" id="login" class="fadeIn second" name="login" placeholder="Username">
-                <input type="password2" id="password2" class="fadeIn third" name="login" placeholder="Password">
+            <form method="post" action="">
+                {% csrf_token %}
+                <input type="text" id="login" class="fadeIn second" name="username" placeholder="Username">
+                <input type="password" id="password2" class="fadeIn third" name="password" placeholder="Password">
                 <input type="submit" class="fadeIn fourth" value="Login">
             </form>
 

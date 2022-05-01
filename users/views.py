@@ -3,13 +3,39 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import BusinessCreationForm, PetLoverUserCreationForm
+from .models import User
 
 
 def home_page(request):
     return render(request, 'users/homepage.html')
 
 def loginPage(request):
+
+    if request.user.is_authenticated:
+        return redirect('home-page')
+
+    if request.method == 'POST':
+        username = request.POST['username'].lower()
+        password = request.POST['password']
+
+        try:
+            user = User.objects.get(username=username)
+        except:
+            messages.error(request, 'Username does not exist')
+
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return redirect('login')
+        else:
+            messages.error(request, 'Username OR password is incorrect')
+
     return render(request, 'users/login.html')
+
+def logout_user(request):
+    logout(request)
+    return redirect('home-page')
 
 def register_choose(request):
     return render(request, 'users/register-choose.html')
@@ -39,11 +65,13 @@ def register_business(request):
     context = {'form': form}
     return render(request, 'users/register-business.html', context)
 
-def petlover_profile(request):
-    return render(request, 'users/petlover-profile.html')
+@login_required(login_url='login')
+def user_profile(request):
+    profile = request.user
 
-def business_profile(request):
-    return render(request, 'users/business-profile.html')
+    context = {'profile': profile}
+    return render(request, 'users/profile.html', context)
+
 
 def testPage(request):
     form = PetLoverUserCreationForm()
