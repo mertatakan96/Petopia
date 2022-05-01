@@ -16,8 +16,8 @@
             <div class="overlay">
                 <!--pet card -->
                 <div class="overlay-panel overlay-left">
-                    <form action="#" style="background-color:#faebf1">
-
+                    <form action="#" style="overflow: auto;height: 720px;width: 384px;" class="myform">
+                    <br><br><br><br>
                         {% for field in formPet %}
                             {{ field.label }}
                             {{ field }}
@@ -42,13 +42,14 @@
                         <a href='{% url 'login' %}'><h2 class="inactive underlineHover"> Sign In</h2></a>
                         <a href='#'><h2 class="active">Sign Up </h2></a>
                     </div>
-                    <form action="#" style="background-color:#faebf1">
-
+                    <form class="myform" action="#" style="overflow: auto;height: 585px;width: 384px;">
+                    <br><br><br><br><br><br><br><br><br><br><br><br><br>
                         {% for field in formUser %}
                             {{ field.label }}
                             {{ field }}
                         {% endfor %}
-
+                    <br>
+                    <br>
                     </form>
                     <button type="submit" id="signUp" class="ghost" value="Next"
                             style="color: black;margin-bottom: 15px;border-color: black;color: black;">Next

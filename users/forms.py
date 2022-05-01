@@ -36,16 +36,16 @@ class PetLoverUserCreationForm(UserCreationForm):
         fields = ['username', 'full_name', 'email', 'password1', 'password2', 'location',
                   'tckn', 'phone', 'birthDate', 'gender', 'profile_image']
         widgets = {
-            'username': forms.TextInput(attrs={'class': 'form-control'}),
-            'full_name': forms.TextInput(attrs={'class': 'form-control'}),
-            'email': forms.TextInput(attrs={'class': 'form-control'}),
-            'password1': forms.PasswordInput(attrs={'class': 'form-control'}),
-            'password2': forms.PasswordInput(attrs={'class': 'form-control'}),
-            'location': forms.TextInput(attrs={'class': 'form-control'}),
-            'tckn': forms.TextInput(attrs={'class': 'form-control'}),
-            'phone': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '( )___ ___ __ __'}),
-            'birthDate': forms.DateInput(attrs={'type': 'date', 'max': datetime.now().date()}),
-            'gender': forms.Select(attrs={'class': 'form-control', 'style': "width:340px"}),
+            'username': forms.TextInput(attrs={'class': 'unicorn'}),
+            'full_name': forms.TextInput(attrs={'class': 'unicorn'}),
+            'email': forms.TextInput(attrs={'class': 'unicorn'}),
+            'password1': forms.PasswordInput(attrs={'class': 'unicorn', 'type': 'password2'}),
+            'password2': forms.PasswordInput(attrs={'class': 'unicorn', 'type': 'password2'}),
+            'address': forms.Textarea(attrs={'class': 'unicorn', 'style': 'width:328px'}),
+            'tckn': forms.TextInput(attrs={'class': 'unicorn'}),
+            'phone': forms.TextInput(attrs={'class': 'unicorn', 'placeholder': '( )___ ___ __ __'}),
+            'birthDate': forms.DateInput(attrs={'class': 'unicorn', 'type': 'date', 'max': datetime.now().date()}),
+            'gender': forms.Select(attrs={'class': 'unicorn', 'style': 'width: 324px; background-color: #f6f6f6'}),
         }
 
 class PetCreationForm(ModelForm):
@@ -54,13 +54,13 @@ class PetCreationForm(ModelForm):
         fields = ['type', 'name', 'race', 'height', 'weight', 'birthDate', 'gender',
                   'pet_image']
         widgets = {
-            'type': forms.Select(attrs={'class': 'form-control', 'style': "width:340px"}),
-            'name': forms.TextInput(attrs={'class': 'form-control'}),
-            'race': forms.TextInput(attrs={'class': 'form-control'}),
-            'height': forms.TextInput(attrs={'class': 'form-control'}),
-            'weight': forms.TextInput(attrs={'class': 'form-control'}),
-            'birthDate': forms.DateInput(attrs={'type': 'date', 'max': datetime.now().date()}),
-            'gender': forms.Select(attrs={'class': 'form-control', 'style': "width:340px"}),
+            'type': forms.Select(attrs={'class': 'unicorn', 'style': "width:340px ; background-color: #f6f6f6'"}),
+            'name': forms.TextInput(attrs={'class': 'unicorn'}),
+            'race': forms.TextInput(attrs={'class': 'unicorn'}),
+            'height': forms.TextInput(attrs={'class': 'unicorn'}),
+            'weight': forms.TextInput(attrs={'class': 'unicorn'}),
+            'birthDate': forms.DateInput(attrs={'class': 'unicorn', 'type': 'date', 'max': datetime.now().date()}),
+            'gender': forms.Select(attrs={'class': 'unicorn', 'style': "width:340px; background-color: #f6f6f6'"}),
         }
 
 
