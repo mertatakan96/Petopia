@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import BusinessUserCreationForm
+from .forms import BusinessUserCreationForm, PetLoverUserCreationForm, PetCreationForm
 
 
 def home_page(request):
@@ -12,7 +12,10 @@ def register_choose(request):
     return render(request, 'users/register-choose.html')
 
 def register_petlover(request):
-    return render(request, 'users/register-petlover.html')
+    formUser = PetLoverUserCreationForm()
+    formPet = PetCreationForm()
+    context = {'formUser': formUser, 'formPet': formPet}
+    return render(request, 'users/register-petlover.html', context)
 
 def register_business(request):
     form = BusinessUserCreationForm()

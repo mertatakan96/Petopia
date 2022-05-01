@@ -14,31 +14,15 @@
 
         <div class="overlay-container">
             <div class="overlay">
-                <!--user card -->
+                <!--pet card -->
                 <div class="overlay-panel overlay-left">
                     <form action="#" style="background-color:#faebf1">
-                        <br>
-                        <div class="fadeIn second control">
-                            <label class="radio"> <input type="radio" name="answer"> Cat </label>
-                            <label class="radio"> <input type="radio" name="answer"> Dog </label>
-                        </div>
-                        <input type="text" id="logifnname" class="fadeIn second form-control form-control-lg"
-                               style="height: 20px;" name="name" placeholder="Pet Name">
-                        <input type="text" id="ntefcxt" class="fadeIn second form-control form-control-lg"
-                               style="height: 20px;" placeholder="Type">
-                        <input type="text" id="ntdfecxt" class="fadeIn second form-control form-control-lg"
-                               style="height: 20px;" placeholder="Height">
-                        <input type="text" id="ntedcfdddcxt" class="fadeIn second form-control form-control-lg"
-                               style="height: 20px;" placeholder="Weight">
-                        <input type="text" id="ntedcfdcxt" class="fadeIn second form-control form-control-lg"
-                               style="height: 20px;" placeholder="Age">
-                        <div class="fadeIn second control">
-                            <label class="radio"> <input type="radio" name="answer"> Female </label>
-                            <label class="radio"> <input type="radio" name="answer"> Male </label>
-                        </div>
-                        <div class="p-image fadeIn second">
-                            <i class="fa fa-camera upload-button"></i>
-                            <input accept="image/*" type="file" class="file-upload"></div>
+
+                        {% for field in formPet %}
+                            {{ field.label }}
+                            {{ field }}
+                        {% endfor %}
+
                         <input type="submit" class="fadeIn fourth" value="Register">
 
                     </form>
@@ -47,11 +31,12 @@
                     </button>
                 </div>
 
-                <!-- pet card -->
+                <!-- user card -->
 
                 <div class="overlay-panel overlay-right">
                     <div class="social-container">
-                        <a href="{% url 'register-choose' %}" style="margin-bottom: -20px;"><h2 class="inactive underlineHover">
+                        <a href="{% url 'register-choose' %}" style="margin-bottom: -20px;"><h2
+                                class="inactive underlineHover">
                             Back</h2></a>
                         <br>
                         <a href='{% url 'login' %}'><h2 class="inactive underlineHover"> Sign In</h2></a>
@@ -59,29 +44,10 @@
                     </div>
                     <form action="#" style="background-color:#faebf1">
 
-                        <input type="text" id="loginname" class="unicorn"
-                               style="height: 20px;" name="name" placeholder="Username">
-                        <input type="text" id="ntecxt" class="unicorn"
-                               style="height: 20px;" placeholder="Name&Surname">
-                        <input type="text" id="loginmail" class="unicorn"
-                               style="height: 20px;" name="loginmail" placeholder="E-mail">
-                        <input type="password2" id="password" class="unicorn"
-                               style="height: 20px;" name="login" placeholder="Password">
-                        <input type="password" id="password2" class="fadeIn second form-control form-control-lg"
-                               style="height: 20px;" name="login" placeholder="Password">
-                        <input type="text" id="ad" class="fadeIn second form-control form-control-lg" name="add"
-                               style="height: 20px;" placeholder="Address">
-                        <input type="integer" id="phonetext" style="background-color:#f6f6f6;width:180px;"
-                               class="fadeIn second form-control form-control-lg" style="height: 20px;"
-                               placeholder="+( )___ ___ __ __">
-                        <div class="fadeIn second control">
-                            <label class="radio"> <input type="radio" name="answer"> Female </label>
-                            <label class="radio"> <input type="radio" name="answer"> Male </label>
-                        </div>
-                        <div class="p-image fadeIn second">
-                            <i class="fa fa-camera upload-button"></i>
-                            <input accept="image/*" type="file" class="file-upload">
-                        </div>
+                        {% for field in formUser %}
+                            {{ field.label }}
+                            {{ field }}
+                        {% endfor %}
 
                     </form>
                     <button type="submit" id="signUp" class="ghost" value="Next"

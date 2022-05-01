@@ -22,8 +22,36 @@ class PetLover(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
 
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+
     def __str__(self):
         return str(self.full_name)
+
+
+class Pet(models.Model):
+    GENDER_CHOICES = (
+        ('Male', 'Male'),
+        ('Female', 'Female'),
+    )
+    TYPE_CHOICES = (
+        ('Dog', 'Dog'),
+        ('Cat', 'Cat'),
+    )
+    owner = models.ForeignKey(PetLover, null=True, blank=True, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200, blank=True, null=True)
+    race = models.CharField(max_length=200, blank=True, null=True)
+    height = models.CharField(max_length=200, blank=True, null=True)
+    weight = models.CharField(max_length=200, blank=True, null=True)
+    birthDate = models.DateField(null=True)
+    gender = models.CharField(max_length=20, choices=GENDER_CHOICES, null=True)
+    type = models.CharField(max_length=20, choices=TYPE_CHOICES, null=True)
+    pet_image = models.ImageField(null=True, blank=True, upload_to='profiles/', default="petcircle.jpg")
+    created = models.DateTimeField(auto_now_add=True)
+    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
+
+    def __str__(self):
+        return str(self.name) + " - " + str(self.owner)
 
 
 class Business(models.Model):
@@ -65,3 +93,5 @@ class Admin(models.Model):
 
     def __str__(self):
         return str(self.full_name)
+
+
