@@ -103,3 +103,6 @@ def add_pet(request):
 
 def edit_pet(request):
     return render(request, 'users/edit-pet-form.html')
+
+def forget_password(request):
+    return render(request, 'users/forget-password-form.html')
