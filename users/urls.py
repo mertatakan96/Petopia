@@ -11,6 +11,9 @@ urlpatterns = [
     path('register-business/', views.register_business, name="register-business"),
 
     path('profile/', views.user_profile, name="profile"),
+    path('edit-profile/', views.edit_profile, name="edit-profile"),
+    path('add-pet/', views.add_pet, name="add-pet"),
+    path('edit-pet/', views.edit_pet, name="edit-pet"),
 
     path('test/', views.testPage, name="test"),
 ]

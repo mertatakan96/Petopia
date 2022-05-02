@@ -94,3 +94,12 @@ def testPage(request):
 
     context = {'formUser': form}
     return render(request, 'users/test.html', context)
+
+def edit_profile(request):
+    return render(request, 'users/edit-profile-form.html')
+
+def add_pet(request):
+    return render(request, 'users/edit-profile-form.html')
+
+def edit_pet(request):
+    return render(request, 'users/edit-profile-form.html')
