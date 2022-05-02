@@ -99,7 +99,7 @@ def edit_profile(request):
     return render(request, 'users/edit-profile-form.html')
 
 def add_pet(request):
-    return render(request, 'users/edit-profile-form.html')
+    return render(request, 'users/add-pet-form.html')
 
 def edit_pet(request):
-    return render(request, 'users/edit-profile-form.html')
+    return render(request, 'users/edit-pet-form.html')

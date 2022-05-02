@@ -3,6 +3,73 @@
 
 {% block content %}
 
-{#    html kodu buraya #}
+
+            <div class="col-md-4" style="margin-left: 508px;margin-top: 30px;">
+                <div class="blog-page">
+                    <aside class="cardd radius-15 sidebar" style="background-color: #ffffffb0;">
+                        <div class="widget-about widget">
+                            <header>
+                                <h4>Add Pet Sub Profile</h4>
+                                <hr>
+                            </header>
+
+                            <img src="{% static 'images/petcircle.jpg' %}" id="icon" alt="User Icon"
+                                 style="border-radius: 50%;margin-top:10px;max-width: 40%;"/>
+
+                            <div class="p-image" style="margin-top:30px;">
+                                <i class="fa fa-camera upload-button"></i>
+
+
+                                <form>
+                                    <label >Picture:</label>
+                                    <div class="fadeIn second p-image">
+                                        <i class="fa fa-camera upload-button"></i>
+                                        <input accept="image/*" type="file"  class="file-upload" >
+                                    </div><br>
+
+                                    <input type="radio" id="html" name="fav_language" >
+                                    <label >Cat</label>
+                                    <input type="radio" id="css" name="fav_language" >
+                                    <label >Dog</label> <br> <br>
+                                        <div >
+                                            <label for="disabledName">Type</label>
+                                            <input type="text" id="fname">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="disabledNamePet" style="margin-top:10px;">Name</label>
+                                            <input type="text" id="fname">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="disabledAge" style="margin-top:15px;">Age</label>
+                                            <input type="text" id="fname">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="disabledGenderPet" style="margin-top:15px;">Gender</label>
+                                            <input type="text" id="fname">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="disabledHeight" style="margin-top:15px;">Height</label>
+                                            <input type="text" id="fname">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="disabledWeight" style="margin-top:15px;">Weight</label>
+                                            <input type="text" id="fname">
+                                        </div>
+
+                                </form>
+
+                                <hr>
+                                <br>
+                               <button type="button" style="border-radius: 10%" class="btn btn-secondary" href="edit-profile-form.html">Cancel</button>
+                                <button type="button" style="border-radius: 10%" class="btn btn-info" href="edit-profile-form.html">Add</button>
+                            </div>
+
+
+                        </div>
+                    </aside>
+
+                </div>
+
+            </div>
 
 {% endblock content %}
