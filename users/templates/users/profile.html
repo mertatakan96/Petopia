@@ -128,7 +128,7 @@
     {% elif profile.user_type == 'petlover' %}
         {#  PET LOVER PROFİLE  #}
 
-        <!-- Dropdown button -->
+        <!-- Dropdown button
         <div class="btn-group" role="group" style=" margin-left: 30px; margin-top: 30px;">
     <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Settings
@@ -138,8 +138,7 @@
       <a class="dropdown-item" type="button" data-toggle="modal" data-target="#petmodal">Add Pet</a>
     </div>
   </div>
-
-        <!-- Modal edit profile -->
+         Modal edit profile
         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -173,8 +172,7 @@
     </div>
   </div>
 </div>
-
-        <!-- Modal pet profile add -->
+         Modal pet profile add
         <div class="modal fade" id="petmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -213,18 +211,19 @@
     </div>
   </div>
 </div>
-
+        -->
 
         <div class="container" style="margin-top:50px;width:1500px;max-width:1500px;">
         <div class="row">
+
             <!-- profile -->
             <div class="col-md-4">
                 <div class="row">
                     <div class="blog-page" style="width:100%">
-                        <aside class="cardd radius-15 sidebar" style="height: 1150px;">
+                        <aside class="cardd radius-15 sidebar" style="height: 1250px;">
                             <div class="widget-about widget">
                                 <header>
-                                    <h4>Information</h4>
+                                    <h4>Information </h4>
                                     <hr>
                                 </header>
                                 <img src="{{ profile.profile_image.url }}" id="icon" alt="User Icon"
@@ -269,24 +268,25 @@
                                         </div>
                                     </fieldset>
                                 </form>
+                                <hr>
+                                <br>
+                                <button type="button" style="border-radius: 10%" class="btn btn-info" href="edit-profile-form.html">Edit</button>
                             </div>
                         </aside>
                     </div>
                 </div>
             </div>
 
-            <!-- pet sub profile -->
+            <!-- pet sub profile
             <div class="col-md-4">
                 <div class="blog-page">
-                    <aside class="cardd radius-15 sidebar" style="height: 1050px;">
+                    <aside class="cardd radius-15 sidebar" style="height: 1250px;">
                         <div class="widget-about widget">
                             <header>
                                 <h4>Pet Sub Profile</h4>
                                 <hr>
                             </header>
-                            <div>
-                                <button class="btn btn-outline-danger" style="border-radius: 50%;margin-right: -250px; padding: 11px 17px;">X</button>
-                            </div>
+
                             <img src="{% static 'images/petcircle.jpg' %}" id="icon" alt="User Icon"
                                  style="border-radius: 50%;margin-top:10px;max-width: 40%;"/>
 
@@ -334,6 +334,13 @@
                                     <a href="#">❮</a>
                                     <a href="#">❯</a>
                                 </div>
+                                <hr>
+                                <br>
+                                <button type="button" class="btn btn-info" href="edit-profile-form.html">Add</button>
+                                <button type="button" class="btn btn-info" href="edit-profile-form.html">Edit</button>
+                                <button type="button" class="btn btn-info" href="edit-profile-form.html">Delete</button>
+
+
 
                             </div>
 
@@ -343,12 +350,80 @@
 
                 </div>
 
+            </div> -->
+
+            <!-- pet sub profile -->
+            <div class="col-md-4">
+                <div class="blog-page">
+                    <aside class="cardd radius-15 sidebar" style="height: 1250px;">
+                        <div class="widget-about widget">
+                            <header>
+                                <h4>Pet Sub Profile</h4>
+                                <button type="button" class="btn btn-info" style="margin-left: 330px;border-radius: 10%;" href="#">Add</button>
+                            </header>
+                            <hr>
+                            <div >
+                                <p><button type="button" class="btn btn-success" style="border-radius: 10%">Edit</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button type="button" class="btn btn-danger" style="border-radius: 100%">X</button></p>
+                                 <br>
+                                <img src="{% static 'images/petcircle.jpg' %}" id="icon" alt="User Icon"
+                                 style="border-radius: 50%;margin-top:10px;max-width: 30%;"/> <br>
+                                <form>
+                                <h4 > Pet Name </h4>
+                                <h5 style="line-height: 0.6;"> Age </h5>
+                                <h5 style="line-height: 0.6;"> Gender </h5>
+                                <h5 style="line-height: 0.6;"> Type </h5>
+                                </form>
+                            </div>
+                            <hr>
+                            <div >
+                                <p><button type="button" class="btn btn-success" style="border-radius: 10%">Edit</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button type="button" class="btn btn-danger" style="border-radius: 100%">X</button></p>
+                                 <br>
+                                <img src="{% static 'images/petcircle.jpg' %}" id="icon" alt="User Icon"
+                                 style="border-radius: 50%;margin-top:10px;max-width: 30%;"/> <br>
+                                <form>
+                                <h4 > Pet Name </h4>
+                                <h5 style="line-height: 0.6;"> Age </h5>
+                                <h5 style="line-height: 0.6;"> Gender </h5>
+                                <h5 style="line-height: 0.6;"> Type </h5>
+                                </form>
+                            </div>
+                            <hr>
+                            <div>
+                                <p><button type="button" class="btn btn-success" style="border-radius: 10%">Edit</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button type="button" class="btn btn-danger" style="border-radius: 100%">X</button></p>
+                                 <br>
+                                <img src="{% static 'images/petcircle.jpg' %}" id="icon" alt="User Icon"
+                                 style="border-radius: 50%;margin-top:10px;max-width: 30%;"/> <br>
+                                <form>
+                                <h4 > Pet Name </h4>
+                                <h5 style="line-height: 0.6;"> Age </h5>
+                                <h5 style="line-height: 0.6;"> Gender </h5>
+                                <h5 style="line-height: 0.6;"> Type </h5>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="pagination" style="margin-left: 190px;">
+                                    <a style="border-radius: 60%;" href="#">❮</a>
+                                    <a style="border-radius: 60%;" href="#">❯</a>
+                                </div>
+                    </aside>
+
+                </div>
+
             </div>
 
             <!-- settings -->
             <div class="col-md-4">
                 <div class="blog-page">
-                    <aside class="cardd radius-15 sidebar" style="height: 1050px;">
+                    <aside class="cardd radius-15 sidebar" style="height: 1250px;">
                         <div class="widget-about widget">
                             <header>
                                 <h4>My Forum</h4>
