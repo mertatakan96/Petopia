@@ -1,52 +1,24 @@
 {% extends 'main-profile.html' %}
 {% load static %}
 
+
 {% block content %}
 
     {% if profile.user_type == 'business' %}
     {#  BUSINESS PROFİLE  #}
+
+        <div class="btn-group" role="group" style=" margin-left: 30px; margin-top: 30px;">
+            <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Settings
+            </button>
+            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                <a class="dropdown-item" href="#popup1">Edit Business</a>
+                <a class="dropdown-item" href="#">Add More</a>
+            </div>
+        </div>
+
         <div class="container" style="margin-top:50px;width:1500px;max-width:1500px;">
         <div class="row">
-            <!-- settings -->
-            <div class="col-md-4">
-                <div class="blog-page">
-                    <aside class="cardd radius-15 sidebar" style="height: 1050px;">
-                        <div class="widget-about widget">
-                            <header>
-                                <h4>Blogs</h4>
-                                <hr>
-                            </header>
-
-                        </div>
-                    </aside>
-                </div>
-            </div>
-
-            <!-- profile  -->
-            <div class="col-md-4">
-                <div class="row">
-                    <div class="blog-page" style="width:100%">
-                        <aside class="cardd radius-15 sidebar" style="height: 1050px;">
-                            <div class="widget-about widget">
-                                <header>
-                                    <h4>Information</h4>
-                                    <hr>
-                                </header>
-                                <form>
-
-                                </form>
-
-
-                            </div>
-
-
-                        </aside>
-
-                    </div>
-
-                </div>
-
-            </div>
 
             <!-- business -->
             <div class="col-md-4">
@@ -108,28 +80,143 @@
                 </div>
 
             </div>
-        </div>
-    </div>
 
-    {% elif profile.user_type == 'petlover' %}
-        {#  PET LOVER PROFİLE  #}
-        <div class="container" style="margin-top:50px;width:1500px;max-width:1500px;">
-        <div class="row">
+            <!-- Information -->
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="blog-page" style="width:100%">
+                        <aside class="cardd radius-15 sidebar" style="height: 1050px;">
+                            <div class="widget-about widget">
+                                <header>
+                                    <h4>Information</h4>
+                                    <hr>
+                                </header>
+                                <form>
 
-            <!-- settings -->
+                                </form>
+
+
+                            </div>
+
+
+                        </aside>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Blogs -->
             <div class="col-md-4">
                 <div class="blog-page">
                     <aside class="cardd radius-15 sidebar" style="height: 1050px;">
                         <div class="widget-about widget">
                             <header>
-                                <h4>Forum</h4>
+                                <h4>My Blogs</h4>
                                 <hr>
                             </header>
+
                         </div>
                     </aside>
                 </div>
             </div>
 
+        </div>
+    </div>
+
+    {% elif profile.user_type == 'petlover' %}
+        {#  PET LOVER PROFİLE  #}
+
+        <!-- Dropdown button -->
+        <div class="btn-group" role="group" style=" margin-left: 30px; margin-top: 30px;">
+    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Settings
+    </button>
+    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+      <a class="dropdown-item" type="button" data-toggle="modal" data-target="#exampleModal" >Edit Profile</a>
+      <a class="dropdown-item" type="button" data-toggle="modal" data-target="#petmodal">Add Pet</a>
+    </div>
+  </div>
+
+        <!-- Modal edit profile -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body" style="background: url('{% static 'images/background.png' %}')">
+        <form>
+            <div class="fadeIn second p-image">
+				<i class="fa fa-camera upload-button"></i>
+				<input accept="image/*" type="file"  class="file-upload" ></input>
+			</div><br>
+            <p>Gender</p>
+            <input type="radio" id="html" name="fav_language" value="HTML">
+            <label for="html">Female</label>
+            <input type="radio" id="css" name="fav_language" value="CSS">
+            <label for="css">Male</label><br><br>
+            <label for="fname">Name & Surname:</label><input type="text" id="fname"><br>
+            <label for="fname">E-mail:</label><input type="text" id="email"><br>
+            <label for="fname">TCKN:</label><input type="text" id="tckn"><br>
+            <label for="fname">Phone:</label><input type="text" id="phone"><br>
+            <label for="fname">Address:</label><input type="text" id="address"><br><br>
+            <label for="fname">Birth Date: </label><br><input type="date" id="datee"><br>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+        <!-- Modal pet profile add -->
+        <div class="modal fade" id="petmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Pet Profile</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body" style="background: url('{% static 'images/background.png' %}')">
+        <form>
+            <div class="fadeIn second p-image">
+				<i class="fa fa-camera upload-button"></i>
+				<input accept="image/*" type="file"  class="file-upload" ></input>
+			</div> <br>
+            <label for="fname">Pet name:</label><input type="text" id="fname"><br>
+            <p>Gender</p>
+            <input type="radio" id="html" name="fav_language" value="HTML">
+            <label for="html">Female</label>
+            <input type="radio" id="css" name="fav_language" value="CSS">
+            <label for="css">Male</label>
+            <br>
+            <label for="fname">Age:</label><input type="text" id="age"><br>
+            <p>Kind: </p>
+            <input type="radio" id="html" name="fav_language" value="HTML">
+            <label for="html">Cat</label>
+            <input type="radio" id="css" name="fav_language" value="CSS">
+            <label for="css">Dog</label> <br>
+            <label for="fname">Type:</label><input type="text" id="type"><br><br>
+            <label for="fname">Height:</label><input type="text" id="height"><br><br>
+            <label for="fname">Weight: </label><br><input type="text" id="weight"><br><br>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Add Pet</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+        <div class="container" style="margin-top:50px;width:1500px;max-width:1500px;">
+        <div class="row">
             <!-- profile -->
             <div class="col-md-4">
                 <div class="row">
@@ -150,7 +237,7 @@
                                                    id="disabledName" class="form-control" placeholder="{{ profile.full_name }}">
                                         </div>
                                         <div class="form-group">
-                                            <label for="disabledGender" style="margin-top:20px;">Gender</label>
+                                            <label for="disabledGender" style="margin-top:20px;">Gender: </label>
                                             <input type="text" style="text-align:center;font-size: 17px;height: 60px;"
                                                    id="disabledGender" class="form-control" placeholder="{{ profile.gender }}">
                                         </div>
@@ -197,6 +284,9 @@
                                 <h4>Pet Sub Profile</h4>
                                 <hr>
                             </header>
+                            <div>
+                                <button class="btn btn-outline-danger" style="border-radius: 50%;margin-right: -250px; padding: 11px 17px;">X</button>
+                            </div>
                             <img src="{% static 'images/petcircle.jpg' %}" id="icon" alt="User Icon"
                                  style="border-radius: 50%;margin-top:10px;max-width: 40%;"/>
 
@@ -245,7 +335,6 @@
                                     <a href="#">❯</a>
                                 </div>
 
-
                             </div>
 
 
@@ -255,7 +344,22 @@
                 </div>
 
             </div>
+
+            <!-- settings -->
+            <div class="col-md-4">
+                <div class="blog-page">
+                    <aside class="cardd radius-15 sidebar" style="height: 1050px;">
+                        <div class="widget-about widget">
+                            <header>
+                                <h4>My Forum</h4>
+                                <hr>
+                            </header>
+                        </div>
+                    </aside>
+                </div>
+            </div>
         </div>
+
     </div>
 
     {% endif %}
