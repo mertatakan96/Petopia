@@ -52,10 +52,23 @@ def register_petlover(request):
             user.save()
 
             login(request, user)
-
+            # messages.success(request, 'Pet Lover Account successfully created')
             return redirect('home-page')
         else:
-            messages.error(request, messages.error)
+            password1 = form.data['password1']
+            password2 = form.data['password2']
+            email = form.data['email']
+            username = form.data['username']
+            for msg in form.errors.as_data():
+                if msg == 'username':
+                    messages.error(request, "Username already taken!")
+                if msg == 'email':
+                    messages.error(request, "Email already taken!")
+                if msg == 'password2' and password1 == password2:
+                    messages.error(request, "Password is not strong enough")
+                elif msg == 'password2' and password1 != password2:
+                    messages.error(request,
+                                   "Passwords does not match")
 
     context = {'formUser': form}
     return render(request, 'users/register-petlover.html', context)
@@ -72,10 +85,23 @@ def register_business(request):
             user.save()
 
             login(request, user)
-            print('User created')
+            # messages.success(request, 'Business Account successfully created')
             return redirect('home-page')
         else:
-            print('Error')
+            password1 = form.data['password1']
+            password2 = form.data['password2']
+            email = form.data['email']
+            username = form.data['username']
+            for msg in form.errors.as_data():
+                if msg == 'username':
+                    messages.error(request, "Username already taken!")
+                if msg == 'email':
+                    messages.error(request, "Email already taken!")
+                if msg == 'password2' and password1 == password2:
+                    messages.error(request, "Password is not strong enough")
+                elif msg == 'password2' and password1 != password2:
+                    messages.error(request,
+                                   "Passwords does not match")
 
     context = {'form': form}
     return render(request, 'users/register-business.html', context)
@@ -121,13 +147,15 @@ def edit_profile(request):
         form = PetLoverEditForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
-            return  redirect('profile')
+            messages.success(request, 'User was added edited')
+            return redirect('profile')
 
     if request.method == 'POST':
         form = BusinessEditForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
-            return  redirect('profile')
+            messages.success(request, 'User successfully edited')
+            return redirect('profile')
 
     context = {'profile': profile, 'petlover_form': petlover_form, 'business_form':business_form}
 
@@ -144,6 +172,7 @@ def add_pet(request):
             pet = form.save(commit=False)
             pet.owner = profile
             pet.save()
+            messages.success(request, 'Pet was added successfully!')
             return redirect('profile')
 
     context = {'form': form}
@@ -160,6 +189,7 @@ def edit_pet(request, pk):
         form = PetEditForm(request.POST, request.FILES, instance=pet)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Pet was added edited!')
             return redirect('profile')
 
     context = {'form': form}

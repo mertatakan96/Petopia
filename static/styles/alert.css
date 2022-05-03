@@ -1,0 +1,43 @@
+.alert {
+  display: inline-flex;
+  gap: 3rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2.5rem;
+  border-radius: 3px;
+  border: 1px solid white;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+}
+
+.alert,
+.alert > .alert__message {
+  background-color: red;
+  color: black;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.alert.alert--error,
+.alert.alert--error > .alert__message {
+  background-color: red;
+  color: white;
+}
+
+.alert.alert--success,
+.alert.alert--success > .alert__message {
+  background-color: hotpink;
+  color: white;
+}
+
+.alert > .alert__close {
+  background: transparent;
+  cursor: pointer;
+  border: none;
+  outline: transparent;
+  font-size: 2rem;
+}
+
+.alert > .alert__close:hover {
+  opacity: 0.85;
+}

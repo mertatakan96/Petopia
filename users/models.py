@@ -20,8 +20,8 @@ class User(AbstractUser):
     user_id = models.UUIDField(default=uuid.uuid4, unique=True, editable=False)
 
     # petlover
-    full_name = models.CharField(max_length=200, blank=True, null=True)
-    location = models.CharField(max_length=200, blank=True, null=True)
+    full_name = models.CharField(max_length=200, null=True)
+    location = models.CharField(max_length=200, null=True)
     tckn = models.CharField(max_length=11, null=True)
     phone = models.CharField(max_length=11, null=True)
     birthDate = models.DateField(null=True)
@@ -30,11 +30,11 @@ class User(AbstractUser):
     created = models.DateTimeField(auto_now_add=True)
 
     # business
-    business_name = models.CharField(max_length=200, blank=True, null=True)
+    business_name = models.CharField(max_length=200, null=True)
     tax_id = models.CharField(max_length=11, null=True, unique=True)
     # phone
-    information = models.TextField(max_length=500, blank=True, null=True)
-    address = models.TextField(max_length=500, blank=True, null=True)
+    information = models.TextField(max_length=500, null=True)
+    address = models.TextField(max_length=500, null=True)
     logo = models.ImageField(null=True, blank=True, upload_to='profiles/', default="profiles/store-default.png")
     business_type = models.CharField(max_length=20, choices=BUSINESS_TYPE, null=True)
 

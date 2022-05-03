@@ -7,17 +7,29 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'styles/founded.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/alert.css' %}">
 </head>
 <body style="background: url('{% static 'images/background.png' %}'); background-blend-mode: overlay;">
 
 {% include 'navbar.html' %}
+
+{% if messages %}
+    {% for message in messages %}
+
+            <div style="position: fixed; top: 150px; left: 50%; transform: translate(-50%, -50%); z-index: 99999" class="alert alert--{{message.tags}}">
+                <p class="alert__message">{{ message }}</p>
+                <button class="alert__close">x</button>
+            </div>
+
+    {% endfor %}
+{% endif %}
 
 {% block content %}
 
 {% endblock content %}
 
 
-<script src="{% static 'js/adminProfile.js' %}"></script>
+<script src="{% static 'js/alert.js' %}"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
