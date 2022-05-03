@@ -3,21 +3,21 @@
 {% block content %}
 
 
-    <div class="container" id="container" style="height:1000px;margin-top:35px">
-        <div class="form-container sign-in-container" style="background-color:#faebf1">
-         <div class="social-container">
-                        <a href="{% url 'register-choose' %}" style="margin-left: 158px;"><h2 class="inactive underlineHover">
+    <div class="container" id="container" style="height:1000px;margin-top:35px;width: 953px;">
+        <div class="form-container sign-in-container" style="background-color:#faebf1; width: 560px;">
+            <div class="social-container">
+                        <a href="{% url 'register-choose' %}" style="margin-left: 238px;"><h2 class="inactive underlineHover">
                             Back</h2></a>
                         <br>
-                        <a href='{% url 'login' %}'><h2 class="inactive underlineHover" style="margin-left: 119px;"> Sign In</h2></a>
+                        <a href='{% url 'login' %}'><h2 class="inactive underlineHover" style="margin-left: 192px;"> Sign In</h2></a>
                         <a href='#'><h2 class="active">Sign Up </h2></a>
-                    </div>
-
+            </div>
             <form class="myform" action="" method="post" style="overflow: auto;">
                 {% csrf_token %}
 
                 {% for field in form %}
                     {{ field.label }}
+
                     {{ field }}
                 {% endfor %}
 
@@ -26,14 +26,7 @@
             </form>
 
         </div>
-        <div class="overlay-container">
-            <div class="overlay">
-
-                <div class="overlay-panel overlay-right" style="background: url('{% static 'images/petssss.jpg' %}')">
-
-                </div>
-            </div>
-        </div>
+        <div class="overlay-panel overlay-right" style="background: url('{% static 'images/petssss.jpg' %}')"; width: 424px;></div>
     </div>
 
 {% endblock %}

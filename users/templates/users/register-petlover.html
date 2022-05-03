@@ -4,76 +4,38 @@
 {% block content %}
 
 
-    <div class="container" id="container" style="height:1000px;margin-top:35px">
-        <!-- arka sağ -->
-        <div class="form-container sign-up-container" style="background: url('{% static 'images/petssss.jpg' %}')">
-        </div>
-        <!-- ön sol -->
-        <div class="form-container sign-in-container" style="background: url('{% static 'images/petssss.jpg' %}')">
-        </div>
+    <div class="container" style="margin-top: 75px;height: auto;background: url('{% static 'images/petssss.jpg' %}');background-position: bottom;">
 
-        <!-- pet card -->
-        <div class="overlay-container">
-            <div class="overlay">
-                <!--pet card -->
-                <div class="overlay-panel overlay-left">
-                <br>
-                <h5>Pet Profile</h5>
-                    <form action="#" style="overflow: auto;height: 770px;width: 384px;" class="myform">
-                        {% for field in formPet %}
-                            {{ field.label }}
-                            {{ field }}
-                        {% endfor %}
 
-                        <input type="submit" class="fadeIn fourth" value="Register">
 
-                    </form>
-                 <button type="submit" id="signIn" class="ghost" value="Previous"
-                            style="margin-bottom: 50px;color: black;border-color: black;color: black; margin-bottom: 8px;">Previous
-                        </button>
-                </div>
+        <!-- user card -->
 
-                <!-- user card -->
-
-                <div class="overlay-panel overlay-right">
-                    <div class="social-container">
-                        <a href="{% url 'register-choose' %}" style="margin-bottom: -20px;"><h2
-                                class="inactive underlineHover">
-                            Back</h2></a>
+                        <a href="{% url 'register-choose' %}" style="margin-bottom: -20px;"><h2 class="inactive underlineHover" style="margin-left: 341px;">Back</h2></a>
                         <br>
-                        <a href='{% url 'login' %}'><h2 class="inactive underlineHover"> Sign In</h2></a>
+                        <a href='{% url 'login' %}'><h2 class="inactive underlineHover" style="margin-left: 300px;"> Sign In</h2></a>
                         <a href='#'><h2 class="active">Sign Up </h2></a>
-                    </div>
-                    <form method="post" enctype="multipart/form-data" class="myform" action="#" style="overflow: auto;height: 670px;width: 384px;">
+
+                    <form method="post" enctype="multipart/form-data" class="myform" action="#" style="overflow: auto;background-color: #faebf1d1">
                         {% csrf_token %}
                         {% for field in formUser %}
-                            {{ field.label }}
-                            {{ field }}
+                           <div >
+                           <label>
+                               {{ field.label }}
+                           </label> <br>
+                           {{ field }}
+                           </div>
+
                         {% endfor %}
                     <br>
                     <br>
                       <input type="submit" class="fadeIn fourth" value="Register">
                     </form>
 
-                </div>
-            </div>
-        </div>
+
+
     </div>
 
-    <!-- Card için var -->
-    <script>
-        const signUpButton = document.getElementById('signUp');
-        const signInButton = document.getElementById('signIn');
-        const container = document.getElementById('container');
 
-        signUpButton.addEventListener('click', () => {
-            container.classList.add("right-panel-active");
-        });
-
-        signInButton.addEventListener('click', () => {
-            container.classList.remove("right-panel-active");
-        });
-    </script>
 
 
 {% endblock content %}
