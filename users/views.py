@@ -42,6 +42,21 @@ def register_choose(request):
 
 def register_petlover(request):
     form = PetLoverUserCreationForm()
+
+    if request.method == 'POST':
+        form = PetLoverUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.username = user.username.lower()
+            user.user_type = 'petlover'
+            user.save()
+
+            login(request, user)
+
+            return redirect('home-page')
+        else:
+            messages.error(request, messages.error)
+
     context = {'formUser': form}
     return render(request, 'users/register-petlover.html', context)
 

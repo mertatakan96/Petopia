@@ -44,8 +44,8 @@
                         <a href='{% url 'login' %}'><h2 class="inactive underlineHover"> Sign In</h2></a>
                         <a href='#'><h2 class="active">Sign Up </h2></a>
                     </div>
-                    <form class="myform" action="#" style="overflow: auto;height: 670px;width: 384px;">
-
+                    <form method="post" enctype="multipart/form-data" class="myform" action="#" style="overflow: auto;height: 670px;width: 384px;">
+                        {% csrf_token %}
                         {% for field in formUser %}
                             {{ field.label }}
                             {{ field }}

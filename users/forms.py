@@ -42,8 +42,8 @@ class BusinessEditForm(ModelForm):
 class PetLoverUserCreationForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ['username', 'email', 'full_name', 'password1', 'password2',
-                  'location', 'tckn', 'phone', 'birthDate', 'gender', 'profile_image']
+        fields = ['profile_image', 'username', 'email', 'full_name', 'password1', 'password2',
+                  'location', 'tckn', 'phone', 'birthDate', 'gender']
         widgets = {
             'username': forms.TextInput(attrs={'class': 'unicorn'}),
             'full_name': forms.TextInput(attrs={'class': 'unicorn'}),
