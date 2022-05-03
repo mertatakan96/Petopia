@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .forms import BusinessCreationForm, PetLoverUserCreationForm
+from .forms import BusinessCreationForm, PetLoverUserCreationForm, PetCreationForm, BusinessEditForm, PetLoverEditForm, PetEditForm
 from .models import User
 
 
@@ -68,8 +68,9 @@ def register_business(request):
 @login_required(login_url='login')
 def user_profile(request):
     profile = request.user
+    pets = profile.pet_set.all()
 
-    context = {'profile': profile}
+    context = {'profile': profile, 'pets': pets}
     return render(request, 'users/profile.html', context)
 
 
@@ -95,14 +96,60 @@ def testPage(request):
     context = {'formUser': form}
     return render(request, 'users/test.html', context)
 
+@login_required(login_url='login')
 def edit_profile(request):
-    return render(request, 'users/edit-profile-form.html')
+    profile = request.user
+    petlover_form = PetLoverEditForm(instance=profile)
+    business_form = BusinessEditForm(instance=profile)
 
+    if request.method == 'POST':
+        form = PetLoverEditForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            return  redirect('profile')
+
+    if request.method == 'POST':
+        form = BusinessEditForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            return  redirect('profile')
+
+    context = {'profile': profile, 'petlover_form': petlover_form, 'business_form':business_form}
+
+    return render(request, 'users/edit-profile-form.html', context)
+
+@login_required(login_url='login')
 def add_pet(request):
-    return render(request, 'users/add-pet-form.html')
+    profile = request.user
+    form = PetCreationForm()
 
-def edit_pet(request):
-    return render(request, 'users/edit-pet-form.html')
+    if request.method == 'POST':
+        form = PetCreationForm(request.POST, request.FILES)
+        if form.is_valid():
+            pet = form.save(commit=False)
+            pet.owner = profile
+            pet.save()
+            return redirect('profile')
+
+    context = {'form': form}
+
+    return render(request, 'users/add-pet-form.html', context)
+
+@login_required(login_url='login')
+def edit_pet(request, pk):
+    profile = request.user
+    pet = profile.pet_set.get(id=pk)
+    form = PetEditForm(instance=pet)
+
+    if request.method == 'POST':
+        form = PetEditForm(request.POST, request.FILES, instance=pet)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+
+    context = {'form': form}
+
+    return render(request, 'users/edit-pet-form.html', context)
 
 def forget_password(request):
     return render(request, 'users/forget-password-form.html')

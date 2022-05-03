@@ -5,430 +5,285 @@
 {% block content %}
 
     {% if profile.user_type == 'business' %}
-    {#  BUSINESS PROFİLE  #}
+        {#  BUSINESS PROFİLE  #}
 
 
         <div class="container" style="margin-top:50px;width:1500px;max-width:1500px;">
-        <div class="row">
+            <div class="row">
 
-            <!-- business -->
-            <div class="col-md-4">
-                <div class="blog-page">
-                    <aside class="cardd radius-15 sidebar" style="height: 1050px;">
-                        <div class="widget-about widget">
-                            <header>
-                                <h4>Business Information</h4>
-                                <hr>
-                            </header>
-                            <img src="{{ profile.logo.url }}" id="icon" alt="User Icon"
-                                 style="margin-top:-30px;max-width: 80%;"/>
-
-                            <div class="p-image" style="margin-top:30px;">
-                                <i class="fa fa-camera upload-button"></i>
-
-
-                                <form>
-                                    <fieldset disabled style="border:0px;">
-                                        <div class="form-group">
-                                            <label for="disabledName">Business Type</label>
-                                            <input type="text" style="text-align:center;font-size: 17px;height: 50px;"
-                                                   id="disabledType" class="form-control" placeholder="{{ profile.business_type }}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="disabledNamePet" style="margin-top:10px;">Business Name</label>
-                                            <input type="text" style="text-align:center;font-size: 17px;height: 50px;"
-                                                   id="disabledNamePet" class="form-control" placeholder="{{ profile.business_name }}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="disabledAge" style="margin-top:15px;">TAX ID</label>
-                                            <input type="text" style="text-align:center;font-size: 17px;height: 50px;"
-                                                   id="disabledAge" class="form-control" placeholder="{{ profile.tax_id }}">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="disabledHeight" style="margin-top:15px;">City</label>
-                                            <input type="text" style="text-align:center;font-size: 17px;height: 50px;"
-                                                   id="disabledHeight" class="form-control" placeholder="{{ profile.address }}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="disabledWeight" style="margin-top:15px;">Phone</label>
-                                            <input type="text" style="text-align:center;font-size: 17px;height: 50px;"
-                                                   id="disabledWeight" class="form-control"
-                                                   placeholder="{{ profile.phone }}">
-                                        </div>
-
-
-                                    </fieldset>
-                                </form>
-                                <hr>
-                                <br>
-                                <button type="button" style="border-radius: 10%" class="btn btn-info" href="edit-profile-form.html">Edit</button>
-
-                            </div>
-
-
-                        </div>
-                    </aside>
-
-                </div>
-
-            </div>
-
-            <!-- Information -->
-            <div class="col-md-4">
-                <div class="row">
-                    <div class="blog-page" style="width:100%">
+                <!-- business -->
+                <div class="col-md-4">
+                    <div class="blog-page">
                         <aside class="cardd radius-15 sidebar" style="height: 1050px;">
                             <div class="widget-about widget">
                                 <header>
-                                    <h4>Information</h4>
+                                    <h4>Business Information</h4>
                                     <hr>
                                 </header>
-                                <form>
+                                <img src="{{ profile.logo.url }}" id="icon" alt="User Icon"
+                                     style="margin-top:-30px;max-width: 80%;"/>
 
-                                </form>
+                                <div class="p-image" style="margin-top:30px;">
+                                    <i class="fa fa-camera upload-button"></i>
+
+
+                                    <form>
+                                        <fieldset disabled style="border:0px;">
+                                            <div class="form-group">
+                                                <label for="disabledName">Business Type</label>
+                                                <input type="text"
+                                                       style="text-align:center;font-size: 17px;height: 50px;"
+                                                       id="disabledType" class="form-control"
+                                                       placeholder="{{ profile.business_type }}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="disabledNamePet" style="margin-top:10px;">Business
+                                                    Name</label>
+                                                <input type="text"
+                                                       style="text-align:center;font-size: 17px;height: 50px;"
+                                                       id="disabledNamePet" class="form-control"
+                                                       placeholder="{{ profile.business_name }}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="disabledAge" style="margin-top:15px;">TAX ID</label>
+                                                <input type="text"
+                                                       style="text-align:center;font-size: 17px;height: 50px;"
+                                                       id="disabledAge" class="form-control"
+                                                       placeholder="{{ profile.tax_id }}">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="disabledHeight" style="margin-top:15px;">City</label>
+                                                <input type="text"
+                                                       style="text-align:center;font-size: 17px;height: 50px;"
+                                                       id="disabledHeight" class="form-control"
+                                                       placeholder="{{ profile.address }}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="disabledWeight" style="margin-top:15px;">Phone</label>
+                                                <input type="text"
+                                                       style="text-align:center;font-size: 17px;height: 50px;"
+                                                       id="disabledWeight" class="form-control"
+                                                       placeholder="{{ profile.phone }}">
+                                            </div>
+
+
+                                        </fieldset>
+                                    </form>
+                                    <hr>
+                                    <br>
+                                    <a href="{% url 'edit-profile' %}">
+                                        <button type="button" style="border-radius: 10%" class="btn btn-info">Edit
+                                        </button>
+                                    </a>
+                                </div>
 
 
                             </div>
-
-
                         </aside>
 
                     </div>
 
                 </div>
 
-            </div>
+                <!-- Information -->
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="blog-page" style="width:100%">
+                            <aside class="cardd radius-15 sidebar" style="height: 1050px;">
+                                <div class="widget-about widget">
+                                    <header>
+                                        <h4>Information</h4>
+                                        <hr>
+                                    </header>
+                                    <form>
 
-            <!-- Blogs -->
-            <div class="col-md-4">
-                <div class="blog-page">
-                    <aside class="cardd radius-15 sidebar" style="height: 1050px;">
-                        <div class="widget-about widget">
-                            <header>
-                                <h4>My Blogs</h4>
-                                <hr>
-                            </header>
+                                    </form>
+
+
+                                </div>
+
+
+                            </aside>
 
                         </div>
-                    </aside>
-                </div>
-            </div>
 
+                    </div>
+
+                </div>
+
+                <!-- Blogs -->
+                <div class="col-md-4">
+                    <div class="blog-page">
+                        <aside class="cardd radius-15 sidebar" style="height: 1050px;">
+                            <div class="widget-about widget">
+                                <header>
+                                    <h4>My Blogs</h4>
+                                    <hr>
+                                </header>
+
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+
+            </div>
         </div>
-    </div>
 
     {% elif profile.user_type == 'petlover' %}
         {#  PET LOVER PROFİLE  #}
 
-        <!-- Dropdown button
-        <div class="btn-group" role="group" style=" margin-left: 30px; margin-top: 30px;">
-    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Settings
-    </button>
-    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-      <a class="dropdown-item" type="button" data-toggle="modal" data-target="#exampleModal" >Edit Profile</a>
-      <a class="dropdown-item" type="button" data-toggle="modal" data-target="#petmodal">Add Pet</a>
-    </div>
-  </div>
-         Modal edit profile
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      </div>
-      <div class="modal-body" style="background: url('{% static 'images/background.png' %}')">
-        <form>
-            <div class="fadeIn second p-image">
-				<i class="fa fa-camera upload-button"></i>
-				<input accept="image/*" type="file"  class="file-upload" ></input>
-			</div><br>
-            <p>Gender</p>
-            <input type="radio" id="html" name="fav_language" value="HTML">
-            <label for="html">Female</label>
-            <input type="radio" id="css" name="fav_language" value="CSS">
-            <label for="css">Male</label><br><br>
-            <label for="fname">Name & Surname:</label><input type="text" id="fname"><br>
-            <label for="fname">E-mail:</label><input type="text" id="email"><br>
-            <label for="fname">TCKN:</label><input type="text" id="tckn"><br>
-            <label for="fname">Phone:</label><input type="text" id="phone"><br>
-            <label for="fname">Address:</label><input type="text" id="address"><br><br>
-            <label for="fname">Birth Date: </label><br><input type="date" id="datee"><br>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-         Modal pet profile add
-        <div class="modal fade" id="petmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Add Pet Profile</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      </div>
-      <div class="modal-body" style="background: url('{% static 'images/background.png' %}')">
-        <form>
-            <div class="fadeIn second p-image">
-				<i class="fa fa-camera upload-button"></i>
-				<input accept="image/*" type="file"  class="file-upload" ></input>
-			</div> <br>
-            <label for="fname">Pet name:</label><input type="text" id="fname"><br>
-            <p>Gender</p>
-            <input type="radio" id="html" name="fav_language" value="HTML">
-            <label for="html">Female</label>
-            <input type="radio" id="css" name="fav_language" value="CSS">
-            <label for="css">Male</label>
-            <br>
-            <label for="fname">Age:</label><input type="text" id="age"><br>
-            <p>Kind: </p>
-            <input type="radio" id="html" name="fav_language" value="HTML">
-            <label for="html">Cat</label>
-            <input type="radio" id="css" name="fav_language" value="CSS">
-            <label for="css">Dog</label> <br>
-            <label for="fname">Type:</label><input type="text" id="type"><br><br>
-            <label for="fname">Height:</label><input type="text" id="height"><br><br>
-            <label for="fname">Weight: </label><br><input type="text" id="weight"><br><br>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Add Pet</button>
-      </div>
-    </div>
-  </div>
-</div>
-        -->
 
         <div class="container" style="margin-top:50px;width:1500px;max-width:1500px;">
-        <div class="row">
+            <div class="row">
 
-            <!-- profile -->
-            <div class="col-md-4">
-                <div class="row">
-                    <div class="blog-page" style="width:100%">
+                <!-- profile -->
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="blog-page" style="width:100%">
+                            <aside class="cardd radius-15 sidebar" style="height: 1250px;">
+                                <div class="widget-about widget">
+                                    <header>
+                                        <h4>Information </h4>
+                                        <hr>
+                                    </header>
+                                    <img src="{{ profile.profile_image.url }}" id="icon" alt="User Icon"
+                                         style="border-radius: 50%;margin-top:0px;max-width: 40%;"/>
+                                    <form>
+                                        <fieldset disabled style="border:0px;">
+                                            <div class="form-group">
+                                                <label for="disabledName">Name & Surname</label>
+                                                <input type="text"
+                                                       style="text-align:center;font-size: 17px;height: 60px;"
+                                                       id="disabledName" class="form-control"
+                                                       placeholder="{{ profile.full_name }}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="disabledGender" style="margin-top:20px;">Gender: </label>
+                                                <input type="text"
+                                                       style="text-align:center;font-size: 17px;height: 60px;"
+                                                       id="disabledGender" class="form-control"
+                                                       placeholder="{{ profile.gender }}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="disabledEmail" style="margin-top:20px;">Email</label>
+                                                <input type="text"
+                                                       style="text-align:center;font-size: 17px;height: 60px;"
+                                                       id="disabledEmail" class="form-control"
+                                                       placeholder="{{ profile.email }}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="disabledTCKN" style="margin-top:20px;">TCKN</label>
+                                                <input type="text"
+                                                       style="text-align:center;font-size: 17px;height: 60px;"
+                                                       id="disabledTCKN" class="form-control"
+                                                       placeholder="{{ profile.tckn }}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="disabledBdate" style="margin-top:20px;">Birth Date</label>
+                                                <input type="text"
+                                                       style="text-align:center;font-size: 17px;height: 60px;"
+                                                       id="disabledBdate" class="form-control"
+                                                       placeholder="{{ profile.birthDate }}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="disabledPhone" style="margin-top:20px;">Phone Number</label>
+                                                <input type="text"
+                                                       style="text-align:center;font-size: 17px;height: 60px;"
+                                                       id="disabledPhone" class="form-control"
+                                                       placeholder="{{ profile.phone }}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="disabledAdress" style="margin-top:20px;">Adress</label>
+                                                <input type="text"
+                                                       style="text-align:center;font-size: 17px;height: 60px;"
+                                                       id="disabledAdress" class="form-control"
+                                                       placeholder="{{ profile.location }}">
+                                            </div>
+                                        </fieldset>
+                                    </form>
+                                    <hr>
+                                    <br>
+                                    <a href="{% url 'edit-profile' %}" style="margin-top: 20px;">
+                                        <button type="button" style="border-radius: 10%" class="btn btn-info">Edit
+                                        </button>
+                                    </a>
+                                </div>
+                            </aside>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- pet sub profile -->
+                <div class="col-md-4">
+                    <div class="blog-page">
                         <aside class="cardd radius-15 sidebar" style="height: 1250px;">
                             <div class="widget-about widget">
                                 <header>
-                                    <h4>Information </h4>
+                                    <h4>Pet Sub Profile</h4>
+                                    <a href="{% url 'add-pet' %}">
+                                        <button type="button" class="btn btn-info"
+                                                style="margin-left: 330px;border-radius: 10%;">Add
+                                        </button>
+                                    </a>
+                                </header>
+
+                                {% for pet in pets %}
+                                    <hr>
+                                    <div>
+                                        <p>
+                                            <a href="{% url 'edit-pet' pet.id %}">
+                                            <button type="button" class="btn btn-success" style="border-radius: 10%">
+                                                Edit
+                                            </button> </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <button type="button" class="btn btn-danger" style="border-radius: 100%">X
+                                            </button>
+                                        </p>
+                                        <br>
+                                        <img src="{{ pet.pet_image.url }}" id="icon" alt="User Icon"
+                                             style="border-radius: 50%;margin-top:10px;max-width: 30%;"/> <br>
+                                        <form>
+                                            <h4> {{ pet.name }} </h4>
+                                            <h5 style="line-height: 0.6;"> Birthdate : {{ pet.birthDate }} </h5>
+                                            <h5 style="line-height: 0.6;"> Gender: {{ pet.gender }} </h5>
+                                            <h5 style="line-height: 0.6;"> Type: {{ pet.type }} </h5>
+                                            <h5 style="line-height: 0.6;"> Type: {{ pet.race }} </h5>
+                                            <h5 style="line-height: 0.6;"> Weight: {{ pet.weight }} kg </h5>
+                                        </form>
+                                    </div>
+                                    <hr>
+                                {% endfor %}
+
+
+                            </div>
+                            <div class="pagination" style="margin-left: 190px;">
+                                <a style="border-radius: 60%;" href="#">❮</a>
+                                <a style="border-radius: 60%;" href="#">❯</a>
+                            </div>
+                        </aside>
+
+                    </div>
+
+                </div>
+
+                <!-- settings -->
+                <div class="col-md-4">
+                    <div class="blog-page">
+                        <aside class="cardd radius-15 sidebar" style="height: 1250px;">
+                            <div class="widget-about widget">
+                                <header>
+                                    <h4>My Forum</h4>
                                     <hr>
                                 </header>
-                                <img src="{{ profile.profile_image.url }}" id="icon" alt="User Icon"
-                                 style="border-radius: 50%;margin-top:0px;max-width: 40%;"/>
-                                <form>
-                                    <fieldset disabled style="border:0px;">
-                                        <div class="form-group">
-                                            <label for="disabledName">Name & Surname</label>
-                                            <input type="text" style="text-align:center;font-size: 17px;height: 60px;"
-                                                   id="disabledName" class="form-control" placeholder="{{ profile.full_name }}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="disabledGender" style="margin-top:20px;">Gender: </label>
-                                            <input type="text" style="text-align:center;font-size: 17px;height: 60px;"
-                                                   id="disabledGender" class="form-control" placeholder="{{ profile.gender }}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="disabledEmail" style="margin-top:20px;">Email</label>
-                                            <input type="text" style="text-align:center;font-size: 17px;height: 60px;"
-                                                   id="disabledEmail" class="form-control"
-                                                   placeholder="{{ profile.email }}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="disabledTCKN" style="margin-top:20px;">TCKN</label>
-                                            <input type="text" style="text-align:center;font-size: 17px;height: 60px;"
-                                                   id="disabledTCKN" class="form-control" placeholder="{{ profile.tckn }}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="disabledBdate" style="margin-top:20px;">Birth Date</label>
-                                            <input type="text" style="text-align:center;font-size: 17px;height: 60px;"
-                                                   id="disabledBdate" class="form-control" placeholder="{{ profile.birthDate }}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="disabledPhone" style="margin-top:20px;">Phone Number</label>
-                                            <input type="text" style="text-align:center;font-size: 17px;height: 60px;"
-                                                   id="disabledPhone" class="form-control" placeholder="{{ profile.phone }}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="disabledAdress" style="margin-top:20px;">Adress</label>
-                                            <input type="text" style="text-align:center;font-size: 17px;height: 60px;"
-                                                   id="disabledAdress" class="form-control" placeholder="{{ profile.location }}">
-                                        </div>
-                                    </fieldset>
-                                </form>
-                                <hr>
-                                <br>
-                                <button type="button" style="border-radius: 10%" class="btn btn-info" href="edit-profile-form.html">Edit</button>
                             </div>
                         </aside>
                     </div>
                 </div>
             </div>
 
-            <!-- pet sub profile
-            <div class="col-md-4">
-                <div class="blog-page">
-                    <aside class="cardd radius-15 sidebar" style="height: 1250px;">
-                        <div class="widget-about widget">
-                            <header>
-                                <h4>Pet Sub Profile</h4>
-                                <hr>
-                            </header>
-
-                            <img src="{% static 'images/petcircle.jpg' %}" id="icon" alt="User Icon"
-                                 style="border-radius: 50%;margin-top:10px;max-width: 40%;"/>
-
-                            <div class="p-image" style="margin-top:30px;">
-                                <i class="fa fa-camera upload-button"></i>
-
-
-                                <form>
-                                    <fieldset disabled style="border:0px;">
-                                        <div class="form-group">
-                                            <label for="disabledName">Type</label>
-                                            <input type="text" style="text-align:center;font-size: 17px;height: 50px;"
-                                                   id="disabledType" class="form-control" placeholder="Terrier">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="disabledNamePet" style="margin-top:10px;">Name</label>
-                                            <input type="text" style="text-align:center;font-size: 17px;height: 50px;"
-                                                   id="disabledNamePet" class="form-control" placeholder="Harley">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="disabledAge" style="margin-top:15px;">Age</label>
-                                            <input type="text" style="text-align:center;font-size: 17px;height: 50px;"
-                                                   id="disabledAge" class="form-control" placeholder="6">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="disabledGenderPet" style="margin-top:15px;">Gender</label>
-                                            <input type="text" style="text-align:center;font-size: 17px;height: 50px;"
-                                                   id="disabledGenderPet" class="form-control" placeholder="Female">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="disabledHeight" style="margin-top:15px;">Height</label>
-                                            <input type="text" style="text-align:center;font-size: 17px;height: 50px;"
-                                                   id="disabledHeight" class="form-control" placeholder="50cm">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="disabledWeight" style="margin-top:15px;">Weight</label>
-                                            <input type="text" style="text-align:center;font-size: 17px;height: 50px;"
-                                                   id="disabledWeight" class="form-control" placeholder="7.5 kg">
-                                        </div>
-
-
-                                    </fieldset>
-                                </form>
-                                <div class="pagination">
-                                    <a href="#">❮</a>
-                                    <a href="#">❯</a>
-                                </div>
-                                <hr>
-                                <br>
-                                <button type="button" class="btn btn-info" href="edit-profile-form.html">Add</button>
-                                <button type="button" class="btn btn-info" href="edit-profile-form.html">Edit</button>
-                                <button type="button" class="btn btn-info" href="edit-profile-form.html">Delete</button>
-
-
-
-                            </div>
-
-
-                        </div>
-                    </aside>
-
-                </div>
-
-            </div> -->
-
-            <!-- pet sub profile -->
-            <div class="col-md-4">
-                <div class="blog-page">
-                    <aside class="cardd radius-15 sidebar" style="height: 1250px;">
-                        <div class="widget-about widget">
-                            <header>
-                                <h4>Pet Sub Profile</h4>
-                                <button type="button" class="btn btn-info" style="margin-left: 330px;border-radius: 10%;" href="#">Add</button>
-                            </header>
-                            <hr>
-                            <div >
-                                <p><button type="button" class="btn btn-success" style="border-radius: 10%">Edit</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <button type="button" class="btn btn-danger" style="border-radius: 100%">X</button></p>
-                                 <br>
-                                <img src="{% static 'images/petcircle.jpg' %}" id="icon" alt="User Icon"
-                                 style="border-radius: 50%;margin-top:10px;max-width: 30%;"/> <br>
-                                <form>
-                                <h4 > Pet Name </h4>
-                                <h5 style="line-height: 0.6;"> Age </h5>
-                                <h5 style="line-height: 0.6;"> Gender </h5>
-                                <h5 style="line-height: 0.6;"> Type </h5>
-                                </form>
-                            </div>
-                            <hr>
-                            <div >
-                                <p><button type="button" class="btn btn-success" style="border-radius: 10%">Edit</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <button type="button" class="btn btn-danger" style="border-radius: 100%">X</button></p>
-                                 <br>
-                                <img src="{% static 'images/petcircle.jpg' %}" id="icon" alt="User Icon"
-                                 style="border-radius: 50%;margin-top:10px;max-width: 30%;"/> <br>
-                                <form>
-                                <h4 > Pet Name </h4>
-                                <h5 style="line-height: 0.6;"> Age </h5>
-                                <h5 style="line-height: 0.6;"> Gender </h5>
-                                <h5 style="line-height: 0.6;"> Type </h5>
-                                </form>
-                            </div>
-                            <hr>
-                            <div>
-                                <p><button type="button" class="btn btn-success" style="border-radius: 10%">Edit</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <button type="button" class="btn btn-danger" style="border-radius: 100%">X</button></p>
-                                 <br>
-                                <img src="{% static 'images/petcircle.jpg' %}" id="icon" alt="User Icon"
-                                 style="border-radius: 50%;margin-top:10px;max-width: 30%;"/> <br>
-                                <form>
-                                <h4 > Pet Name </h4>
-                                <h5 style="line-height: 0.6;"> Age </h5>
-                                <h5 style="line-height: 0.6;"> Gender </h5>
-                                <h5 style="line-height: 0.6;"> Type </h5>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="pagination" style="margin-left: 190px;">
-                                    <a style="border-radius: 60%;" href="#">❮</a>
-                                    <a style="border-radius: 60%;" href="#">❯</a>
-                                </div>
-                    </aside>
-
-                </div>
-
-            </div>
-
-            <!-- settings -->
-            <div class="col-md-4">
-                <div class="blog-page">
-                    <aside class="cardd radius-15 sidebar" style="height: 1250px;">
-                        <div class="widget-about widget">
-                            <header>
-                                <h4>My Forum</h4>
-                                <hr>
-                            </header>
-                        </div>
-                    </aside>
-                </div>
-            </div>
         </div>
-
-    </div>
 
     {% endif %}
 
