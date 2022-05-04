@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import BusinessCreationForm, PetLoverUserCreationForm, PetCreationForm, BusinessEditForm, PetLoverEditForm, PetEditForm
 from .models import User
+from .utils import paginatePets
 
 
 def home_page(request):
@@ -111,7 +112,9 @@ def user_profile(request):
     profile = request.user
     pets = profile.pet_set.all()
 
-    context = {'profile': profile, 'pets': pets}
+    custom_range, pets = paginatePets(request, pets, 2)
+
+    context = {'profile': profile, 'pets': pets, 'custom_range': custom_range}
     return render(request, 'users/profile.html', context)
 
 
