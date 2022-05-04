@@ -1,32 +1,34 @@
 {% extends 'main-register-users.html' %}
 {% load static %}
+
 {% block content %}
 
+    <div class="container" style="margin-top: 75px;height: auto;background-color: #d4d4d4">
+        <!-- user card -->
 
-    <div class="container" id="container" style="height:1000px;margin-top:35px;width: 953px;">
-        <div class="form-container sign-in-container" style="background-color:#faebf1; width: 560px;">
-            <div class="social-container">
-                        <a href="{% url 'register-choose' %}" style="margin-left: 238px;"><h2 class="inactive underlineHover">
-                            Back</h2></a>
+                        <a href="{% url 'register-choose' %}" style="margin-bottom: -20px;"><h2 class="inactive underlineHover" style="margin-left: 341px;">Back</h2></a>
                         <br>
-                        <a href='{% url 'login' %}'><h2 class="inactive underlineHover" style="margin-left: 192px;"> Sign In</h2></a>
+                        <a href='{% url 'login' %}'><h2 class="inactive underlineHover" style="margin-left: 300px;"> Sign In</h2></a>
                         <a href='#'><h2 class="active">Sign Up </h2></a>
-            </div>
-            <form class="myform" action="" method="post" style="overflow: auto;">
-                {% csrf_token %}
 
-                {% for field in form %}
-                    {{ field.label }}
+                    <form method="post" class="myform" action="#" style="overflow: auto;background-color: #faebf100">
+                        {% csrf_token %}
+                        {% for field in form %}
+                           <div >
+                           <label>
+                               {{ field.label }}
+                           </label> <br>
+                           {{ field }}
+                           </div>
 
-                    {{ field }}
-                {% endfor %}
+                        {% endfor %}
+                    <br>
+                    <br>
+                      <input type="submit" class="fadeIn fourth" value="Register">
+                    </form>
 
-                <input type="submit" class="fadeIn fourth" style="margin-bottom: -100px;" value="Register">
-            <br> <br> <br> <br>
-            </form>
 
-        </div>
-        <div class="overlay-panel overlay-right" style="background: url('{% static 'images/petssss.jpg' %}')"; width: 424px;></div>
+
     </div>
 
 {% endblock %}
