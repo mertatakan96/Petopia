@@ -44,7 +44,7 @@ def register_petlover(request):
     form = PetLoverUserCreationForm()
 
     if request.method == 'POST':
-        form = PetLoverUserCreationForm(request.POST)
+        form = PetLoverUserCreationForm(request.POST, request.FILES)
         if form.is_valid():
             user = form.save(commit=False)
             user.username = user.username.lower()
@@ -77,7 +77,7 @@ def register_business(request):
     form = BusinessCreationForm()
 
     if request.method == 'POST':
-        form = BusinessCreationForm(request.POST)
+        form = BusinessCreationForm(request.POST, request.FILES)
         if form.is_valid():
             user = form.save(commit=False)
             user.username = user.username.lower()
@@ -144,14 +144,14 @@ def edit_profile(request):
     business_form = BusinessEditForm(instance=profile)
 
     if request.method == 'POST':
-        form = PetLoverEditForm(request.POST, instance=profile)
+        form = PetLoverEditForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             form.save()
             messages.success(request, 'User was added edited')
             return redirect('profile')
 
     if request.method == 'POST':
-        form = BusinessEditForm(request.POST, instance=profile)
+        form = BusinessEditForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             form.save()
             messages.success(request, 'User successfully edited')

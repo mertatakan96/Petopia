@@ -20,8 +20,13 @@
                                     <h4>Business Information</h4>
                                     <hr>
                                 </header>
-                                <img src="{{ profile.logo.url }}" id="icon" alt="User Icon"
-                                     style="margin-top:-30px;max-width: 80%;"/>
+                                {% if profile.logo == '' %}
+                                    <img src="{% static 'images/profiles/store-default.png' %}" id="icon" alt="User Icon"
+                                         style="margin-top:-30px;max-width: 80%;"/>
+                                {% else %}
+                                    <img src="{{ profile.logo.url }}" id="icon" alt="User Icon"
+                                         style="margin-top:-30px;max-width: 80%;"/>
+                                {% endif %}
 
                                 <div class="p-image" style="margin-top:30px;">
                                     <i class="fa fa-camera upload-button"></i>
@@ -130,8 +135,14 @@
                                         <h4>Information </h4>
                                         <hr>
                                     </header>
-                                    <img src="{{ profile.profile_image.url }}" id="icon" alt="User Icon"
-                                         style="border-radius: 50%;margin-top:0px;max-width: 40%;"/>
+                                    {% if profile.profile_image == '' %}
+                                        <img src="{% static 'images/profiles/user-default.jpg' %}" id="icon"
+                                             alt="User Icon"
+                                             style="border-radius: 50%;margin-top:0px;max-width: 40%;"/>
+                                    {% else %}
+                                        <img src="{{ profile.profile_image.url }}" id="icon" alt="User Icon"
+                                             style="border-radius: 50%;margin-top:0px;max-width: 40%;"/>
+                                    {% endif %}
                                     <form>
                                         <fieldset disabled style="border:0px;">
                                             <div class="form-group">
@@ -223,23 +234,30 @@
                                     <div>
                                         <p>
                                             <a href="{% url 'edit-pet' pet.id %}">
-                                            <button type="button" class="btn btn-success" style="border-radius: 10%">
-                                                Edit
-                                            </button> </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                <button type="button" class="btn btn-success"
+                                                        style="border-radius: 10%">
+                                                    Edit
+                                                </button>
+                                            </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             <button type="button" class="btn btn-danger" style="border-radius: 100%">X
                                             </button>
                                         </p>
                                         <br>
-                                        <img src="{{ pet.pet_image.url }}" id="icon" alt="User Icon"
-                                             style="border-radius: 50%;margin-top:10px;max-width: 30%;"/> <br>
+                                        {% if pet.pet_image == '' %}
+                                            <img src="{% static 'images/petcircle.jpg' %}" id="icon" alt="User Icon"
+                                                 style="border-radius: 50%;margin-top:10px;max-width: 30%;"/> <br>
+                                        {% else %}
+                                            <img src="{{ pet.pet_image.url }}" id="icon" alt="User Icon"
+                                                 style="border-radius: 50%;margin-top:10px;max-width: 30%;"/> <br>
+                                        {% endif %}
                                         <form>
                                             <h4> {{ pet.name }} </h4>
                                             <h5 style="line-height: 0.6;"> Birthdate : {{ pet.birthDate }} </h5>
                                             <h5 style="line-height: 0.6;"> Gender: {{ pet.gender }} </h5>
                                             <h5 style="line-height: 0.6;"> Type: {{ pet.type }} </h5>
-                                            <h5 style="line-height: 0.6;"> Type: {{ pet.race }} </h5>
+                                            <h5 style="line-height: 0.6;"> Race: {{ pet.race }} </h5>
                                             <h5 style="line-height: 0.6;"> Weight: {{ pet.weight }} kg </h5>
                                         </form>
                                     </div>
