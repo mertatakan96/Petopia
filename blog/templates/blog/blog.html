@@ -15,10 +15,10 @@
             <div class="col-xs-12 col-md-8">
                 <div class="container" style="margin-bottom:10%">
                     <div class="row">
-                        <div clasS="col-md-8">
+                        <div clasS="col-md-8 mx-auto" >
                             <div class="card radius-15" style="background:white;height: 147%;">
-                                <div class="card-body" style="height:500px">
-                                    <div class="widget-latest-posts widget">
+                                <div class="card-body" style="height:560px">
+                                    <div class="widget-latest-posts widget" style="padding: 0px;">
                                         <div class="card-title">
                                             <h5 class="mb-0" style="margin-left:10px; font-size: 28px">
                                                 Blog </h5>
@@ -27,12 +27,14 @@
                                         <div class="input-group">
 
                                             <form id="searchForm" method="get"
-                                                  action="{% url 'blog-page' %}">
+                                                  action="{% url 'blog-page' %}"
+                                                  style="display: contents;">
                                                 <input name="search_query" type="search"
                                                        class="form-control rounded"
                                                        aria-label="Search" aria-describedby="search-addon"
-                                                       style="margin-left: 390px;"/>
-                                                <input type="submit" value="Search">
+                                                       style="margin-left: 390px;max-width: 100px"/>
+                                                <input type="submit" value="Search" class="fas fa-search"
+                                                       style="padding: 3px 32px;margin-left: 524px;margin-top: -24px;"/>
                                             </form>
 
                                         </div>
@@ -73,6 +75,7 @@
 
         {% elif profile.user_type == 'business' or profile.is_superuser %}
 
+
             <div class="app-canvas">
             <div class="container">
             <div class="blog-page">
@@ -83,8 +86,8 @@
                     <div class="row">
                         <div clasS="col-md-8">
                             <div class="card radius-15" style="background:white;height: 147%;">
-                                <div class="card-body" style="height:500px">
-                                    <div class="widget-latest-posts widget">
+                                <div class="card-body" style="height:560px">
+                                    <div class="widget-latest-posts widget" style="padding: 0px;">
                                         <div class="card-title">
                                             <h5 class="mb-0" style="margin-left:10px; font-size: 28px">
                                                 Blog </h5>
@@ -93,12 +96,14 @@
                                         <div class="input-group">
 
                                             <form id="searchForm" method="get"
-                                                  action="{% url 'blog-page' %}">
+                                                  action="{% url 'blog-page' %}"
+                                                  style="display: contents;">
                                                 <input name="search_query" type="search"
                                                        class="form-control rounded"
                                                        aria-label="Search" aria-describedby="search-addon"
-                                                       style="margin-left: 390px;"/>
-                                                <input type="submit" value="Search">
+                                                       style="margin-left: 390px;max-width: 100px"/>
+                                                <input type="submit" value="Search" class="fas fa-search"
+                                                       style="padding: 3px 32px;margin-left: 524px;margin-top: -24px;"/>
                                             </form>
 
                                         </div>
@@ -184,26 +189,26 @@
                         <div class="col-xs-12 col-md-8">
                             <div class="container" style="margin-bottom:10%">
                                 <div class="row">
-                                    <div>
+                                    <div clasS="col-md-8 mx-auto">
                                         <div class="card radius-15" style="background:white;height: 147%;">
-                                            <div class="card-body" style="height:500px">
-                                                <div class="widget-latest-posts widget">
+                                            <div class="card-body" style="height:560px">
+                                                <div class="widget-latest-posts widget" style="padding: 0px;">
                                                     <div class="card-title">
                                                         <h5 class="mb-0" style="margin-left:10px; font-size: 28px">
                                                             Blog </h5>
                                                     </div>
 
                                                     <div class="input-group">
-
                                                         <form id="searchForm" method="get"
-                                                              action="{% url 'blog-page' %}">
+                                                              action="{% url 'blog-page' %}"
+                                                              style="display: contents;">
                                                             <input name="search_query" type="search"
                                                                    class="form-control rounded"
                                                                    aria-label="Search" aria-describedby="search-addon"
                                                                    style="margin-left: 390px;max-width: 100px"/>
-                                                            <input type="submit" value="Search">
+                                                            <input type="submit" value="Search" class="fas fa-search"
+                                                                   style="padding: 3px 32px;margin-left: 524px;margin-top: -24px;"/>
                                                         </form>
-
                                                     </div>
 
 
