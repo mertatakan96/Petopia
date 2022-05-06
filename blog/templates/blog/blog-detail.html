@@ -4,155 +4,183 @@
 {% block content %}
 
     <div class="app-canvas">
-    <div class="container">
-        <div class="blog-page">
-            <div class="row">
-                <!-- blog detail -->
-                <div class="col-xs-12 col-md-8">
-                    <div class="blog-posts">
-                        <article class="blog-post">
-                            <figure>
-                                <img src="{% static 'images/dog1.jpg' %}" alt="dummy">
-                            </figure>
-                            <header>
-                                <h3>Blog Post Title</h3>
-                                <ul class="info-list">
-                                    <li><a href="businesProfile.html">Doğa Özyağci</a></li>
+        <div class="container">
+            <div class="blog-page">
+                <div class="row">
+                    <!-- blog detail -->
+                    <div class="col-xs-12 col-md-8">
+                        <div class="blog-posts">
+                            <article class="blog-post">
+                                <figure>
+                                    <img src="{{ blog.blog_image.url }}" alt="dummy">
+                                </figure>
+                                <header>
+                                    <h3>{{ blog.title }}</h3>
+                                    <ul class="info-list">
+                                        {% if blog.owner.is_superuser %}
+                                            <p>Writer : {{ blog.owner.username }} </p>
+                                        {% else %}
+                                            <li><a href="">Writer: {{ blog.owner.business_name }}</a></li>
+                                        {% endif %}
+
+                                    </ul>
+                                </header>
+                                <div class="blog-content">
+                                    <p>{{ blog.post|linebreaksbr }}</p>
+                                    <br>
+                                    <br>
+                                </div>
+                            </article>
+
+                            <div class="blog-post-comments">
+                                <header><h3>Comments</h3></header>
+                                <ul class="comments">
+                                    {% for comment in blog.blogcomment_set.all %}
+                                        <li class="comment">
+                                            <div class="inner">
+                                                {% if comment.owner.user_type == 'petlover' %}
+
+                                                    {% if comment.owner.profile_image == '' %}
+                                                        <figure><a href=""><img
+                                                                src="{% static 'images/profiles/user-default.jpg' %}"
+                                                                alt="dummy"></a></figure>
+                                                    {% else %}
+                                                        <figure><a href=""><img
+                                                                src="{{ comment.owner.profile_image.url }}" alt="dummy"></a>
+                                                        </figure>
+                                                    {% endif %}
+
+                                                {% elif comment.owner.user_type == 'business' %}
+
+                                                    {% if comment.owner.logo == '' %}
+                                                        <figure><a href=""><img
+                                                                src="{% static 'images/profiles/store-default.png' %}"
+                                                                alt="dummy"></a></figure>
+                                                    {% else %}
+                                                        <figure><a href=""><img
+                                                                src="{{ comment.owner.logo.url }}" alt="dummy"></a>
+                                                        </figure>
+                                                    {% endif %}
+
+                                                {% else %}
+                                                    {% if comment.owner.profile_image == '' %}
+                                                        <figure><a href=""><img
+                                                                src="{% static 'images/profiles/user-default.jpg' %}"
+                                                                alt="dummy"></a></figure>
+                                                    {% else %}
+                                                        <figure><a href=""><img
+                                                                src="{{ comment.owner.profile_image.url }}" alt="dummy"></a>
+                                                        </figure>
+                                                    {% endif %}
+                                                {% endif %}
+                                                {% if comment.owner.user_type == 'business' %}
+                                                    <header>
+                                                        <h6><a href="">{{ comment.owner.business_name }}</a>
+                                                            <time datetime="2022-03-28">{{ comment.created }}</time>
+                                                        </h6>
+                                                    </header>
+                                                {% elif comment.owner.is_superuser %}
+                                                    <header>
+                                                        <h6><a href="">{{ comment.owner.username }}</a>
+                                                            <time datetime="2022-03-28">{{ comment.created }}</time>
+                                                        </h6>
+                                                    </header>
+                                                {% else %}
+                                                    <header>
+                                                        <h6><a href="">{{ comment.owner.full_name }}</a>
+                                                            <time datetime="2022-03-28">{{ comment.created }}</time>
+                                                        </h6>
+                                                    </header>
+                                                {% endif %}
+
+                                                <p>{{ comment.body }}</p>
+
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+
                                 </ul>
-                            </header>
-                            <div class="blog-content">
-                                <p>Text </p>
-                                <br>
-                                <p>Text</p>
-                                <br>
-                                <br>
                             </div>
-                        </article>
-                        <div class="blog-post-comments">
-                            <header><h3>Comments</h3></header>
-                            <ul class="comments">
-                                <li class="comment">
-                                    <div class="inner">
-                                        <figure><a href="petloverProfile.html"><img src="{% static 'images/profile.jpg' %}" alt="dummy"></a></figure>
-                                        <header>
-                                            <h6><a href="petloverProfile.html">Mahir & Mantar</a> <time datetime="2022-03-28">March 28, 2022</time></h6>
 
-                                        </header>
-                                        <p>Text</p>
-                                    </div>
+                            {% if request.user.is_authenticated %}
+                                <div class="add-comment">
+                                    <header><h3>Leave a Comment</h3></header>
 
-                                </li>
-                                <li class="comment">
-                                    <div class="inner">
-                                        <figure><a href="businesProfile.html"><img src="{% static 'images/profile.jpg' %}" alt="dummy"></a></figure>
-                                        <header>
-                                            <h6><a href="businesProfile.html">Atakan Duduoğlu</a> <time datetime="2017-02-14">December 04, 2022</time></h6>
+                                    <form action="" method="post" class="clearfix">
+                                        {% csrf_token %}
 
-                                        </header>
-                                        <p>Comment Text</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="add-comment">
-                            <header><h3>Leave a Comment</h3></header>
-                            <form action="/" class="clearfix">
-                                <div class="fields-grid clearfix">
-                                    <div class="fields-grid-ele">
+                                        <div class="labeled-input">
 
-                                    </div>
-                                    <div class="fields-grid-ele">
+                                            {{ form.body }}
 
-                                    </div>
-                                    <div class="fields-grid-ele">
+                                        </div>
+                                        <input type="submit" class="btn btn-green btn-small" value="Submit">
+                                    </form>
 
-                                    </div>
-                                    <div class="fields-grid-ele">
-
-                                    </div>
                                 </div>
-                                <div class="labeled-input">
+                            {% else %}
 
-                                    <textarea id="addComment005"></textarea>
+                                <div class="add-comment">
+
+                                    <a href="{% url 'login' %}?next={{ request.path }}">Please login to leave a
+                                        comment</a>
+
                                 </div>
-                                <button class="btn btn-green btn-small">Submit</button>
-                            </form>
+                            {% endif %}
                         </div>
                     </div>
+
+                    <!-- about me -->
+                    <div class="col-xs-12 col-md-4">
+                        <aside class="sidebar">
+                            <div class="widget-about widget">
+                                <header>
+                                    <h4>About Me</h4>
+                                </header>
+
+                                {#      admin de photo olmayacak                #}
+                                {% if blog.owner.user_type == 'business' %}
+                                    {% if blog.owner.logo == '' %}
+                                        <figure><img src="{% static 'images/profiles/store-default.png' %}" alt="dummy">
+                                        </figure>
+                                    {% else %}
+                                        <figure><img src="{{ blog.owner.logo.url }}" alt="dummy"></figure>
+                                    {% endif %}
+                                    <p>{{ blog.owner.information }}</p>
+                                {% endif %}
+                                <footer>
+                                </footer>
+                            </div>
+
+
+                            <div class="widget-latest-posts widget">
+                                <header>
+                                    <h4>Latest posts</h4>
+                                </header>
+
+                                {% for latest in latest %}
+                                <a href="{% url 'blog-detail' latest.id %}" class="latest-post">
+                                    <figure class="imgAsBg"
+                                            style="background-image: url('{{ latest.blog_image.url }}');">
+                                        <img src="{{ latest.blog_image.url }}" alt="dummy">
+                                    </figure>
+                                    <span>
+                                            {{ latest.title }}
+                                            <time>{{ latest.created }}</time>
+                                        </span>
+                                </a>
+                                {% endfor %}
+
+                            </div>
+
+
+                        </aside>
+                    </div>
                 </div>
-                <!-- about me -->
-                <div class="col-xs-12 col-md-4">
-                    <aside class="sidebar">
-                        <div class="widget-about widget">
-                            <header>
-                                <h4>About Me</h4>
-                            </header>
-                            <figure><img src="{% static 'images/petcircle.jpg' %}" alt="dummy"></figure>
-                            <p>Text here. </p>
-                            <footer>
-                            </footer>
-                        </div>
 
-
-
-                        <div class="widget-latest-posts widget">
-                            <header>
-                                <h4>Latest posts</h4>
-                            </header>
-
-                            <a href="blogDetail.html" class="latest-post">
-                                <figure class="imgAsBg" style="background-image: url('{% static 'images/petcircle.jpg' %}');">
-                                    <img src="{% static 'images/petcircle.jpg' %}" alt="dummy">
-                                </figure>
-                                <span>
-                                            Title
-                                            <time datetime="2017-02-14">20 Jan, 2022</time>
-                                        </span>
-                            </a>
-
-                            <a href="blogDetail.html" class="latest-post">
-                                <figure class="imgAsBg" style="background-image: url('{% static 'images/petcircle.jpg' %}');">
-                                    <img src="{% static 'images/petcircle.jpg' %}" alt="dummy">
-                                </figure>
-                                <span>
-                                            Title two
-                                            <time datetime="2017-02-14">20 Feb, 2022</time>
-                                        </span>
-                            </a>
-
-                            <a href="blogDetail.html" class="latest-post">
-                                <figure class="imgAsBg" style="background-image: url('{% static 'images/petcircle.jpg' %}');">
-                                    <img src="{% static 'images/petcircle.jpg' %}" alt="dummy">
-                                </figure>
-                                <span>
-                                            Title three
-                                            <time datetime="2017-02-14">25 Feb, 2022</time>
-                                        </span>
-                            </a>
-
-                            <a href="blogDetail.html" class="latest-post">
-                                <figure class="imgAsBg" style="background-image: url('{% static 'images/petcircle.jpg' %}');">
-                                    <img src="{% static 'images/petcircle.jpg' %}" alt="dummy">
-                                </figure>
-                                <span>
-                                            Title four
-                                            <time datetime="2017-02-14">5 March, 2022</time>
-                                        </span>
-                            </a>
-
-
-                        </div>
-
-
-
-
-                    </aside>
-                </div>
             </div>
 
         </div>
-
     </div>
-</div>
 
 {% endblock %}

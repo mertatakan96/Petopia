@@ -266,39 +266,8 @@
                                 {% endfor %}
                             </div>
 
-                        {% if pets.has_other_pages %}
-                            <div class="container">
-                                <ul class="pagination">
-
-                                    {% if pets.has_previous %}
-                                        <li class="page-item">
-                                            <a href="?page={{ pets.previous_page_number }}" class="page-link">&#10094</a>
-                                        </li>
-                                    {% endif %}
-
-                                    {% for page in custom_range %}
-
-                                        {% if page == pets.number %}
-                                            <li class="page-item">
-                                                <a href="?page={{ page }}" class="page-link active">{{ page }}</a>
-                                            </li>
-                                        {% else %}
-                                            <li class="page-item">
-                                                <a href="?page={{ page }}" class="page-link">{{ page }}</a>
-                                            </li>
-                                        {% endif %}
-                                    {% endfor %}
-
-                                    {% if pets.has_next %}
-                                        <li class="page-item">
-                                            <a href="?page={{ pets.next_page_number }}" class="page-link">&#10095</a>
-                                        </li>
-                                    {% endif %}
-
-
-                                </ul>
-                            </div>
-                            {% endif %}
+                            {#        pagination                #}
+                            {% include 'pagination.html' with queryset=pets custom_range=custom_range %}
 
                         </aside>
 

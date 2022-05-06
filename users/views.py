@@ -4,11 +4,15 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import BusinessCreationForm, PetLoverUserCreationForm, PetCreationForm, BusinessEditForm, PetLoverEditForm, PetEditForm
 from .models import User
+from blog.models import Blog
 from .utils import paginatePets
 
 
 def home_page(request):
-    return render(request, 'users/homepage.html')
+    blogs = Blog.objects.all()[0:3]
+
+    context = {'blogs': blogs}
+    return render(request, 'users/homepage.html', context)
 
 def loginPage(request):
 
@@ -28,7 +32,7 @@ def loginPage(request):
 
         if user is not None:
             login(request, user)
-            return redirect('login')
+            return redirect(request.GET['next'] if 'next' in request.GET else 'home-page')
         else:
             messages.error(request, 'Username OR password is incorrect')
 

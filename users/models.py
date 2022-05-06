@@ -52,9 +52,9 @@ class Pet(models.Model):
         ('Cat', 'Cat'),
     )
     owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
-    name = models.CharField(max_length=200, blank=True, null=True)
-    race = models.CharField(max_length=200, blank=True, null=True)
-    weight = models.CharField(max_length=200, blank=True, null=True)
+    name = models.CharField(max_length=200, null=True)
+    race = models.CharField(max_length=200, null=True)
+    weight = models.CharField(max_length=200, null=True)
     birthDate = models.DateField(null=True)
     gender = models.CharField(max_length=20, choices=GENDER_CHOICES, null=True)
     type = models.CharField(max_length=20, choices=TYPE_CHOICES, null=True)
