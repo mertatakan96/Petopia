@@ -10,11 +10,23 @@
 <body style="background: url('{% static 'images/background.png' %}'); background-blend-mode: overlay;">
 {% include 'navbar.html' %}
 
+{% if messages %}
+    {% for message in messages %}
+
+            <div style="position: fixed; top: 150px; left: 50%; transform: translate(-50%, -50%); z-index: 99999" class="alert alert--{{message.tags}}">
+                <p class="alert__message">{{ message }}</p>
+                <button class="alert__close">x</button>
+            </div>
+
+    {% endfor %}
+{% endif %}
+
 {% block content %}
 
 {% endblock content %}
 
 <script src="{% static 'js/home.js' %}"></script>
 <script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/alert.js' %}"></script>
 </body>
 </html>

@@ -1,0 +1,55 @@
+{% extends 'main-profile.html' %}
+{% load static %}
+
+{% block content %}
+
+    {% if profile.user_type == 'petlover' %}
+        {#  PET LOVER PROFİLE  #}
+
+        <div class="col-md-4" style="margin-left: 508px;margin-top: 30px;">
+            <div class="blog-page">
+                <aside class="cardd radius-15 sidebar" style="background-color: #ffffffb0;">
+                    <div class="widget-about widget">
+                        <header>
+                            <h4>Edit Pet Sub Profile</h4>
+                            <hr>
+                        </header>
+
+                        <img src="{% static 'images/petcircle.jpg' %}" id="icon" alt="User Icon"
+                             style="border-radius: 50%;margin-top:10px;max-width: 40%;"/>
+
+                        <div class="p-image" style="margin-top:30px;">
+                            <i class="fa fa-camera upload-button"></i>
+
+
+                            <form method="post" action="" enctype="multipart/form-data">
+                                {% csrf_token %}
+
+                                {% for field in form %}
+                                    <div>
+                                        <label>{{ field.label }}</label>
+                                        <br>
+                                        {{ field }}
+                                    </div>
+                                {% endfor %}
+                                <hr>
+                                <input style="border-radius: 10%" class="btn btn-info" type="submit" value="Save">
+
+                            </form>
+
+                        </div>
+
+
+                    </div>
+                </aside>
+
+            </div>
+
+        </div>
+
+    {% elif profile.user_type == 'business' %}
+        {#  BUSINESS PROFİLE  #}
+
+    {% endif %}
+
+{% endblock content %}

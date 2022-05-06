@@ -1,0 +1,70 @@
+{% extends 'main-profile.html' %}
+{% load static %}
+
+{% block content %}
+
+    {% if profile.user_type == 'business' %}
+
+    <!-- business profile edit -->
+            <div class="col-md-4" style="margin-left: 508px;margin-top: 30px;">
+                <div class="row">
+                    <div class="blog-page" style="width:100%">
+                        <aside class="cardd radius-15 sidebar" style="background-color: #ffffffb0;">
+                            <div class="widget-about widget">
+                                <header>
+                                   <h4> Edit Your Profile</h4>
+                                    <hr>
+                                </header>
+                                <form method="post" action="" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    {% for field in business_form %}
+                                        <div>
+                                        <label>{{ field.label }}</label>
+                                            <br>
+                                            {{ field }}
+                                        </div>
+                                    {% endfor %}
+                                <hr>
+                                    <input style="border-radius: 10%;margin-left: -133px;" class="btn btn-info" type="submit" value="Save">
+                                </form>
+                            <input style="border-radius: 10%;margin-left: 150px;margin-top: -60px;max-width: 92px;" class="btn btn-danger" type="cancel" value="Cancel">
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+
+    {% elif profile.user_type == 'petlover' %}
+
+         <!-- petlover profile edit -->
+            <div class="col-md-4" style="margin-left: 508px;margin-top: 30px;">
+                <div class="row">
+                    <div class="blog-page" style="width:100%">
+                        <aside class="cardd radius-15 sidebar" style="background-color: #ffffffb0;">
+                            <div class="widget-about widget">
+                                <header>
+                                   <h4> Edit Your Profile</h4>
+                                    <hr>
+                                </header>
+                                <form method="post" action="" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    {% for field in petlover_form %}
+                                        <div>
+                                        <label>{{ field.label }}</label>
+                                            <br>
+                                            {{ field }}
+                                        </div>
+                                    {% endfor %}
+                                <hr>
+                                    <input style="border-radius: 10%;margin-left: -133px;" class="btn btn-info" type="submit" value="Save">
+                                </form>
+                            <input style="border-radius: 10%;margin-left: 150px;margin-top: -60px;max-width: 92px;" class="btn btn-danger" type="cancel" value="Cancel">
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+
+    {% endif %}
+
+{% endblock content %}

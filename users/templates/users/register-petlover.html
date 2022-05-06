@@ -3,109 +3,29 @@
 
 {% block content %}
 
-
-    <div class="container" id="container" style="height:1000px;margin-top:35px">
-        <!-- arka sağ -->
-        <div class="form-container sign-up-container" style="background: url('{% static 'images/petssss.jpg' %}')">
-        </div>
-        <!-- ön sol -->
-        <div class="form-container sign-in-container" style="background: url('{% static 'images/petssss.jpg' %}')">
-        </div>
-
-        <div class="overlay-container">
-            <div class="overlay">
-                <!--user card -->
-                <div class="overlay-panel overlay-left">
-                    <form action="#" style="background-color:#faebf1">
+    <div class="container" style="margin-top: 75px;height: auto;background-color: #faebf1">
+        <!-- user card -->
+                        <a href="{% url 'register-choose' %}" style="margin-bottom: -20px;"><h2 class="inactive underlineHover" style="margin-left: 341px;">Back</h2></a>
                         <br>
-                        <div class="fadeIn second control">
-                            <label class="radio"> <input type="radio" name="answer"> Cat </label>
-                            <label class="radio"> <input type="radio" name="answer"> Dog </label>
-                        </div>
-                        <input type="text" id="logifnname" class="fadeIn second form-control form-control-lg"
-                               style="height: 20px;" name="name" placeholder="Pet Name">
-                        <input type="text" id="ntefcxt" class="fadeIn second form-control form-control-lg"
-                               style="height: 20px;" placeholder="Type">
-                        <input type="text" id="ntdfecxt" class="fadeIn second form-control form-control-lg"
-                               style="height: 20px;" placeholder="Height">
-                        <input type="text" id="ntedcfdddcxt" class="fadeIn second form-control form-control-lg"
-                               style="height: 20px;" placeholder="Weight">
-                        <input type="text" id="ntedcfdcxt" class="fadeIn second form-control form-control-lg"
-                               style="height: 20px;" placeholder="Age">
-                        <div class="fadeIn second control">
-                            <label class="radio"> <input type="radio" name="answer"> Female </label>
-                            <label class="radio"> <input type="radio" name="answer"> Male </label>
-                        </div>
-                        <div class="p-image fadeIn second">
-                            <i class="fa fa-camera upload-button"></i>
-                            <input accept="image/*" type="file" class="file-upload"></div>
-                        <input type="submit" class="fadeIn fourth" value="Register">
-
-                    </form>
-                    <button type="submit" id="signIn" class="ghost" value="Previous"
-                            style="margin-bottom: 50px;color: black;border-color: black;color: black;">Previous
-                    </button>
-                </div>
-
-                <!-- pet card -->
-
-                <div class="overlay-panel overlay-right">
-                    <div class="social-container">
-                        <a href="{% url 'register-choose' %}" style="margin-bottom: -20px;"><h2 class="inactive underlineHover">
-                            Back</h2></a>
-                        <br>
-                        <a href='{% url 'login' %}'><h2 class="inactive underlineHover"> Sign In</h2></a>
+                        <a href='{% url 'login' %}'><h2 class="inactive underlineHover" style="margin-left: 300px;"> Sign In</h2></a>
                         <a href='#'><h2 class="active">Sign Up </h2></a>
-                    </div>
-                    <form action="#" style="background-color:#faebf1">
 
-                        <input type="text" id="loginname" class="fadeIn second form-control form-control-lg"
-                               style="height: 20px;" name="name" placeholder="Username">
-                        <input type="text" id="ntecxt" class="fadeIn second form-control form-control-lg"
-                               style="height: 20px;" placeholder="Name&Surname">
-                        <input type="text" id="loginmail" class="fadeIn second form-control form-control-lg"
-                               style="height: 20px;" name="loginmail" placeholder="E-mail">
-                        <input type="password" id="password" class="fadeIn second form-control form-control-lg"
-                               style="height: 20px;" name="login" placeholder="Password">
-                        <input type="password" id="password2" class="fadeIn second form-control form-control-lg"
-                               style="height: 20px;" name="login" placeholder="Password">
-                        <input type="text" id="ad" class="fadeIn second form-control form-control-lg" name="add"
-                               style="height: 20px;" placeholder="Address">
-                        <input type="integer" id="phonetext" style="background-color:#f6f6f6;width:180px;"
-                               class="fadeIn second form-control form-control-lg" style="height: 20px;"
-                               placeholder="+( )___ ___ __ __">
-                        <div class="fadeIn second control">
-                            <label class="radio"> <input type="radio" name="answer"> Female </label>
-                            <label class="radio"> <input type="radio" name="answer"> Male </label>
-                        </div>
-                        <div class="p-image fadeIn second">
-                            <i class="fa fa-camera upload-button"></i>
-                            <input accept="image/*" type="file" class="file-upload">
-                        </div>
+                    <form method="post" enctype="multipart/form-data" class="myform" action="#" style="overflow: auto;background-color: #faebf100">
+                        {% csrf_token %}
+                        {% for field in formUser %}
+                           <div >
+                           <label>
+                               {{ field.label }}
+                           </label> <br>
+                           {{ field }}
+                           </div>
 
+                        {% endfor %}
+                    <br>
+                    <br>
+                      <input type="submit" class="fadeIn fourth" value="Register">
                     </form>
-                    <button type="submit" id="signUp" class="ghost" value="Next"
-                            style="color: black;margin-bottom: 15px;border-color: black;color: black;">Next
-                    </button>
-                </div>
-            </div>
-        </div>
+
     </div>
-
-    <!-- Card için var -->
-    <script>
-        const signUpButton = document.getElementById('signUp');
-        const signInButton = document.getElementById('signIn');
-        const container = document.getElementById('container');
-
-        signUpButton.addEventListener('click', () => {
-            container.classList.add("right-panel-active");
-        });
-
-        signInButton.addEventListener('click', () => {
-            container.classList.remove("right-panel-active");
-        });
-    </script>
-
 
 {% endblock content %}

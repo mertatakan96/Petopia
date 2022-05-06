@@ -21,40 +21,31 @@
                     <!-- profile , announcements -->
                     <div class="category-thumbs clearfix">
                         <div class="cat-thumb">
-                            <img src="{% static 'images/imag.jpg' %}" alt="dummy">
+                            <img src="{% static 'images/lostpetnew.jpg' %}" alt="dummy" style="border-radius: 10%;">
                             <a href="">go to category</a>
                             <div class="cat-caption">
-                                <div class="bg2">
-                                    <h3>Profile</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="cat-thumb">
-                            <img src="{% static 'images/lostpetnew.jpg' %}" alt="dummy">
-                            <a href="">go to category</a>
-                            <div class="cat-caption">
-                                <div class="bg2">
-                                    <h3>Lost Anoucements</h3>
+                                <div class="bg2" style="border-radius: 50%;">
+                                    <h3 style="font-size: 16px;">Lost Anoucements</h3>
                                     <span>2,768 Anouncements</span>
                                 </div>
                             </div>
                         </div>
                         <div class="cat-thumb">
-                            <img src="{% static 'images/adoptnew.jpg' %}" alt="dummy">
+                            <img src="{% static 'images/adoptnew.jpg' %}" alt="dummy" style="border-radius: 10%;">
                             <a href="">go to category</a>
                             <div class="cat-caption">
-                                <div class="bg2">
-                                    <h3>Adoptment Anoucements</h3>
+                                <div class="bg2" style="border-radius: 50%;">
+                                    <h3 style="font-size: 16px;">Adoptment Anoucements</h3>
                                     <span>2,768 Anouncements</span>
                                 </div>
                             </div>
                         </div>
                         <div class="cat-thumb">
-                            <img src="{% static 'images/foundednew.jpg' %}" alt="dummy">
+                            <img src="{% static 'images/foundednew.jpg' %}" alt="dummy" style="border-radius: 10%;">
                             <a href="">go to category</a>
                             <div class="cat-caption">
-                                <div class="bg2">
-                                    <h3>Founded Anouncements</h3>
+                                <div class="bg2" style="border-radius: 50%;">
+                                    <h3 style="font-size: 16px;">Founded Anouncements</h3>
                                     <span>2,768 Anouncements</span>
                                 </div>
                             </div>
@@ -75,43 +66,21 @@
                                     <h5 class="mb-0" style="margin-left:10px">Blog </h5>
                                 </div>
 
-                                <a href="blog.html" class="latest-post" style="margin-left:10px">
+                                {% for blog in blogs %}
+
+                                <a href="{% url 'blog-detail' blog.id %}" class="latest-post" style="margin-left:10px">
                                     <figure class="imgAsBg"
-                                            style="background-image: url('{% static 'images/dog1.jpg' %}');">
-                                        <img src="{% static 'images/dog1.jpg' %}" alt="dummy">
+                                            style="background-image: url('{{ blog.blog_image.url }}');">
                                     </figure>
                                     <span>
-                                            Blog Post 1
-                                    <p>Writer : Doğa </p>
-                                    <time datetime="2017-02-14">20 Nov, 2015</time>
+                                            {{ blog.title }}
+                                    <p>Writer : {{ blog.owner.business_name }} </p>
+                                    <time>{{ blog.created }}</time>
                                         </span>
                                 </a>
 
-                                <a href="blog.html" class="latest-post" style="margin-left:10px">
-                                    <figure class="imgAsBg"
-                                            style="background-image: url('{% static 'images/dog2.jpg' %}');">
-                                        <img src="{% static 'images/dog2.jpg' %}" alt="dummy">
-                                    </figure>
-                                    <span>
-                                            Blog Post 2
-                                    <p>Writer : Atakan </p>
-                                    <time datetime="2017-02-14">20 Nov, 2015</time>
-                                        </span>
-                                </a>
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination round-pagination">
-                                        <li class="page-item"><a class="page-link" href="javascript:;">Previous</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="javascript:;javascript:;">1</a>
-                                        </li>
-                                        <li class="page-item active"><a class="page-link" href="javascript:;">2</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="javascript:;">3</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="javascript:;">Next</a>
-                                        </li>
-                                    </ul>
-                                </nav>
+                                {% endfor %}
+
 
 
                             </div>
@@ -134,8 +103,6 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Title</th>
-                                        <th>Views</th>
-
                                         <th>Answer</th>
                                     </tr>
                                     </thead>
@@ -144,24 +111,18 @@
                                         <td>1</td>
                                         <td><a href="forum.html" target="_blank">Forum Question 1</a>
                                         </td>
-                                        <td>660</td>
-
                                         <td>45</td>
                                     </tr>
                                     <tr>
                                         <td>2</td>
                                         <td><a href="forum.html" target="_blank">Forum Question 2</a>
                                         </td>
-                                        <td>352</td>
-
                                         <td>25</td>
                                     </tr>
                                     <tr>
                                         <td>3</td>
                                         <td><a href="forum.html" target="_blank">Forum Question 3</a>
                                         </td>
-                                        <td>101</td>
-
                                         <td>44</td>
                                     </tr>
 
@@ -169,20 +130,7 @@
                                     </tbody>
 
                                 </table>
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination round-pagination">
-                                        <li class="page-item"><a class="page-link" href="javascript:;">Previous</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="javascript:;javascript:;">1</a>
-                                        </li>
-                                        <li class="page-item active"><a class="page-link" href="javascript:;">2</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="javascript:;">3</a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="javascript:;">Next</a>
-                                        </li>
-                                    </ul>
-                                </nav>
+
                             </div>
                         </div>
                     </div>

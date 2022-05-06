@@ -9,15 +9,23 @@
 
 <h1>TEST</h1>
 
-<form action="" method="post">
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
 
-    {% for fields in forms %}
+<form action="" method="post">
+    {% csrf_token %}
+    {% for field in formUser %}
 
         {{ field.label }}
-        {{ fields }}
+        {{ field }}
 
     {% endfor %}
-
+    <input type="submit" value="Register">
 </form>
 
 </body>
