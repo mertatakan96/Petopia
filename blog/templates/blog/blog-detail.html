@@ -20,7 +20,7 @@
                                         {% if blog.owner.is_superuser %}
                                             <p>Writer : {{ blog.owner.username }} </p>
                                         {% else %}
-                                            <li><a href="">Writer: {{ blog.owner.business_name }}</a></li>
+                                            <li><a  href="">Writer: {{ blog.owner.business_name }}</a></li>
                                         {% endif %}
 
                                     </ul>
@@ -146,7 +146,7 @@
                                     {% else %}
                                         <figure><img src="{{ blog.owner.logo.url }}" alt="dummy"></figure>
                                     {% endif %}
-                                    <p>{{ blog.owner.information }}</p>
+                                    <p style="-webkit-text-stroke: thick;">{{ blog.owner.information }}</p>
                                 {% endif %}
                                 <footer>
                                 </footer>
