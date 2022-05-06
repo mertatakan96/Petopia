@@ -195,7 +195,7 @@ def edit_pet(request, pk):
             messages.success(request, 'Pet was added edited!')
             return redirect('profile')
 
-    context = {'form': form}
+    context = {'form': form, 'profile': profile}
 
     return render(request, 'users/edit-pet-form.html', context)
 
