@@ -206,3 +206,5 @@ def edit_pet(request, pk):
 def forget_password(request):
     return render(request, 'users/forget-password-form.html')
 
+def error_page(request):
+    return render(request, 'users/error-page.html')
