@@ -44,3 +44,6 @@ def blog_detail(request, pk):
 
     context = {'profile': profile, 'blog': blog, 'form': form, 'latest': latest}
     return render(request, 'blog/blog-detail.html', context)
+
+def edit_blog(request):
+    return render(request, 'blog/blog-edit.html')

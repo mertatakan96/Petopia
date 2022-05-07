@@ -63,11 +63,9 @@
                         <div class="card-body" style="height:500px">
                             <div class="widget-latest-posts widget">
                                 <div class="card-title" style="display: flex;">
-                                    <h5 class="mb-0" style="margin-left:10px"  >Blog </h5>
+                                    <h5 class="mb-0" style="margin-left:10px" type="button">Blog</h5>
                                 </div>
-
                                 {% for blog in blogs %}
-
                                 <a href="{% url 'blog-detail' blog.id %}" class="latest-post" style="margin-left:10px">
                                     <figure class="imgAsBg"
                                             style="background-image: url('{{ blog.blog_image.url }}');">
@@ -78,24 +76,17 @@
                                     <time>{{ blog.created }}</time>
                                         </span>
                                 </a>
-
                                 {% endfor %}
-
-
-
                             </div>
-                            <input type="button" value="View All" class="btn btn-secondary">
                         </div>
-
                     </div>
-
                 </div>
 
                 <div class="col-md-6">
                     <div class="card radius-15" style="background:white">
                         <div class="card-body" style="height:500px">
-                            <div class="card-title">
-                                <h5 class="mb-0" style="margin-left:10px">Forum </h5>
+                            <div class="card-title" style="display: flex;">
+                                <h5 class="mb-0" style="margin-left:10px" type="button">Forum </h5>
                             </div>
 
                             <div class="table-responsive">

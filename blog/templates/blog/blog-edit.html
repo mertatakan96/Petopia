@@ -1,0 +1,46 @@
+{% extends 'main-details.html' %}
+{% load static %}
+
+{% block content %}
+
+   <div class="app-canvas">
+            <div class="container">
+            <div class="blog-page">
+            <div class="row">
+            <!-- blog card -->
+            <div class="col-xs-12 col-md-8">
+                <div class="container" style="margin-bottom:10%">
+                    <div class="row">
+                        <div clasS="col-md-8 mx-auto" >
+                            <div class="card radius-15" style="background:white;border-radius: 3%">
+                                <div class="card-body" style="height:560px">
+                                    <div class="widget-latest-posts widget" style="padding: 0px;">
+                                        <div class="card-title">
+                                            <h5 class="mb-0" style="margin-left:10px; font-size: 20px">
+                                                Edit Your Blog </h5>
+                                        </div>
+                                        <hr>
+                                    </div>
+                                    <div class="widget-about widget">
+                                        <form>
+                                            <img src="{% static 'images/catanddog.png' %}" id="icon" alt="User Icon"
+                                                 style="border-radius: 5%;margin-top:10px;max-width: 60%;" class="mx-auto"/>
+                                            <div class="p-image" style="margin-top:20px;">
+                                                <i class="fa fa-camera upload-button" ></i>
+                                                <input accept="image/*" type="file"  class="file-upload" ></input>
+                                            </div>
+                                            <input type="text" id="login" style="margin-top:10px" class="fadeIn second" name="login" placeholder="Title">
+                                            <textarea id="ad" name="a"  cols="30" placeholder="Information" style="padding: 30px 20px;margin-top:20px;"></textarea>
+                                            <br>
+                                            <input type="submit" class="btn btn-warning" value="Save" style="margin-top:20px;border-radius: 10%;margin-left: -133px;">
+                                        </form>
+                                        <input type="submit" class="btn btn-secondary" value="Cancel" style="margin-top: -61px;border-radius: 10%;margin-left: 108px;max-width: 92px;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+{% endblock %}

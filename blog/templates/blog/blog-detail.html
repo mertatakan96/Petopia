@@ -15,6 +15,7 @@
                                     <img src="{{ blog.blog_image.url }}" alt="dummy">
                                 </figure>
                                 <header>
+                                <input value="Edit" type="button" class="btn btn-dark" style="border-radius: 12%;margin-left: 568px;">
                                     <h3>{{ blog.title }}</h3>
                                     <ul class="info-list">
                                         {% if blog.owner.is_superuser %}
@@ -31,7 +32,6 @@
                                     <br>
                                 </div>
                             </article>
-
                             <div class="blog-post-comments">
                                 <header><h3>Comments</h3></header>
                                 <ul class="comments">
