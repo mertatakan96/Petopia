@@ -47,8 +47,12 @@
 
         </div>
 
-    {% elif profile.user_type == 'business' %}
+    {% else %}
         {#  BUSINESS PROFİLE  #}
+
+        <div class="card mx-auto" style="width: 75rem; margin-top:10px">
+            <img src="{% static 'images/404.jpg' %}" id="icon" alt="User Icon"/>
+        </div>
 
     {% endif %}
 

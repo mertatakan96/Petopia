@@ -109,18 +109,31 @@
                                     <h4>My Blogs</h4>
                                     <hr>
                                 </header>
-                                <div style="display: flex;">
-                                    <form style="text-align: left;">
-                                        <a href="blog.html" class="latest-post">
-                                            <img style="max-width: 22%;border-radius: 70%;height: 120%;" src="{% static 'images/dog1.jpg' %}" alt="dummy">
-                                            <span style="margin-left: 15px;">
-                                                Blog Title
+                                {% for blog in blogs %}
+                                    <div style="display: flex;">
+                                        <div style="text-align: left;">
+                                            <a href="{% url 'blog-detail' blog.id %}" class="latest-post">
+                                                {% if blog.blog_image == '' %}
+                                                    <img style="max-width: 22%;border-radius: 70%;height: 120%;"
+                                                         src="{% static 'images/dog1.jpg' %}" alt="dummy">
+                                                {% else %}
+                                                    <img style="max-width: 22%;border-radius: 70%;height: 120%;"
+                                                         src="{{ blog.blog_image.url }}" alt="dummy">
+                                                {% endif %}
+                                                <span style="margin-left: 15px;">
+                                                {{ blog.title|slice:"35" }}
                                             </span>
-                                        </a>
-                                    </form>
-                                    <input value="Edit" type="button" class="btn btn-info" style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px; margin-right: 4px;">
-                                    <input value="Delete" type="button" class="btn btn-danger" style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px;">
-                                </div>
+                                            </a>
+                                        </div>
+                                    <a href="{% url 'blog-edit' blog.id %}">
+                                        <input value="Edit" type="button" class="btn btn-info"
+                                               style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px; margin-right: 4px;"></a>
+                                        <input value="Delete" type="button" class="btn btn-danger"
+                                               style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px;">
+                                    </div>
+                                    <br>
+                                    <hr>
+                                {% endfor %}
                                 <hr>
                             </div>
                         </aside>
@@ -141,7 +154,7 @@
                 <div class="col-md-4">
                     <div class="row">
                         <div class="blog-page" style="width:100%">
-                            <aside class="cardd radius-15 sidebar" >
+                            <aside class="cardd radius-15 sidebar">
                                 <div class="widget-about widget">
                                     <header>
                                         <h4>Information </h4>
@@ -277,11 +290,11 @@
                                     <hr>
                                 {% endfor %}
                             </div>
-                        <div>
-                            {#        pagination                #}
-                            {% include 'pagination.html' with queryset=pets custom_range=custom_range %}
-                            <br>
-                        </div>
+                            <div>
+                                {#        pagination                #}
+                                {% include 'pagination.html' with queryset=pets custom_range=custom_range %}
+                                <br>
+                            </div>
 
                         </aside>
 
@@ -301,14 +314,17 @@
                                 <div style="display: flex;">
                                     <form style="text-align: left;">
                                         <a href="blog.html" class="latest-post">
-                                            <img style="max-width: 22%;border-radius: 70%;height: 120%;" src="{% static 'images/dog1.jpg' %}" alt="dummy">
+                                            <img style="max-width: 22%;border-radius: 70%;height: 120%;"
+                                                 src="{% static 'images/dog1.jpg' %}" alt="dummy">
                                             <span style="margin-left: 15px;">
                                                 Question
                                             </span>
                                         </a>
                                     </form>
-                                    <input value="Edit" type="button" class="btn btn-info" style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px; margin-right: 4px;">
-                                    <input value="Delete" type="button" class="btn btn-danger" style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px;">
+                                    <input value="Edit" type="button" class="btn btn-info"
+                                           style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px; margin-right: 4px;">
+                                    <input value="Delete" type="button" class="btn btn-danger"
+                                           style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px;">
                                 </div>
                                 <hr>
                             </div>

@@ -63,13 +63,20 @@
                         <div class="card-body" style="height:500px">
                             <div class="widget-latest-posts widget">
                                 <div class="card-title" style="display: flex;">
-                                    <h5 class="mb-0" style="margin-left:10px" type="button">Blog</h5>
+                                    <a href="{% url 'blog-page' %}">
+                                    <h5 class="mb-0" style="margin-left:10px" type="button">Blog</h5></a>
                                 </div>
                                 {% for blog in blogs %}
                                 <a href="{% url 'blog-detail' blog.id %}" class="latest-post" style="margin-left:10px">
+                                {% if blog.blog_image == '' %}
+                                    <figure class="imgAsBg"
+                                            style="background-image: url('{% static 'images/dog1.jpg' %}');">
+                                    </figure>
+                                    {% else %}
                                     <figure class="imgAsBg"
                                             style="background-image: url('{{ blog.blog_image.url }}');">
                                     </figure>
+                                    {% endif %}
                                     <span>
                                             {{ blog.title }}
                                     <p>Writer : {{ blog.owner.business_name }} </p>
@@ -87,7 +94,8 @@
                     <div class="card radius-15" style="background:white">
                         <div class="card-body" style="height:500px">
                             <div class="card-title" style="display: flex;">
-                                <h5 class="mb-0" style="margin-left:10px" type="button">Forum </h5>
+                                <a href="{% url 'forum-page' %}">
+                                <h5 class="mb-0" style="margin-left:10px" type="button">Forum </h5></a>
                             </div>
 
                             <div class="table-responsive">

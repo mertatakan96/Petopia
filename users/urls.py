@@ -17,8 +17,4 @@ urlpatterns = [
 
     path('forget-password', views.forget_password, name="forget-password"),
 
-    path('test/', views.testPage, name="test"),
-
-    path('error/', views.error_page, name="error-page"),
-
 ]

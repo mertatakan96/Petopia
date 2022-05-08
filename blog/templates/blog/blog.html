@@ -45,10 +45,18 @@
 
                                             <a href="{% url 'blog-detail' blog.id %}" class="latest-post"
                                                style="margin-left:10px">
+                                            {% if blog.blog_image == '' %}
+                                                <figure class="imgAsBg"
+                                                        style="background-image: url('{% static 'images/dog1.jpg' %}');">
+                                                    <img src="{% static 'images/dog1.jpg' %}" alt="dummy">
+                                                </figure>
+
+                                            {% else %}
                                                 <figure class="imgAsBg"
                                                         style="background-image: url('{% static 'images/dog1.jpg' %}');">
                                                     <img src="{{ blog.blog_image.url }}" alt="dummy">
                                                 </figure>
+                                            {% endif %}
                                                 <span>
                                             {{ blog.title }}
                                                     {% if blog.owner.is_superuser %}
@@ -114,10 +122,18 @@
 
                                             <a href="{% url 'blog-detail' blog.id %}" class="latest-post"
                                                style="margin-left:10px">
+                                            {% if blog.blog_image == '' %}
+                                                <figure class="imgAsBg"
+                                                        style="background-image: url('{% static 'images/dog1.jpg' %}');">
+                                                    <img src="{% static 'images/dog1.jpg' %}" alt="dummy">
+                                                </figure>
+
+                                            {% else %}
                                                 <figure class="imgAsBg"
                                                         style="background-image: url('{% static 'images/dog1.jpg' %}');">
                                                     <img src="{{ blog.blog_image.url }}" alt="dummy">
                                                 </figure>
+                                            {% endif %}
                                                 <span>
                                             {{ blog.title }}
                                                     {% if blog.owner.is_superuser %}
@@ -215,10 +231,18 @@
 
                                                         <a href="{% url 'blog-detail' blog.id %}" class="latest-post"
                                                            style="margin-left:10px">
+                                                        {% if blog.blog_image == '' %}
+                                                            <figure class="imgAsBg"
+                                                                    style="background-image: url('{% static 'images/dog1.jpg' %}');">
+                                                                <img src="{% static 'images/dog1.jpg' %}" alt="dummy">
+                                                            </figure>
+
+                                                        {% else %}
                                                             <figure class="imgAsBg"
                                                                     style="background-image: url('{% static 'images/dog1.jpg' %}');">
                                                                 <img src="{{ blog.blog_image.url }}" alt="dummy">
                                                             </figure>
+                                                        {% endif %}
                                                             <span>
                                             {{ blog.title }}
                                                                 {% if blog.owner.is_superuser %}

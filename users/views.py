@@ -115,34 +115,13 @@ def register_business(request):
 def user_profile(request):
     profile = request.user
     pets = profile.pet_set.all()
+    blogs = profile.blog_set.all()
 
     custom_range, pets = paginatePets(request, pets, 2)
 
-    context = {'profile': profile, 'pets': pets, 'custom_range': custom_range}
+    context = {'profile': profile, 'pets': pets, 'custom_range': custom_range, 'blogs': blogs}
     return render(request, 'users/profile.html', context)
 
-
-def testPage(request):
-    form = PetLoverUserCreationForm()
-
-    if request.method == 'POST':
-        form = PetLoverUserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.username = user.username.lower()
-            user.user_type = 'petlover'
-            user.save()
-
-            # login(request, user)
-            print('User created')
-
-            return redirect('home-page')
-        else:
-            print('Error')
-            messages.error(request, messages.error)
-
-    context = {'formUser': form}
-    return render(request, 'users/test.html', context)
 
 @login_required(login_url='login')
 def edit_profile(request):
@@ -182,7 +161,7 @@ def add_pet(request):
             messages.success(request, 'Pet was added successfully!')
             return redirect('profile')
 
-    context = {'form': form}
+    context = {'form': form, 'profile': profile}
 
     return render(request, 'users/add-pet-form.html', context)
 
@@ -205,6 +184,3 @@ def edit_pet(request, pk):
 
 def forget_password(request):
     return render(request, 'users/forget-password-form.html')
-
-def error_page(request):
-    return render(request, 'users/error-page.html')

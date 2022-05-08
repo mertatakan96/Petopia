@@ -1,8 +1,9 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
-from .forms import BlogCreationForm, BlogCommentForm
+from .forms import BlogCreationForm, BlogCommentForm, BlogEditForm
 from .models import Blog
 from .utils import paginateBlogs, searchBlogs
+from django.contrib.auth.decorators import login_required
 
 def blog_page(request):
     profile = request.user
@@ -45,5 +46,17 @@ def blog_detail(request, pk):
     context = {'profile': profile, 'blog': blog, 'form': form, 'latest': latest}
     return render(request, 'blog/blog-detail.html', context)
 
-def edit_blog(request):
-    return render(request, 'blog/blog-edit.html')
+@login_required(login_url='login')
+def edit_blog(request, pk):
+    profile = request.user
+    blog = profile.blog_set.get(id=pk)
+    form = BlogEditForm(instance=blog)
+
+    if request.method == 'POST':
+        form = BlogEditForm(request.POST, request.FILES, instance=blog)
+        if form.is_valid():
+            form.save()
+            return redirect('blog-detail', pk=blog.id)
+
+    context = {'form': form, 'blog': blog}
+    return render(request, 'blog/blog-edit.html', context)
