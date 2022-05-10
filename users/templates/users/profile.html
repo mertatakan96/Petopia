@@ -114,10 +114,10 @@
                                         <div style="text-align: left;">
                                             <a href="{% url 'blog-detail' blog.id %}" class="latest-post">
                                                 {% if blog.blog_image == '' %}
-                                                    <img style="max-width: 22%;border-radius: 70%;height: 120%;"
+                                                    <img style="border-radius: 70%;height: 70px;width: 70px;"
                                                          src="{% static 'images/dog1.jpg' %}" alt="dummy">
                                                 {% else %}
-                                                    <img style="max-width: 22%;border-radius: 70%;height: 120%;"
+                                                    <img style="border-radius: 70%;height: 70px;width: 70px;"
                                                          src="{{ blog.blog_image.url }}" alt="dummy">
                                                 {% endif %}
                                                 <span style="margin-left: 15px;">
@@ -127,7 +127,7 @@
                                         </div>
                                     <a href="{% url 'blog-edit' blog.id %}">
                                         <input value="Edit" type="button" class="btn btn-info"
-                                               style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px; margin-right: 4px;"></a>
+                                               style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px; margin-right: 4px;margin-left: 50px;"></a>
                                         <input value="Delete" type="button" class="btn btn-danger"
                                                style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px;">
                                     </div>
@@ -175,7 +175,7 @@
                                              style="border-radius: 50%;margin-top:0px;max-width: 40%;"/>
                                     {% else %}
                                         <img src="{{ profile.profile_image.url }}" id="icon" alt="User Icon"
-                                             style="border-radius: 50%;margin-top:0px;max-width: 40%;"/>
+                                             style="border-radius: 50%;margin-top:10px;max-width: 30%;width: 150px;height: 150px;"/>
                                     {% endif %}
                                     <form>
                                         <fieldset disabled style="border:0px;">
@@ -282,10 +282,10 @@
                                         <br>
                                         {% if pet.pet_image == '' %}
                                             <img src="{% static 'images/petcircle.jpg' %}" id="icon" alt="User Icon"
-                                                 style="border-radius: 50%;margin-top:10px;max-width: 30%;"/> <br>
+                                                 style="border-radius: 50%;margin-top:10px;max-width: 30%;width: 120px;height: 120px;"/> <br>
                                         {% else %}
                                             <img src="{{ pet.pet_image.url }}" id="icon" alt="User Icon"
-                                                 style="border-radius: 50%;margin-top:10px;max-width: 30%;"/> <br>
+                                                 style="border-radius: 50%;margin-top:10px;max-width: 30%;width: 120px;height: 120px;"/> <br>
                                         {% endif %}
                                         <form>
                                             <h4> {{ pet.name }} </h4>
