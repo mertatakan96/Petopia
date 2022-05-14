@@ -5,7 +5,7 @@
     {% if request.user.is_authenticated %}
 
             <!-- nav -->
-<div class="doc-header style2">
+<div class="doc-header style2" style="display: flex;">
         <div class="container">
             <div class="inner">
                 <div class="app-logo centered">
@@ -27,19 +27,23 @@
                     </ul>
 
                     <ul class="quick-actions-2 right">
-                        <li>
+                        <li style="display: flex;">
+                             {% if profile.profile_image == '' %}
+                                        <img src="{% static 'images/profiles/user-default.jpg' %}"  id="icon" alt="User Icon"
+                                 style="border-radius: 50%;width: 40px;height: 40px; margin-top: 27px;margin-left: 13px;margin-right: -54px;">
+                             {% else %}
+                                 <img src="{{ profile.profile_image.url }}" id="icon" alt="User Icon"
+                                      style="border-radius: 50%;width: 40px;height: 40px; margin-top: 27px;margin-left: 13px;margin-right: -54px;">
+                             {% endif %}
                             <a href = "{% url 'profile' %}">
                                 <span>Profile</span> <i class="fa fa-lock"></i>
                             </a>
                         </li>
-
                         <li>
                             <a href = "{% url 'logout' %}">
                                 <span>Log out</span> <i class="fa fa-lock"></i>
                             </a>
                         </li>
-
-
                     </ul>
                 </div>
             </div>
