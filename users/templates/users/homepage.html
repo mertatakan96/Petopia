@@ -5,57 +5,16 @@
 
     <div class="web-app">
 
-        <div class="app-canvas">
+        <div class="app-canvas" style="background-color: #d33d61; height: 1900px">
             <div class="main-banner imgAsBg hero-banner"
-                 style="background-image: url('{% static 'images/slideDog.jpg' %}'); height: 582.43px;">
-                <img src="{% static 'images/slideDog.jpg' %}" alt="dummy">
-                <div class="inner">
+                 style="background-image: url('{% static 'images/DogDog.jpg' %}'); height: 1900px">
 
-                </div>
-            </div>
-            <!-- profile, announcements (lost, adopt,found) -->
+                <!-- profile, announcements (lost, adopt,found) -->
             <div class="section">
                 <div class="container">
                     <div class="heading text-center">
                     </div>
-                    <!-- profile , announcements -->
-                    <div class="category-thumbs clearfix">
-                        <div class="cat-thumb">
-                            <img src="{% static 'images/lostpetnew.jpg' %}" alt="dummy" style="border-radius: 10%;">
-                            <a href="">go to category</a>
-                            <div class="cat-caption">
-                                <div class="bg2" style="border-radius: 50%;">
-                                    <h3 style="font-size: 16px;">Lost Anoucements</h3>
-                                    <span>2,768 Anouncements</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="cat-thumb">
-                            <img src="{% static 'images/adoptnew.jpg' %}" alt="dummy" style="border-radius: 10%;">
-                            <a href="">go to category</a>
-                            <div class="cat-caption">
-                                <div class="bg2" style="border-radius: 50%;">
-                                    <h3 style="font-size: 16px;">Adoptment Anoucements</h3>
-                                    <span>2,768 Anouncements</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="cat-thumb">
-                            <img src="{% static 'images/foundednew.jpg' %}" alt="dummy" style="border-radius: 10%;">
-                            <a href="">go to category</a>
-                            <div class="cat-caption">
-                                <div class="bg2" style="border-radius: 50%;">
-                                    <h3 style="font-size: 16px;">Founded Anouncements</h3>
-                                    <span>2,768 Anouncements</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <hr style="margin-bottom:30px">
-        <!-- blog, post cards -->
+                                <!-- blog, post cards -->
         <div class="container" style="margin-bottom:10%">
             <div class="row">
                 <div clasS="col-md-6">
@@ -67,7 +26,7 @@
                                     <h5 class="mb-0" style="margin-left:10px" type="button">Blog</h5></a>
                                 </div>
                                 {% for blog in blogs %}
-                                <a href="{% url 'blog-detail' blog.id %}" class="latest-post" style="margin-left:10px">
+                                <a href="{% url 'blog-detail' blog.id %}" class="latest-post" style="margin-left:10px;text-align: left;">
                                 {% if blog.blog_image == '' %}
                                     <figure class="imgAsBg"
                                             style="background-image: url('{% static 'images/dog1.jpg' %}');">
@@ -142,6 +101,48 @@
 
 
         </div>
+
+                </div>
+            </div>
+                <div class="inner" style="margin-top: -140px;">
+                    <!-- announcements -->
+                    <div class="category-thumbs clearfix" style="margin-top: 10px;max-width: 69%;margin-left: 267px;">
+                        <div class="cat-thumb">
+                            <img src="{% static 'images/lostpetnew.jpg' %}" alt="dummy" style="border-radius: 10%;">
+                            <a href="">go to category</a>
+                            <div class="cat-caption">
+                                <div class="bg2" style="border-radius: 50%;">
+                                    <h3 style="font-size: 16px;">Lost Anoucements</h3>
+                                    <span>2,768 Anouncements</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cat-thumb">
+                            <img src="{% static 'images/adoptnew.jpg' %}" alt="dummy" style="border-radius: 10%;">
+                            <a href="">go to category</a>
+                            <div class="cat-caption">
+                                <div class="bg2" style="border-radius: 50%;">
+                                    <h3 style="font-size: 16px;">Adoptment Anoucements</h3>
+                                    <span>2,768 Anouncements</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cat-thumb">
+                            <img src="{% static 'images/foundednew.jpg' %}" alt="dummy" style="border-radius: 10%;">
+                            <a href="">go to category</a>
+                            <div class="cat-caption">
+                                <div class="bg2" style="border-radius: 50%;">
+                                    <h3 style="font-size: 16px;">Founded Anouncements</h3>
+                                    <span>2,768 Anouncements</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
         <!-- footer  -->
         <footer class="doc-footer style2">
             <div class="row">

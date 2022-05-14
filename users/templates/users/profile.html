@@ -110,8 +110,8 @@
                                     <hr>
                                 </header>
                                 {% for blog in blogs %}
-                                    <div style="display: flex;">
-                                        <div style="text-align: left;">
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <div style="text-align: left;width: 345px;">
                                             <a href="{% url 'blog-detail' blog.id %}" class="latest-post">
                                                 {% if blog.blog_image == '' %}
                                                     <img style="border-radius: 70%;height: 70px;width: 70px;"
@@ -127,7 +127,7 @@
                                         </div>
                                     <a href="{% url 'blog-edit' blog.id %}">
                                         <input value="Edit" type="button" class="btn btn-info"
-                                               style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px; margin-right: 4px;margin-left: 50px;"></a>
+                                               style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px;margin-left: 50px;"></a>
                                         <input value="Delete" type="button" class="btn btn-danger"
                                                style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px;">
                                     </div>
