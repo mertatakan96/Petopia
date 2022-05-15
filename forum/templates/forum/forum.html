@@ -51,7 +51,7 @@
                                                                     <td>
                                                                         <a href="{% url 'forum-detail' forum.id %}">{{ forum.title|slice:"60" }}</a>
                                                                     </td>
-                                                                    <td>45</td>
+                                                                    <td>{{ forum.forumcomment_set.count }}</td>
                                                                 </tr>
 
                                                             {% endfor %}
@@ -121,7 +121,7 @@
                                                                     <td>
                                                                         <a href="{% url 'forum-detail' forum.id %}">{{ forum.title|slice:"60" }}</a>
                                                                     </td>
-                                                                    <td>45</td>
+                                                                    <td>{{ forum.forumcomment_set.count }}</td>
                                                                 </tr>
 
                                                             {% endfor %}
@@ -221,7 +221,7 @@
                                                                 <td>
                                                                     <a href="{% url 'forum-detail' forum.id %}">{{ forum.title|slice:"60" }}</a>
                                                                 </td>
-                                                                <td>45</td>
+                                                                <td>{{ forum.forumcomment_set.count }}</td>
                                                             </tr>
 
                                                         {% endfor %}

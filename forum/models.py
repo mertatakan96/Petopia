@@ -16,6 +16,7 @@ class Forum(models.Model):
     class Meta:
         ordering = ['-created']
 
+
 class ForumComment(models.Model):
     owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
     forum = models.ForeignKey(Forum, null=True, on_delete=models.CASCADE)
@@ -28,3 +29,6 @@ class ForumComment(models.Model):
 
     class Meta:
         ordering = ['created']
+
+
+
