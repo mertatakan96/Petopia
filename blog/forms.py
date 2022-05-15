@@ -7,6 +7,11 @@ class BlogCreationForm(ModelForm):
         model = Blog
         fields = ['blog_image', 'title', 'post']
 
+class BlogEditForm(ModelForm):
+    class Meta:
+        model = Blog
+        fields = ['blog_image', 'title', 'post']
+
 class BlogCommentForm(ModelForm):
     class Meta:
         model = BlogComment

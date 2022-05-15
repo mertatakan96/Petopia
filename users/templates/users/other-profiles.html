@@ -1,0 +1,292 @@
+{% extends 'main-profile.html' %}
+{% load static %}
+
+
+{% block content %}
+
+    {% if profile.user_type == 'business' %}
+        {#  BUSINESS PROFİLE  #}
+
+        <div class="container" style="margin-top:50px;width:1500px;max-width:1500px;">
+            <div class="row">
+
+                <!-- Business -->
+                <div class="col-md-5" style="margin-left: 130px;">
+                    <div class="blog-page">
+                        <aside class="cardd radius-15 sidebar" style="height: 950px;">
+                            <div class="widget-about widget">
+                                <header>
+                                    <h4>Business Information</h4>
+                                    <hr>
+                                </header>
+                                {% if profile.logo == '' %}
+                                    <img src="{% static 'images/profiles/store-default.png' %}" id="icon"
+                                         alt="User Icon"
+                                         style="margin-top:-30px;max-width: 80%;"/>
+                                {% else %}
+                                    <img src="{{ profile.logo.url }}" id="icon" alt="User Icon"
+                                         style="margin-top:-30px;max-width: 80%;"/>
+                                {% endif %}
+
+                                <div class="p-image" style="margin-top:30px;">
+                                    <i class="fa fa-camera upload-button"></i>
+
+
+                                    <form>
+                                        <fieldset disabled style="border:0px;">
+
+                                            <div class="form-group">
+                                                <label for="disabledName">Username</label>
+                                                <input type="text"
+                                                       style="text-align:center;font-size: 17px;height: 60px;"
+                                                       id="disabledName" class="form-control"
+                                                       placeholder="{{ profile.username }}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="disabledName">Business Type</label>
+                                                <input type="text"
+                                                       style="text-align:center;font-size: 17px;height: 50px;"
+                                                       id="disabledType" class="form-control"
+                                                       placeholder="{{ profile.business_type }}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="disabledNamePet" style="margin-top:10px;">Business
+                                                    Name</label>
+                                                <input type="text"
+                                                       style="text-align:center;font-size: 17px;height: 50px;"
+                                                       id="disabledNamePet" class="form-control"
+                                                       placeholder="{{ profile.business_name }}">
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="disabledHeight" style="margin-top:15px;">City</label>
+                                                <input type="text"
+                                                       style="text-align:center;font-size: 17px;height: 50px;"
+                                                       id="disabledHeight" class="form-control"
+                                                       placeholder="{{ profile.address }}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="disabledWeight" style="margin-top:15px;">Phone</label>
+                                                <input type="text"
+                                                       style="text-align:center;font-size: 17px;height: 50px;"
+                                                       id="disabledWeight" class="form-control"
+                                                       placeholder="{{ profile.phone }}">
+                                            </div>
+
+
+                                        </fieldset>
+                                    </form>
+                                    <br>
+                                </div>
+                            </div>
+                        </aside>
+
+                    </div>
+
+                </div>
+
+                <!-- Blogs -->
+                <div class="col-md-5">
+                    <div class="blog-page">
+                        <aside class="cardd radius-15 sidebar" style="height: 950px">
+                            <div class="widget-about widget" style="padding: 20px">
+                                <header>
+                                    <h4>My Blogs</h4>
+                                    <hr>
+                                </header>
+                                {% for blog in blogs %}
+                                    <div style="display: flex">
+                                        <div style="text-align: left;">
+                                            <a href="{% url 'blog-detail' blog.id %}" class="latest-post">
+                                                {% if blog.blog_image == '' %}
+                                                    <img style="border-radius: 70%; width: 50px; height: 50px"
+                                                         src="{% static 'images/dog1.jpg' %}" alt="dummy">
+                                                {% else %}
+                                                    <img style="border-radius: 70%;width: 50px; height: 50px"
+                                                         src="{{ blog.blog_image.url }}" alt="dummy">
+                                                {% endif %}
+                                                <span style="margin-left: 15px;">
+                                                {{ blog.title|slice:"35" }}
+                                            </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <hr>
+                                {% endfor %}
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination">
+                                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                    </ul>
+                                </nav>
+                                <hr>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    {% elif profile.user_type == 'petlover' %}
+        {#  PET LOVER PROFİLE  #}
+
+                <div class="container" style="margin-top:50px;width:1500px;max-width:1500px;">
+            <div class="row">
+
+                <!-- profile -->
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="blog-page" style="width:100%">
+                            <aside class="cardd radius-15 sidebar">
+                                <div class="widget-about widget">
+                                    <header>
+                                        <h4>Information </h4>
+                                        <hr style="margin-top: 42px;">
+                                    </header>
+                                    {% if profile.profile_image == '' %}
+                                        <img src="{% static 'images/profiles/user-default.jpg' %}" id="icon"
+                                             alt="User Icon"
+                                             style="border-radius: 50%;margin-top:0px;max-width: 40%;"/>
+                                    {% else %}
+                                        <img src="{{ profile.profile_image.url }}" id="icon" alt="User Icon"
+                                             style="border-radius: 50%;margin-top:0px;max-width: 40%;"/>
+                                    {% endif %}
+                                    <form>
+                                        <fieldset disabled style="border:0px;">
+                                            <div class="form-group">
+                                                <label for="disabledName">Username</label>
+                                                <input type="text"
+                                                       style="text-align:center;font-size: 17px;height: 60px;"
+                                                       id="disabledName" class="form-control"
+                                                       placeholder="{{ profile.username }}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="disabledName">Name & Surname</label>
+                                                <input type="text"
+                                                       style="text-align:center;font-size: 17px;height: 60px;"
+                                                       id="disabledName" class="form-control"
+                                                       placeholder="{{ profile.full_name }}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="disabledGender" style="margin-top:20px;">Gender: </label>
+                                                <input type="text"
+                                                       style="text-align:center;font-size: 17px;height: 60px;"
+                                                       id="disabledGender" class="form-control"
+                                                       placeholder="{{ profile.gender }}">
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="disabledBdate" style="margin-top:20px;">Birth Date</label>
+                                                <input type="text"
+                                                       style="text-align:center;font-size: 17px;height: 60px;"
+                                                       id="disabledBdate" class="form-control"
+                                                       placeholder="{{ profile.birthDate }}">
+                                            </div>
+
+                                        </fieldset>
+                                    </form>
+                                    <hr>
+                                    <br>
+
+                                </div>
+                            </aside>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- pet sub profile -->
+                <div class="col-md-4">
+                    <div class="blog-page">
+                        <aside class="cardd radius-15 sidebar" >
+                            <div class="widget-about widget">
+                                <header>
+                                    <h4>Pet Sub Profile</h4>
+                                    <hr>
+                                </header>
+
+                                {% for pet in pets %}
+
+                                    <div>
+                                        <br>
+                                        {% if pet.pet_image == '' %}
+                                            <img src="{% static 'images/petcircle.jpg' %}" id="icon" alt="User Icon"
+                                                 style="border-radius: 50%;margin-top:10px;max-width: 30%;"/> <br>
+                                        {% else %}
+                                            <img src="{{ pet.pet_image.url }}" id="icon" alt="User Icon"
+                                                 style="border-radius: 50%;margin-top:10px;max-width: 30%;"/> <br>
+                                        {% endif %}
+                                        <form>
+                                            <h4> {{ pet.name }} </h4>
+                                            <h5 style="line-height: 0.6;"> Birthdate : {{ pet.birthDate }} </h5>
+                                            <h5 style="line-height: 0.6;"> Gender: {{ pet.gender }} </h5>
+                                            <h5 style="line-height: 0.6;"> Type: {{ pet.type }} </h5>
+                                            <h5 style="line-height: 0.6;"> Race: {{ pet.race }} </h5>
+                                            <h5 style="line-height: 0.6;"> Weight: {{ pet.weight }} kg </h5>
+                                        </form>
+                                    </div>
+                                    <hr>
+                                {% endfor %}
+                            </div>
+                            <div>
+                                {#        pagination                #}
+                                {% include 'pagination.html' with queryset=pets custom_range=custom_range %}
+                                <br>
+                            </div>
+
+                        </aside>
+
+                    </div>
+
+                </div>
+
+                <!-- My Forum -->
+                <div class="col-md-4">
+                    <div class="blog-page">
+                        <aside class="cardd radius-15 sidebar" >
+                            <div class="widget-about widget">
+                                <header>
+                                    <h4>My Forum</h4>
+                                    <hr style="margin-top: 42px;">
+                                </header>
+                                <div style="display: flex;">
+                                    <form style="text-align: left;">
+                                        <a href="blog.html" class="latest-post">
+                                            <img style="max-width: 22%;border-radius: 70%;height: 120%;"
+                                                 src="{% static 'images/dog1.jpg' %}" alt="dummy">
+                                            <span style="margin-left: 15px;">
+                                                Question
+                                            </span>
+                                        </a>
+                                    </form>
+                                </div>
+                                <hr>
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination">
+                                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                    </ul>
+                                </nav>
+                                <hr>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    {% endif %}
+    
+    
+
+{% endblock %}

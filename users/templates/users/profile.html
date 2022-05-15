@@ -11,10 +11,10 @@
         <div class="container" style="margin-top:50px;width:1500px;max-width:1500px;">
             <div class="row">
 
-                <!-- business -->
+                <!-- Business -->
                 <div class="col-md-5" style="margin-left: 130px;">
                     <div class="blog-page">
-                        <aside class="cardd radius-15 sidebar" style="height: 1111px;">
+                        <aside class="cardd radius-15 sidebar" style="height: 1123px;">
                             <div class="widget-about widget">
                                 <header>
                                     <h4>Business Information</h4>
@@ -23,10 +23,10 @@
                                 {% if profile.logo == '' %}
                                     <img src="{% static 'images/profiles/store-default.png' %}" id="icon"
                                          alt="User Icon"
-                                         style="margin-top:-30px;max-width: 80%;"/>
+                                         style="margin-top:-30px;max-width: 80%;border-radius: 50%"/>
                                 {% else %}
                                     <img src="{{ profile.logo.url }}" id="icon" alt="User Icon"
-                                         style="margin-top:-30px;max-width: 80%;"/>
+                                         style="margin-top:-30px;max-width: 80%;width: 300px;height: 250px;"/>
                                 {% endif %}
 
                                 <div class="p-image" style="margin-top:30px;">
@@ -100,16 +100,42 @@
 
                 </div>
 
-
                 <!-- Blogs -->
                 <div class="col-md-5">
                     <div class="blog-page">
-                        <aside class="cardd radius-15 sidebar" style="height: 1111px;">
+                        <aside class="cardd radius-15 sidebar" style="height: 1123px">
                             <div class="widget-about widget">
                                 <header>
                                     <h4>My Blogs</h4>
                                     <hr>
                                 </header>
+                                {% for blog in blogs %}
+                                    <div style="display: flex; justify-content: space-between;">
+                                        <div style="text-align: left;width: 345px;">
+                                            <a href="{% url 'blog-detail' blog.id %}" class="latest-post">
+                                                {% if blog.blog_image == '' %}
+                                                    <img style="border-radius: 70%;height: 70px;width: 70px;"
+                                                         src="{% static 'images/dog1.jpg' %}" alt="dummy">
+                                                {% else %}
+                                                    <img style="border-radius: 70%;height: 70px;width: 70px;"
+                                                         src="{{ blog.blog_image.url }}" alt="dummy">
+                                                {% endif %}
+                                                <span style="margin-left: 15px;">
+                                                {{ blog.title|slice:"30" }}
+                                            </span>
+                                            </a>
+                                        </div>
+                                        <a href="{% url 'blog-edit' blog.id %}">
+                                            <input value="Edit" type="button" class="btn btn-info"
+                                                   style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px;margin-left: 50px;"></a>
+                                        <input value="Delete" type="button" class="btn btn-danger"
+                                               style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px;">
+                                    </div>
+                                    <br>
+                                    <hr>
+                                {% endfor %}
+                                {#        pagination                #}
+                                {% include 'pagination.html' with queryset=blogs custom_range=custom_range %}
 
                             </div>
                         </aside>
@@ -130,11 +156,11 @@
                 <div class="col-md-4">
                     <div class="row">
                         <div class="blog-page" style="width:100%">
-                            <aside class="cardd radius-15 sidebar" style="height: 1350px;">
+                            <aside class="cardd radius-15 sidebar">
                                 <div class="widget-about widget">
                                     <header>
                                         <h4>Information </h4>
-                                        <hr>
+                                        <hr style="margin-top: 42px;">
                                     </header>
                                     {% if profile.profile_image == '' %}
                                         <img src="{% static 'images/profiles/user-default.jpg' %}" id="icon"
@@ -142,7 +168,7 @@
                                              style="border-radius: 50%;margin-top:0px;max-width: 40%;"/>
                                     {% else %}
                                         <img src="{{ profile.profile_image.url }}" id="icon" alt="User Icon"
-                                             style="border-radius: 50%;margin-top:0px;max-width: 40%;"/>
+                                             style="border-radius: 50%;margin-top: -30px;max-width: 30%;width: 150px;height: 150px;"/>
                                     {% endif %}
                                     <form>
                                         <fieldset disabled style="border:0px;">
@@ -219,23 +245,24 @@
                 <!-- pet sub profile -->
                 <div class="col-md-4">
                     <div class="blog-page">
-                        <aside class="cardd radius-15 sidebar" style="height: 1350px;">
+                        <aside class="cardd radius-15 sidebar" style="height: 1150px;">
                             <div class="widget-about widget">
                                 <header>
                                     <h4>Pet Sub Profile</h4>
                                     <a href="{% url 'add-pet' %}">
-                                        <button type="button" class="btn btn-info"
+                                        <button type="button" class="btn btn-success"
                                                 style="margin-left: 330px;border-radius: 10%;">Add
                                         </button>
                                     </a>
+                                    <hr>
                                 </header>
 
                                 {% for pet in pets %}
-                                    <hr>
+
                                     <div>
                                         <p>
                                             <a href="{% url 'edit-pet' pet.id %}">
-                                                <button type="button" class="btn btn-success"
+                                                <button type="button" class="btn btn-info"
                                                         style="border-radius: 10%">
                                                     Edit
                                                 </button>
@@ -248,10 +275,12 @@
                                         <br>
                                         {% if pet.pet_image == '' %}
                                             <img src="{% static 'images/petcircle.jpg' %}" id="icon" alt="User Icon"
-                                                 style="border-radius: 50%;margin-top:10px;max-width: 30%;"/> <br>
+                                                 style="border-radius: 50%;margin-top:10px;max-width: 30%;width: 120px;height: 120px;"/>
+                                            <br>
                                         {% else %}
                                             <img src="{{ pet.pet_image.url }}" id="icon" alt="User Icon"
-                                                 style="border-radius: 50%;margin-top:10px;max-width: 30%;"/> <br>
+                                                 style="border-radius: 50%;margin-top:10px;max-width: 30%;width: 120px;height: 120px;"/>
+                                            <br>
                                         {% endif %}
                                         <form>
                                             <h4> {{ pet.name }} </h4>
@@ -265,9 +294,11 @@
                                     <hr>
                                 {% endfor %}
                             </div>
-
-                            {#        pagination                #}
-                            {% include 'pagination.html' with queryset=pets custom_range=custom_range %}
+                            <div>
+                                {#        pagination                #}
+                                {% include 'pagination.html' with queryset=pets custom_range=custom_range %}
+                                <br>
+                            </div>
 
                         </aside>
 
@@ -275,15 +306,44 @@
 
                 </div>
 
-                <!-- settings -->
+                <!-- My Forum -->
                 <div class="col-md-4">
                     <div class="blog-page">
-                        <aside class="cardd radius-15 sidebar" style="height: 1350px;">
+                        <aside class="cardd radius-15 sidebar" style="height: 1150px;">
                             <div class="widget-about widget">
                                 <header>
                                     <h4>My Forum</h4>
-                                    <hr>
+                                    <hr style="margin-top: 42px;">
                                 </header>
+
+                                {% for forum in forums %}
+                                    <div style="display: flex;">
+                                        <div style="text-align: left;">
+                                            <a href="{% url 'forum-detail' forum.id %}" class="latest-post">
+
+                                            <span style="margin-left: 15px;">
+                                                {{ forum.title|slice:"30" }}
+                                            </span>
+                                            </a>
+                                        </div>
+                                        <a href="{% url 'forum-edit' forum.id %}">
+                                        <input value="Edit" type="button" class="btn btn-info"
+                                               style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px; margin-right: 4px;">
+                                        </a>
+                                        <input value="Delete" type="button" class="btn btn-danger"
+                                               style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px;">
+
+                                    </div>
+                                    <br>
+                                    <hr>
+                                {% endfor %}
+
+                                <hr>
+                                {#        pagination                #}
+                                {% include 'pagination.html' with queryset=forums custom_range=custom_range %}
+                                <br>
+                                <hr>
+
                             </div>
                         </aside>
                     </div>
@@ -293,5 +353,7 @@
         </div>
 
     {% endif %}
+
+
 
 {% endblock %}

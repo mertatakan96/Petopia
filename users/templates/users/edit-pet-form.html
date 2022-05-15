@@ -47,8 +47,14 @@
 
         </div>
 
-    {% elif profile.user_type == 'business' %}
+    {% else %}
         {#  BUSINESS PROFİLE  #}
+
+        <div class="card mx-auto" style="width: 100%;
+                background: url('{% static 'images/error.jpg' %}');
+                margin-top: 0px; height: 100vh;background-position: center;
+                background-size: cover;z-index: 999;" >
+        </div>
 
     {% endif %}
 

@@ -1,0 +1,58 @@
+{% extends 'main-details.html' %}
+{% load static %}
+
+{% block content %}
+
+   <div class="app-canvas">
+            <div class="container">
+                <div class="blog-page">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-8">
+                            <div class="container" style="margin-bottom:10%">
+                                <div class="row">
+                                    <div clasS="col-md-8 mx-auto" >
+                                        <div class="card radius-15" style="background:white;border-radius: 3%">
+                                            <div class="card-body" style="height:560px">
+                                                <div class="widget-latest-posts widget" style="padding: 0px;">
+                                                    <div class="card-title">
+                                                        <h5 class="mb-0" style="margin-left:10px; font-size: 20px">Edit Your Blog </h5>
+                                                    </div>
+                                                    <hr>
+                                                </div>
+                                                <div class="widget-about widget">
+
+                                                    <form method="post" action="" enctype="multipart/form-data">
+                                                        {% csrf_token %}
+                                                        {% if blog.blog_image == '' %}
+                                                        <img src="{% static 'images/dog1.jpg' %}" id="icon" alt="User Icon"
+                                                             style="border-radius: 5%;margin-top:10px;max-width: 60%;" class="mx-auto"/>
+                                                        {% else %}
+                                                            <img src="{{ blog.blog_image.url }}" id="icon" alt="User Icon"
+                                                             style="border-radius: 5%;margin-top:10px;max-width: 60%;" class="mx-auto"/>
+                                                        {% endif %}
+                                                        <div class="p-image" style="margin-top:20px;">
+                                                            {{ form.blog_image }}
+                                                        </div>
+                                                        <br>
+                                                        {{ form.title }}
+                                                        <br>
+                                                        <br>
+                                                        {{ form.post }}
+                                                        <br>
+                                                        <input type="submit" class="btn btn-warning" value="Save" style="margin-top:20px;border-radius: 10%;margin-left: -133px;">
+                                                    </form>
+
+                                                    <a href="{% url 'blog-detail' blog.id %}"><input type="submit" class="btn btn-secondary" value="Cancel" style="margin-top: -61px;border-radius: 10%;margin-left: 108px;max-width: 92px;"></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+   </div>
+
+{% endblock %}

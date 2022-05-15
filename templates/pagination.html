@@ -12,7 +12,7 @@
             {% for page in custom_range %}
 
                 {% if page == queryset.number %}
-                    <li class="page-item"><a style="color: red" href="?page={{page}}&search_query={{search_query}}" class="page-link"
+                    <li class="page-item"><a style="background-color: #808080c4;color: white;" href="?page={{page}}&search_query={{search_query}}" class="page-link"
                                              data-page="{{ page }}">{{ page }}</a></li>
                 {% else %}
                     <li class="page-item"><a href="?page={{page}}&search_query={{search_query}}" class="page-link"
