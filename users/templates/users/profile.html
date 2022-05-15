@@ -121,28 +121,21 @@
                                                          src="{{ blog.blog_image.url }}" alt="dummy">
                                                 {% endif %}
                                                 <span style="margin-left: 15px;">
-                                                {{ blog.title|slice:"35" }}
+                                                {{ blog.title|slice:"30" }}
                                             </span>
                                             </a>
                                         </div>
-                                    <a href="{% url 'blog-edit' blog.id %}">
-                                        <input value="Edit" type="button" class="btn btn-info"
-                                               style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px;margin-left: 50px;"></a>
+                                        <a href="{% url 'blog-edit' blog.id %}">
+                                            <input value="Edit" type="button" class="btn btn-info"
+                                                   style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px;margin-left: 50px;"></a>
                                         <input value="Delete" type="button" class="btn btn-danger"
                                                style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px;">
                                     </div>
                                     <br>
                                     <hr>
                                 {% endfor %}
-                                <nav aria-label="Page navigation example">
-                                        <ul class="pagination">
-                                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                                        </ul>
-                                </nav>
+                                {#        pagination                #}
+                                {% include 'pagination.html' with queryset=blogs custom_range=custom_range %}
 
                             </div>
                         </aside>
@@ -282,10 +275,12 @@
                                         <br>
                                         {% if pet.pet_image == '' %}
                                             <img src="{% static 'images/petcircle.jpg' %}" id="icon" alt="User Icon"
-                                                 style="border-radius: 50%;margin-top:10px;max-width: 30%;width: 120px;height: 120px;"/> <br>
+                                                 style="border-radius: 50%;margin-top:10px;max-width: 30%;width: 120px;height: 120px;"/>
+                                            <br>
                                         {% else %}
                                             <img src="{{ pet.pet_image.url }}" id="icon" alt="User Icon"
-                                                 style="border-radius: 50%;margin-top:10px;max-width: 30%;width: 120px;height: 120px;"/> <br>
+                                                 style="border-radius: 50%;margin-top:10px;max-width: 30%;width: 120px;height: 120px;"/>
+                                            <br>
                                         {% endif %}
                                         <form>
                                             <h4> {{ pet.name }} </h4>
@@ -320,32 +315,32 @@
                                     <h4>My Forum</h4>
                                     <hr style="margin-top: 42px;">
                                 </header>
-                                <div style="display: flex;">
-                                    <form style="text-align: left;">
-                                        <a href="blog.html" class="latest-post">
-                                            <img style="max-width: 22%;border-radius: 70%;height: 120%;"
-                                                 src="{% static 'images/dog1.jpg' %}" alt="dummy">
-                                            <span style="margin-left: 15px;">
-                                                Question
-                                            </span>
-                                        </a>
-                                    </form>
-                                    <input value="Edit" type="button" class="btn btn-info"
-                                           style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px; margin-right: 4px;">
-                                    <input value="Delete" type="button" class="btn btn-danger"
-                                           style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px;">
 
-                                </div>
+                                {% for forum in forums %}
+                                    <div style="display: flex;">
+                                        <div style="text-align: left;">
+                                            <a href="{% url 'forum-detail' forum.id %}" class="latest-post">
+
+                                            <span style="margin-left: 15px;">
+                                                {{ forum.title|slice:"30" }}
+                                            </span>
+                                            </a>
+                                        </div>
+                                        <a href="{% url 'forum-edit' forum.id %}">
+                                        <input value="Edit" type="button" class="btn btn-info"
+                                               style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px; margin-right: 4px;">
+                                        </a>
+                                        <input value="Delete" type="button" class="btn btn-danger"
+                                               style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px;">
+
+                                    </div>
+                                    <br>
+                                    <hr>
+                                {% endfor %}
+
                                 <hr>
-                                 <nav aria-label="Page navigation example">
-                                        <ul class="pagination">
-                                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                                        </ul>
-                                    </nav>
+                                {#        pagination                #}
+                                {% include 'pagination.html' with queryset=forums custom_range=custom_range %}
                                 <br>
                                 <hr>
 

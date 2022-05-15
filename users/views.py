@@ -5,13 +5,16 @@ from django.contrib.auth.decorators import login_required
 from .forms import BusinessCreationForm, PetLoverUserCreationForm, PetCreationForm, BusinessEditForm, PetLoverEditForm, PetEditForm
 from .models import User
 from blog.models import Blog
-from .utils import paginatePets
+from forum.models import Forum
+from .utils import paginatePets, paginateBlogs, paginateForums
 
 
 def home_page(request):
+    profile = request.user
     blogs = Blog.objects.all()[0:3]
+    forums = Forum.objects.all()[0:9]
 
-    context = {'blogs': blogs}
+    context = {'blogs': blogs, 'profile': profile, 'forums': forums}
     return render(request, 'users/homepage.html', context)
 
 def loginPage(request):
@@ -43,9 +46,16 @@ def logout_user(request):
     return redirect('home-page')
 
 def register_choose(request):
+    if request.user.is_authenticated:
+        return redirect('home-page')
+
     return render(request, 'users/register-choose.html')
 
 def register_petlover(request):
+
+    if request.user.is_authenticated:
+        return redirect('home-page')
+
     form = PetLoverUserCreationForm()
 
     if request.method == 'POST':
@@ -79,6 +89,10 @@ def register_petlover(request):
     return render(request, 'users/register-petlover.html', context)
 
 def register_business(request):
+
+    if request.user.is_authenticated:
+        return redirect('home-page')
+
     form = BusinessCreationForm()
 
     if request.method == 'POST':
@@ -116,10 +130,13 @@ def user_profile(request):
     profile = request.user
     pets = profile.pet_set.all()
     blogs = profile.blog_set.all()
+    forums = profile.forum_set.all()
 
     custom_range, pets = paginatePets(request, pets, 2)
+    custom_range, blogs = paginateBlogs(request, blogs, 7)
+    custom_range, forums = paginateBlogs(request, forums, 10)
 
-    context = {'profile': profile, 'pets': pets, 'custom_range': custom_range, 'blogs': blogs}
+    context = {'profile': profile, 'pets': pets, 'custom_range': custom_range, 'blogs': blogs, 'forums': forums}
     return render(request, 'users/profile.html', context)
 
 

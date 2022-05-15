@@ -3,166 +3,167 @@
 
 {% block content %}
 
-<div class="app-canvas">
-    <div class="container">
-        <div class="blog-page">
-            <div class="row">
-                <!-- forum detail -->
-                <div class="col-xs-12 col-md-8">
-                    <div class="blog-posts">
-                        <article class="blog-post">
-                            <figure>
-                                <img src="{% static 'images/dog1.jpg' %}" alt="dummy">
-                            </figure>
-                            <header>
-                                <h3>Forum Question Title</h3>
-                                <ul class="info-list">
-                                    <li><a href="">Doğa Özyağci</a></li>
+    <div class="app-canvas">
+        <div class="container">
+            <div class="blog-page">
+                <div class="row">
+                    <!-- forum detail -->
+                    <div class="col-xs-12 col-md-8">
+                        <div class="blog-posts">
+                            <article class="blog-post">
+                                {% if forum.forum_image == '' %}
+                                    <figure>
+                                        <img src="{% static 'images/dog1.jpg' %}" alt="dummy">
+                                    </figure>
+                                {% else %}
+                                    <figure>
+                                        <img src="{{ forum.forum_image.url }}" alt="dummy">
+                                    </figure>
+                                {% endif %}
+
+                                <header>
+                                    {% if profile == forum.owner %}
+                                        <a href="{% url 'forum-edit' forum.id %}">
+                                            <input value="Edit" type="button" class="btn btn-dark"
+                                                   style="border-radius: 12%;margin-left: 568px;">
+                                        </a>
+                                    {% endif %}
+                                    <h3>{{ forum.title }}</h3>
+                                    <ul class="info-list">
+                                        <li><a href="">Writer: {{ forum.owner.username }}</a></li>
+                                    </ul>
+                                </header>
+                                <div class="blog-content">
+                                    <p>{{ forum.post|linebreaksbr }} </p>
+                                    <br>
+                                    <br>
+                                </div>
+
+                            </article>
+                            <div class="blog-post-comments">
+                                <header><h3>Answers</h3></header>
+                                <ul class="comments">
+                                    {% for comment in forum.forumcomment_set.all %}
+                                        <li class="comment">
+                                            <div class="inner">
+                                                {% if comment.owner.user_type == 'petlover' %}
+
+                                                    {% if comment.owner.profile_image == '' %}
+                                                        <figure><a href=""><img
+                                                                src="{% static 'images/profiles/user-default.jpg' %}"
+                                                                alt="dummy"></a></figure>
+                                                    {% else %}
+                                                        <figure><a href=""><img
+                                                                src="{{ comment.owner.profile_image.url }}" alt="dummy"></a>
+                                                        </figure>
+                                                    {% endif %}
+
+                                                {% elif comment.owner.user_type == 'business' %}
+
+                                                    {% if comment.owner.logo == '' %}
+                                                        <figure><a href=""><img
+                                                                src="{% static 'images/profiles/store-default.png' %}"
+                                                                alt="dummy"></a></figure>
+                                                    {% else %}
+                                                        <figure><a href=""><img
+                                                                src="{{ comment.owner.logo.url }}" alt="dummy"></a>
+                                                        </figure>
+                                                    {% endif %}
+
+                                                {% else %}
+                                                    {% if comment.owner.profile_image == '' %}
+                                                        <figure><a href=""><img
+                                                                src="{% static 'images/profiles/user-default.jpg' %}"
+                                                                alt="dummy"></a></figure>
+                                                    {% else %}
+                                                        <figure><a href=""><img
+                                                                src="{{ comment.owner.profile_image.url }}" alt="dummy"></a>
+                                                        </figure>
+                                                    {% endif %}
+                                                {% endif %}
+                                                {% if comment.owner.user_type == 'business' %}
+                                                    <header>
+                                                        <h6><a href="">{{ comment.owner.business_name }}</a>
+                                                            <time datetime="2022-03-28">{{ comment.created }}</time>
+                                                        </h6>
+                                                    </header>
+                                                {% elif comment.owner.is_superuser %}
+                                                    <header>
+                                                        <h6><a href="">{{ comment.owner.username }}</a>
+                                                            <time datetime="2022-03-28">{{ comment.created }}</time>
+                                                        </h6>
+                                                    </header>
+                                                {% else %}
+                                                    <header>
+                                                        <h6><a href="">{{ comment.owner.full_name }}</a>
+                                                            <time datetime="2022-03-28">{{ comment.created }}</time>
+                                                        </h6>
+                                                    </header>
+                                                {% endif %}
+
+                                                <p>{{ comment.body }}</p>
+
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+
                                 </ul>
-                            </header>
-                            <div class="blog-content">
 
-                                <p>Text </p>
-                                <br>
-                                <p>Text</p>
-                                <br>
+                            </div>
+                           {% if request.user.is_authenticated %}
+                            <div class="add-comment">
+                                <header><h3>Leave an Answer</h3></header>
+                                <form action="" method="post" class="clearfix">
+                                    {% csrf_token %}
 
-                                <br>
+                                        <div class="labeled-input">
+
+                                            {{ form.body }}
+
+                                        </div>
+
+                                    <button class="btn btn-green btn-small">Submit</button>
+                                </form>
+                            </div>
+                        {% else %}
+                        <div class="add-comment">
+
+                                    <a href="{% url 'login' %}?next={{ request.path }}">Please login to leave a
+                                        answer</a>
+
+                                </div>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                    <!-- about me -->
+                    <div class="col-xs-12 col-md-4">
+                        <aside class="sidebar">
+
+                            <div class="widget-latest-posts widget">
+                                <header>
+                                    <h4>Latest Questions</h4>
+                                </header>
+
+                                {% for latest in latest %}
+
+                                    <a href="{% url 'forum-detail' latest.id %}" class="latest-post">
+
+                                        <span>{{ latest.title|slice:"50" }}
+                                            <time>{{ latest.created }}</time>
+                                        </span>
+                                    </a>
+
+                                {% endfor %}
 
                             </div>
 
-                        </article>
-                        <div class="blog-post-comments">
-                            <header><h3>Answers</h3></header>
-                            <ul class="comments">
-                                <li class="comment">
-                                    <div class="inner">
-                                        <figure><a href=""><img src="{% static 'images/profile.jpg' %}" alt="dummy"></a>
-                                        </figure>
-                                        <header>
-                                            <h6><a href="">Mahir & Mantar</a>
-                                                <time datetime="2022-03-28">March 28, 2022</time>
-                                            </h6>
 
-                                        </header>
-                                        <p>Text</p>
-                                    </div>
-
-                                </li>
-                                <li class="comment">
-                                    <div class="inner">
-                                        <figure><a href=""><img src="{% static 'images/profile.jpg' %}" alt="dummy"></a></figure>
-                                        <header>
-                                            <h6><a href="">Atakan Duduoğlu</a>
-                                                <time datetime="2017-02-14">December 04, 2022</time>
-                                            </h6>
-
-                                        </header>
-                                        <p>Answer Text</p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="add-comment">
-                            <header><h3>Leave an Answer</h3></header>
-                            <form action="/" class="clearfix">
-                                <div class="fields-grid clearfix">
-                                    <div class="fields-grid-ele">
-
-                                    </div>
-                                    <div class="fields-grid-ele">
-
-                                    </div>
-                                    <div class="fields-grid-ele">
-
-                                    </div>
-                                    <div class="fields-grid-ele">
-
-                                    </div>
-                                </div>
-                                <div class="labeled-input">
-
-                                    <textarea id="addComment005"></textarea>
-                                </div>
-                                <button class="btn btn-green btn-small">Submit</button>
-                            </form>
-                        </div>
+                        </aside>
                     </div>
-
-                </div>
-                <!-- about me -->
-                <div class="col-xs-12 col-md-4">
-                    <aside class="sidebar">
-                        <div class="widget-about widget">
-                            <header>
-                                <h4>About Me</h4>
-                            </header>
-                            <figure><img src="{% static 'images/petcircle.jpg' %}" alt="dummy"></figure>
-                            <p>Text here. </p>
-                            <footer>
-                            </footer>
-                        </div>
-
-
-                        <div class="widget-latest-posts widget">
-                            <header>
-                                <h4>Latest questions</h4>
-                            </header>
-
-                            <a href="forumDetail.html" class="latest-post">
-                                <figure class="imgAsBg"
-                                        style="background-image: url('{% static 'images/petcircle.jpg' %}');">
-                                    <img src="{% static 'images/petcircle.jpg' %}" alt="dummy">
-                                </figure>
-                                <span>
-                                            Title
-                                            <time datetime="2017-02-14">20 Jan, 2022</time>
-                                        </span>
-                            </a>
-
-                            <a href="forumDetail.html" class="latest-post">
-                                <figure class="imgAsBg"
-                                        style="background-image: url('{% static 'images/petcircle.jpg' %}');">
-                                    <img src="{% static 'images/petcircle.jpg' %}" alt="dummy">
-                                </figure>
-                                <span>
-                                            Title two
-                                            <time datetime="2017-02-14">20 Feb, 2022</time>
-                                        </span>
-                            </a>
-
-
-                            <a href="forumDetail.html" class="latest-post">
-                                <figure class="imgAsBg"
-                                        style="background-image: url('{% static 'images/petcircle.jpg' %}')">
-                                    <img src="{% static 'images/petcircle.jpg' %}" alt="dummy">
-                                </figure>
-                                <span>
-                                            Title three
-                                            <time datetime="2017-02-14">25 Feb, 2022</time>
-                                        </span>
-                            </a>
-
-                            <a href="forumDetail.html" class="latest-post">
-                                <figure class="imgAsBg"
-                                        style="background-image: url('{% static 'images/petcircle.jpg' %}');">
-                                    <img src="{% static 'images/petcircle.jpg' %}" alt="dummy">
-                                </figure>
-                                <span>
-                                            Title four
-                                            <time datetime="2017-02-14">5 March, 2022</time>
-                                        </span>
-                            </a>
-
-
-                        </div>
-
-
-                    </aside>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 {% endblock %}
