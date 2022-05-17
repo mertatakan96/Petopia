@@ -10,3 +10,6 @@ def founded_page(request):
 
 def lost_page(request):
     return render(request, 'announcements/lost-announce.html')
+
+def announce_page(request):
+    return render(request, 'announcements/announce-detail.html')
