@@ -1,0 +1,76 @@
+{% extends 'main.html' %}
+{% load static %}
+
+
+{% block content %}
+    <div class="card" style="background-color: #ffc0cb00;display: flex;justify-content: flex-start;flex-direction: row;align-items: flex-start;">
+        <div class="card" style="min-width: 283px;height: 719px;display: flex;max-width: 294px; background-color: #ece6e2;">
+            <img class="card-img-top" src="{% static 'images/catanddog.png' %}" alt="Card image cap">
+            <h5 class="card-title" style="display: flex; justify-content: space-around;font-family: cursive;font-size: x-large;">Admin Panel</h5>
+
+            <hr>
+            <ul class="list-group list-group-flush" style="font-size: initial">
+                <li class="list-group-item" style="background-color: #ece6e2;"><a href="" style="color: black;">Petlover Users</a></li>
+                <li class="list-group-item" style="background-color: #ece6e2;"><a href="" style="color: black;">Business Accounts</a></li>
+                <li class="list-group-item" style="background-color: #ece6e2;"><a href="" style="color: black;">Blogs</a></li>
+                <li class="list-group-item" style="background-color: #ece6e2;"><a href="" style="color: black;">Forums</a></li>
+                <li class="list-group-item" style="background-color: #ece6e2;"><a href="" style="color: black;">Adopted Announces</a></li>
+                <li class="list-group-item" style="background-color: #ece6e2;"><a href="" style="color: black;">Founded Announces</a></li>
+                <li class="list-group-item" style="background-color: #ece6e2;"><a href="" style="color: black;">Lost Announces</a></li>
+            </ul>
+        </div>
+        <div style="display: flex; flex-wrap: wrap;">
+            <div class="card" style="width: 30rem;margin-left: 30px;margin-top: 30px;border-radius: 10%;height: 30rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Petlover Users</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">User Count:</h6>
+                    <a style="display: flex;align-content: space-around;justify-content: space-around;font-size: 100px;margin-top: 20px;"> 45</a>
+        </div>
+            </div>
+            <div class="card" style="width: 30rem;margin-left: 30px;margin-top: 30px;border-radius: 10%;height: 30rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Business Accounts</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">User Count:</h6>
+                    <a style="display: flex;align-content: space-around;justify-content: space-around;font-size: 100px;margin-top: 20px;">29</a>
+                </div>
+            </div>
+            <div class="card" style="width: 30rem;margin-left: 30px;margin-top: 30px;border-radius: 10%;height: 30rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Forum Page</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Question Number:</h6>
+                    <a style="display: flex;align-content: space-around;justify-content: space-around;font-size: 100px;margin-top: 20px;">12</a>
+                </div>
+            </div>
+            <div class="card" style="width: 30rem;margin-left: 30px;margin-top: 30px;border-radius: 10%;height: 30rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Blog Page</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Post Number:</h6>
+                    <a style="display: flex;align-content: space-around;justify-content: space-around;font-size: 100px;margin-top: 20px;">23</a>
+                </div>
+            </div>
+            <div class="card" style="width: 30rem;margin-left: 30px;margin-top: 30px;border-radius: 10%;height: 30rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Adopted Announces</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Announce Number:</h6>
+                    <a style="display: flex;align-content: space-around;justify-content: space-around;font-size: 100px;margin-top: 20px;">9</a>
+                </div>
+            </div>
+            <div class="card" style="width: 30rem;margin-left: 30px;margin-top: 30px;border-radius: 10%;height: 30rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Founded Announces</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Announce Number:</h6>
+                    <a style="display: flex;align-content: space-around;justify-content: space-around;font-size: 100px;margin-top: 20px;">16</a>
+                </div>
+            </div>
+            <div class="card" style="width: 30rem;margin-left: 30px;margin-top: 30px;border-radius: 10%;height: 30rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Lost Announces</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Announce Number:</h6>
+                    <a style="display: flex;align-content: space-around;justify-content: space-around;font-size: 100px;margin-top: 20px;">4</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

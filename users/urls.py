@@ -17,4 +17,6 @@ urlpatterns = [
 
     path('forget-password', views.forget_password, name="forget-password"),
 
+    path('admin-panel/', views.admin_panel, name="admin-panel")
+
 ]
