@@ -204,3 +204,9 @@ def forget_password(request):
 
 def admin_panel(request):
     return render(request, 'users/admin-panel.html')
+
+def admin_panel_detail(request):
+    return render(request, 'users/admin-panel-detail.html')
+
+def admin_panel_announcement(request):
+    return render(request, 'users/admin-panel-announce.html')
