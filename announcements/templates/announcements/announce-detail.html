@@ -16,33 +16,78 @@
                         </header>
                             <img class="card-img-top" src="{% static 'images/dog1.jpg' %}" alt="Card image cap"
                                  style="max-width: 463px;max-height: 289px;margin-top: 10px">
-                        <div class="labeled-input" style="margin-top:10px">
-                            <label for="selectTheAnimal">Select The Animal</label>
-                            <input type="text" id="selectTheAnimal">
+                        <div style="display: flex; align-items: flex-start; flex-direction: column;">
+                            <div class="labeled-input" style="margin-top:10px">
+                            <li type="text" id="selectTheAnimal">Cat / Dog: </li>
                         </div>
-                        <div class="labeled-input" style="margin-top:10px">
-                            <label for="gender">Gender</label>
-                            <input type="text" id="gender">
+                            <div class="labeled-input" style="margin-top:10px">
+                            <li type="text" id="gender">Gender:</li>
                         </div>
-                        <div class="labeled-input" style="margin-top:10px">
-                            <label for="selectTheAnimal">Phone</label>
-                            <input type="text" id="selectTheAnimal">
+                            <div style="margin-top:10px">
+                            <li type="text" id="selectTheAnimal">Phone Number:</li>
                         </div>
-                        <div class="labeled-input"style="margin-top:10px">
-                            <label for="describeThePet">Describe the pet</label>
-                            <input type="text" id="describeThePet">
+                            <div style="margin-top:10px">
+                            <li type="text" id="describeThePet"> Description: </li>
                         </div>
-                        <div class="labeled-input"style="margin-top:10px">
-                            <label for="w3review">More Info</label>
-                            <textarea id="w3review" name="w3review" rows="4" cols="50" style="height:100px"></textarea>
-
+                            <div style="margin-top:10px">
+                            <li id="w3review" name="w3review" rows="4" cols="50" style="height:100px">More Information:</li>
                         </div>
-                        <div class="labeled-input"style="margin-top:10px">
-                            <label for="adressFounded">Adress</label>
-                            <textarea id="adressFounded" name="w3review" rows="4" cols="50" style="height:100px"></textarea>
+                            <div style="margin-top:10px">
+                            <li id="adressFounded" name="w3review" rows="4" cols="50" style="height:100px">Address: </li>
+                        </div>
                         </div>
                     </div>
                 </aside>
+                <div class="blog-post-comments">
+                            <header><h3>Comments</h3></header>
+                            <ul class="comments">
+                                <li class="comment">
+                                    <div class="inner">
+                                        <figure><a href="petloverProfile.html"><img src="images/profil.jpg" alt="dummy"></a></figure>
+                                        <header>
+                                            <h6><a href="petloverProfile.html">Mahir & Mantar</a> <time datetime="2022-03-28">March 28, 2022</time></h6>
+
+                                        </header>
+                                        <p>Text</p>
+                                    </div>
+
+                                </li>
+                                <li class="comment">
+                                    <div class="inner">
+                                        <figure><a href="businesProfile.html"><img src="images/profil.jpg" alt="dummy"></a></figure>
+                                        <header>
+                                            <h6><a href="businesProfile.html">Atakan Duduoğlu</a> <time datetime="2017-02-14">December 04, 2022</time></h6>
+
+                                        </header>
+                                        <p>Comment Text</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="add-comment">
+                            <header><h3>Leave a Comment</h3></header>
+                            <form action="/" class="clearfix">
+                                <div class="fields-grid clearfix">
+                                    <div class="fields-grid-ele">
+
+                                    </div>
+                                    <div class="fields-grid-ele">
+
+                                    </div>
+                                    <div class="fields-grid-ele">
+
+                                    </div>
+                                    <div class="fields-grid-ele">
+
+                                    </div>
+                                </div>
+                                <div class="labeled-input">
+
+                                    <textarea id="addComment005"></textarea>
+                                </div>
+                                <button class="btn btn-green btn-small">Submit</button>
+                            </form>
+                        </div>
             </div>
         </div>
     </div>
