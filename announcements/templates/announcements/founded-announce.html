@@ -12,6 +12,7 @@
                         <div class="card-deck">
 
                             {% for f in founded %}
+                                {% if f.status == "Active" %}
                                 <a href="{% url 'founded-announce-detail' f.id %}">
                                     <div class="card golge" style="width: 18rem;">
                                         <img class="card-img-top" src="{{ f.pet_image.url }}" alt="Card image cap">
@@ -26,10 +27,30 @@
                                             {% if request.user.is_authenticated %}
                                                 <li class="list-group-item">{{ f.phone }}</li>
                                             {% endif %}
+                                            <li class="list-group-item">Status: {{ f.status }}</li>
                                         </ul>
 
                                     </div>
                                 </a>
+                                {% else %}
+                                    <div class="card golge" style="width: 18rem;">
+                                        <img class="card-img-top" src="{{ f.pet_image.url }}" alt="Card image cap">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ f.title }}</h5>
+                                            <p class="card-text">{{ f.info|slice:"50" }}</p>
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">{{ f.type }}</li>
+                                            <li class="list-group-item">{{ f.gender }}</li>
+                                            <li class="list-group-item">City: {{ f.city }}</li>
+                                            {% if request.user.is_authenticated %}
+                                                <li class="list-group-item">{{ f.phone }}</li>
+                                            {% endif %}
+                                            <li class="list-group-item">Status: {{ f.status }}</li>
+                                        </ul>
+
+                                    </div>
+                                {% endif %}
                             {% endfor %}
 
                         </div>

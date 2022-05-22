@@ -13,7 +13,28 @@
                         <div class="card-deck">
 
                             {% for a in adopt %}
-                                <a href="{% url 'adopt-announce-detail' a.id %}">
+                                {% if a.status == "Active" %}
+                                    <a href="{% url 'adopt-announce-detail' a.id %}">
+                                        <div class="card golge" style="width: 18rem;">
+
+                                            <img class="card-img-top" src="{{ a.pet_image.url }}" alt="Card image cap">
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ a.title }}</h5>
+                                                <p class="card-text">{{ a.info|slice:"50" }}</p>
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">{{ a.type }}</li>
+                                                <li class="list-group-item">{{ a.gender }}</li>
+                                                <li class="list-group-item">{{ a.city }}</li>
+                                                {% if request.user.is_authenticated %}
+                                                    <li class="list-group-item">{{ a.phone }}</li>
+                                                {% endif %}
+                                                <li class="list-group-item">Status: {{ a.status }}</li>
+                                            </ul>
+
+                                        </div>
+                                    </a>
+                                {% else %}
                                     <div class="card golge" style="width: 18rem;">
 
                                         <img class="card-img-top" src="{{ a.pet_image.url }}" alt="Card image cap">
@@ -28,10 +49,11 @@
                                             {% if request.user.is_authenticated %}
                                                 <li class="list-group-item">{{ a.phone }}</li>
                                             {% endif %}
+                                            <li class="list-group-item">Status: {{ a.status }}</li>
                                         </ul>
 
                                     </div>
-                                </a>
+                                {% endif %}
                             {% endfor %}
 
                         </div>

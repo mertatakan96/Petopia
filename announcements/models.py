@@ -1,6 +1,6 @@
 import uuid
 from django.db import models
-
+from users.models import User
 
 GENDER_CHOICES = (
         ('Male', 'Male'),
@@ -31,7 +31,20 @@ class FoundedPet(models.Model):
         return str(self.title) + " - " + str(self.city)
 
     class Meta:
-        ordering = ['-created']
+        ordering = ['status', '-created']
+
+class FoundedPetComment(models.Model):
+    owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
+    announce = models.ForeignKey(FoundedPet, null=True, on_delete=models.CASCADE)
+    body = models.TextField(max_length=120, null=True)
+    created = models.DateTimeField(auto_now_add=True)
+    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
+
+    def __str__(self):
+        return str(self.announce) + " - " + str(self.owner)
+
+    class Meta:
+        ordering = ['created']
 
 class AdoptPet(models.Model):
     pet_image = models.ImageField(null=True, upload_to='announcements/adopt')
@@ -49,7 +62,20 @@ class AdoptPet(models.Model):
         return str(self.title) + " - " + str(self.city)
 
     class Meta:
-        ordering = ['-created']
+        ordering = ['status', '-created']
+
+class AdoptPetComment(models.Model):
+    owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
+    announce = models.ForeignKey(AdoptPet, null=True, on_delete=models.CASCADE)
+    body = models.TextField(max_length=120, null=True)
+    created = models.DateTimeField(auto_now_add=True)
+    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
+
+    def __str__(self):
+        return str(self.announce) + " - " + str(self.owner)
+
+    class Meta:
+        ordering = ['created']
 
 class LostPet(models.Model):
     pet_image = models.ImageField(null=True, upload_to='announcements/lost')
@@ -67,7 +93,20 @@ class LostPet(models.Model):
         return str(self.title) + " - " + str(self.city)
 
     class Meta:
-        ordering = ['-created']
+        ordering = ['status', '-created']
+
+class LostPetComment(models.Model):
+    owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
+    announce = models.ForeignKey(LostPet, null=True, on_delete=models.CASCADE)
+    body = models.TextField(max_length=120, null=True)
+    created = models.DateTimeField(auto_now_add=True)
+    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
+
+    def __str__(self):
+        return str(self.announce) + " - " + str(self.owner)
+
+    class Meta:
+        ordering = ['created']
 
 
 
