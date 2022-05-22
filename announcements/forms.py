@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django import forms
-from .models import FoundedPet, AdoptPet, LostPet
+from .models import FoundedPet, AdoptPet, LostPet, FoundedPetComment, AdoptPetComment, LostPetComment
 
 class FoundedPetCreationForm(ModelForm):
     class Meta:
@@ -28,3 +28,18 @@ class LostPetCreationForm(ModelForm):
             'type': forms.Select(attrs={'class': 'form-control', 'style': "width:370px"}),
             'gender': forms.Select(attrs={'class': 'form-control', 'style': "width:370px"}),
         }
+
+class FoundedCommentForm(ModelForm):
+    class Meta:
+        model = FoundedPetComment
+        fields = ['body']
+
+class AdoptCommentForm(ModelForm):
+    class Meta:
+        model = AdoptPetComment
+        fields = ['body']
+
+class LostCommentForm(ModelForm):
+    class Meta:
+        model = LostPetComment
+        fields = ['body']
