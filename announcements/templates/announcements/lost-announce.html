@@ -10,122 +10,36 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card-deck">
-                            <div class="card golge" style="width: 18rem;">
-                                <img class="card-img-top" src="{% static 'images/dog1.jpg' %}" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Information of Pet</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the bulk of the card's content.</p>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Cat / Dog</li>
-                                    <li class="list-group-item">Gender</li>
-                                    <li class="list-group-item">City</li>
-                                    <li class="list-group-item">Phone No</li>
-                                </ul>
 
-                            </div>
-                            <div class="card golge" style="width: 18rem;">
-                                <img class="card-img-top" src="{% static 'images/dog1.jpg' %}" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Information of Pet</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the bulk of the card's content.</p>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Cat / Dog</li>
-                                    <li class="list-group-item">Gender</li>
-                                    <li class="list-group-item">City</li>
-                                    <li class="list-group-item">Phone No</li>
-                                </ul>
 
-                            </div>
-                            <div class="card golge" style="width: 18rem;">
-                                <img class="card-img-top" src="{% static 'images/dog1.jpg' %}" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Information of Pet</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the bulk of the card's content.</p>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Cat / Dog</li>
-                                    <li class="list-group-item">Gender</li>
-                                    <li class="list-group-item">City</li>
-                                    <li class="list-group-item">Phone No</li>
-                                </ul>
+                            {% for l in lost %}
+                                <a href="{% url 'lost-announce-detail' l.id %}">
+                                    <div class="card golge" style="width: 18rem;">
+                                        <img class="card-img-top" src="{{ l.pet_image.url }}" alt="Card image cap">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ l.title }}</h5>
+                                            <p class="card-text">{{ l.info|slice:"50" }}</p>
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">{{ l.type }}</li>
+                                            <li class="list-group-item">{{ l.gender }}</li>
+                                            <li class="list-group-item">{{ l.city }}</li>
+                                            {% if request.user.is_authenticated %}
+                                                <li class="list-group-item">{{ l.phone }}</li>
+                                            {% endif %}
+                                        </ul>
 
-                            </div>
+                                    </div>
+                                </a>
+                            {% endfor %}
 
                         </div>
                     </div>
                 </div>
-                <div class="row" style="margin-top:30px">
-                    <div class="col-md-12">
-                        <div class="card-deck">
-                            <div class="card" style="width: 18rem;">
-                                <img class="card-img-top" src="{% static 'images/dog1.jpg' %}" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Information of Pet</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the bulk of the card's content.</p>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Cat / Dog</li>
-                                    <li class="list-group-item">Gender</li>
-                                    <li class="list-group-item">City</li>
-                                    <li class="list-group-item">Phone No</li>
-                                </ul>
 
-                            </div>
-                            <div class="card" style="width: 18rem;">
-                                <img class="card-img-top" src="{% static 'images/dog1.jpg' %}" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Information of Pet</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the bulk of the card's content.</p>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Cat / Dog</li>
-                                    <li class="list-group-item">Gender</li>
-                                    <li class="list-group-item">City</li>
-                                    <li class="list-group-item">Phone No</li>
-                                </ul>
+                {#        pagination                #}
+                {% include 'pagination.html' with queryset=lost custom_range=custom_range search_query=search_query %}
 
-                            </div>
-                            <div class="card" style="width: 18rem;">
-                                <img class="card-img-top" src="{% static 'images/dog1.jpg' %}" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Information of Pet</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the bulk of the card's content.</p>
-                                </div>
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Cat / Dog</li>
-                                    <li class="list-group-item">Gender</li>
-                                    <li class="list-group-item">City</li>
-                                    <li class="list-group-item">Phone No</li>
-                                </ul>
-
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <nav aria-label="..." style="margin-top:50px">
-                    <ul class="pagination">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">Previous</a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item active">
-                            <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                        </li>
-                    </ul>
-                </nav>
             </div>
             <!-- create announcement -->
             <div class="col-md-5">

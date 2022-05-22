@@ -10,39 +10,64 @@ TYPE_CHOICES = (
         ('Dog', 'Dog'),
         ('Cat', 'Cat'),
     )
+STATUS = (
+        ('Active', 'Active'),
+        ('Closed', 'Closed'),
+    )
 
 class FoundedPet(models.Model):
     pet_image = models.ImageField(null=True, upload_to='announcements/founded')
     title = models.CharField(max_length=50, null=True)
     type = models.CharField(max_length=20, choices=TYPE_CHOICES, null=True)
     gender = models.CharField(max_length=20, choices=GENDER_CHOICES, null=True)
+    status = models.CharField(max_length=20, choices=STATUS, null=True, default='Active')
     phone = models.CharField(max_length=11, null=True)
     info = models.TextField(max_length=750, null=True)
-    address = models.TextField(max_length=500, null=True)
+    city = models.CharField(max_length=50, null=True)
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
+
+    def __str__(self):
+        return str(self.title) + " - " + str(self.city)
+
+    class Meta:
+        ordering = ['-created']
 
 class AdoptPet(models.Model):
     pet_image = models.ImageField(null=True, upload_to='announcements/adopt')
     title = models.CharField(max_length=50, null=True)
     type = models.CharField(max_length=20, choices=TYPE_CHOICES, null=True)
     gender = models.CharField(max_length=20, choices=GENDER_CHOICES, null=True)
+    status = models.CharField(max_length=20, choices=STATUS, null=True, default='Active')
     phone = models.CharField(max_length=11, null=True)
     info = models.TextField(max_length=750, null=True)
-    address = models.TextField(max_length=500, null=True)
+    city = models.CharField(max_length=50, null=True)
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
+
+    def __str__(self):
+        return str(self.title) + " - " + str(self.city)
+
+    class Meta:
+        ordering = ['-created']
 
 class LostPet(models.Model):
     pet_image = models.ImageField(null=True, upload_to='announcements/lost')
     title = models.CharField(max_length=50, null=True)
     type = models.CharField(max_length=20, choices=TYPE_CHOICES, null=True)
+    status = models.CharField(max_length=20, choices=STATUS, null=True, default='Active')
     gender = models.CharField(max_length=20, choices=GENDER_CHOICES, null=True)
     phone = models.CharField(max_length=11, null=True)
     info = models.TextField(max_length=750, null=True)
-    address = models.TextField(max_length=500, null=True)
+    city = models.CharField(max_length=50, null=True)
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
+
+    def __str__(self):
+        return str(self.title) + " - " + str(self.city)
+
+    class Meta:
+        ordering = ['-created']
 
 
 

@@ -10,30 +10,33 @@
             <div class="blog-page">
                 <aside class="cardd radius-15 sidebar">
                     <div class="widget-about widget">
-                        <a style="display: flex" href=""><b style="font-size: 28px;margin-top: -35px;color: black;margin-left: -19px;">⇐</b></a>
+                        <a style="display: flex" href="{% url 'founded-announce' %}"><b style="font-size: 28px;margin-top: -35px;color: black;margin-left: -19px;">⇐</b></a>
                         <header>
-                            <h4 style="margin-bottom: -25px;">Title</h4>
+                            <h4 style="margin-bottom: -25px;">{{ found.title }}</h4>
                         </header>
-                            <img class="card-img-top" src="{% static 'images/dog1.jpg' %}" alt="Card image cap"
+                            <img class="card-img-top" src="{{ found.pet_image.url }}" alt="Card image cap"
                                  style="max-width: 463px;max-height: 289px;margin-top: 10px">
                         <div style="display: flex; align-items: flex-start; flex-direction: column;">
                             <div class="labeled-input" style="margin-top:10px">
-                            <li type="text" id="selectTheAnimal">Cat / Dog: </li>
+                            <li>Type: {{ found.type }}</li>
                         </div>
                             <div class="labeled-input" style="margin-top:10px">
-                            <li type="text" id="gender">Gender:</li>
+                            <li>Gender: {{ found.gender }}</li>
+                        </div>
+                            {% if request.user.is_authenticated %}
+                            <div style="margin-top:10px">
+                            <li>Phone Number: {{ found.phone }}</li>
+                        </div>
+                            {% else %}
+                            <div style="margin-top:10px">
+                            <li><a href="{% url 'login' %}?next={{ request.path }}">Please login to see phone number</a></li>
+                        </div>
+                            {% endif %}
+                            <div style="margin-top:10px">
+                            <li style="margin-top: 10px">Location: {{ found.city }}</li>
                         </div>
                             <div style="margin-top:10px">
-                            <li type="text" id="selectTheAnimal">Phone Number:</li>
-                        </div>
-                            <div style="margin-top:10px">
-                            <li type="text" id="describeThePet"> Description: </li>
-                        </div>
-                            <div style="margin-top:10px">
-                            <li id="w3review" name="w3review" rows="4" cols="50" style="height:100px">More Information:</li>
-                        </div>
-                            <div style="margin-top:10px">
-                            <li id="adressFounded" name="w3review" rows="4" cols="50" style="height:100px">Address: </li>
+                            <li>Information: {{ found.info }}</li>
                         </div>
                         </div>
                     </div>
