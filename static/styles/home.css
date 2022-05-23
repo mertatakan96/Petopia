@@ -2963,9 +2963,8 @@ a.view-item,.contact-options li a,.listing-actions a,.listing-actions .fa,.listi
 	z-index:50
 }
 .category-thumbs .cat-thumb .cat-caption {
-	left:72px;
 	bottom:-20px;
-	width:58%;
+	width:88%;
 	position:absolute;
 	z-index:28;
 	height: 33%;

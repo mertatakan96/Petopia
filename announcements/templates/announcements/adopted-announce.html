@@ -15,13 +15,14 @@
                             {% for a in adopt %}
                                 {% if a.status == "Active" %}
                                     <a href="{% url 'adopt-announce-detail' a.id %}">
-                                        <div class="card golge" style="width: 18rem;">
+                                        <div class="card golge" style="width: 18rem;max-width: 18rem;height: 46rem;max-height: 46rem;min-height: 46rem;min-width: 18rem; margin-bottom: 25px;">
 
-                                            <img class="card-img-top" src="{{ a.pet_image.url }}" alt="Card image cap">
+                                            <img class="card-img-top" src="{{ a.pet_image.url }}" alt="Card image cap" style="width: 178px;height: 117px;min-height: 117px;max-width: 178px;min-width: 178px;max-height: 117px;">
                                             <div class="card-body">
                                                 <h5 class="card-title">{{ a.title }}</h5>
                                                 <p class="card-text">{{ a.info|slice:"50" }}</p>
                                             </div>
+
                                             <ul class="list-group list-group-flush">
                                                 <li class="list-group-item">{{ a.type }}</li>
                                                 <li class="list-group-item">{{ a.gender }}</li>
@@ -33,12 +34,14 @@
                                             </ul>
 
                                         </div>
+
                                     </a>
                                 {% else %}
-                                    <div class="card golge" style="width: 18rem;">
+                                    <div class="card golge" style="width: 18rem;max-width: 18rem;height: 46rem;max-height: 46rem;min-height: 46rem;min-width: 18rem; margin-bottom: 25px;">
 
-                                        <img class="card-img-top" src="{{ a.pet_image.url }}" alt="Card image cap">
+                                        <img class="card-img-top" src="{{ a.pet_image.url }}" alt="Card image cap" style="width: 178px;height: 117px;min-height: 117px;max-width: 178px;min-width: 178px;max-height: 117px;">
                                         <div class="card-body">
+
                                             <h5 class="card-title">{{ a.title }}</h5>
                                             <p class="card-text">{{ a.info|slice:"50" }}</p>
                                         </div>
@@ -66,15 +69,18 @@
             </div>
 
             <!-- create announcement -->
+
             <div class="col-md-5">
                 <div class="blog-page">
                     <aside class="cardd radius-15 sidebar">
                         <div class="widget-about widget">
+
                             <header>
                                 <h4>Share A Adopted Pet</h4>
                             </header>
+
                             <img src="{% static 'images/petcircle.jpg' %}" id="icon" alt="User Icon"
-                                 style="border-radius: 50%;margin-top:10px;max-width: 60%;"/>
+                                 style="border-radius: 50%;margin-top:10px;max-width: 40%;"/>
 
                             <form method="post" action="" enctype="multipart/form-data">
                                 {% csrf_token %}

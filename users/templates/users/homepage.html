@@ -70,7 +70,7 @@
                                     {% for forum in forums %}
                                     <tr>
 
-                                        <td><a href="{% url 'forum-detail' forum.id %}">{{ forum.title|slice:"35" }}</a>
+                                        <td style="text-align-last: start;"><a style="color: black" href="{% url 'forum-detail' forum.id %}">{{ forum.title|slice:"35" }}</a>
                                         </td>
                                         <td>{{ forum.forumcomment_set.count }}</td>
                                     </tr>
