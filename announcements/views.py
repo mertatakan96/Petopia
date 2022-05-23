@@ -5,6 +5,7 @@ from .utils import paginateAdopts, paginateLosts, paginateFoundeds
 
 
 def adopt_page(request):
+    profile = request.user
     form = AdoptPetCreationForm()
     adopt = AdoptPet.objects.all()
 
@@ -17,10 +18,11 @@ def adopt_page(request):
             adopt.save()
             return redirect('adopt-announce')
 
-    context = {'form': form, 'adopt': adopt}
+    context = {'form': form, 'adopt': adopt, 'profile': profile}
     return render(request, 'announcements/adopted-announce.html', context)
 
 def founded_page(request):
+    profile = request.user
     form = FoundedPetCreationForm()
     founded = FoundedPet.objects.all()
 
@@ -33,10 +35,11 @@ def founded_page(request):
             founded.save()
             return redirect('founded-announce')
 
-    context = {'form': form, 'founded': founded}
+    context = {'form': form, 'founded': founded, 'profile': profile}
     return render(request, 'announcements/founded-announce.html', context)
 
 def lost_page(request):
+    profile = request.user
     form = LostPetCreationForm()
     lost = LostPet.objects.all()
 
@@ -49,23 +52,26 @@ def lost_page(request):
             lost.save()
             return redirect('lost-announce')
 
-    context = {'form': form, 'lost': lost}
+    context = {'form': form, 'lost': lost, 'profile': profile}
     return render(request, 'announcements/lost-announce.html', context)
 
 def adopt_announce_page(request, pk):
+    profile = request.user
     adopt = AdoptPet.objects.get(id=pk)
 
-    context = {'adopt': adopt}
+    context = {'adopt': adopt, 'profile': profile}
     return render(request, 'announcements/adopt-detail.html', context)
 
 def founded_announce_page(request, pk):
+    profile = request.user
     found = FoundedPet.objects.get(id=pk)
 
-    context = {'found': found}
+    context = {'found': found, 'profile': profile}
     return render(request, 'announcements/founded-detail.html', context)
 
 def lost_announce_page(request, pk):
+    profile = request.user
     lost = LostPet.objects.get(id=pk)
 
-    context = {'lost': lost}
+    context = {'lost': lost, 'profile': profile}
     return render(request, 'announcements/lost-detail.html', context)
