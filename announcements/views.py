@@ -18,7 +18,7 @@ def adopt_page(request):
             adopt.save()
             return redirect('adopt-announce')
 
-    context = {'form': form, 'adopt': adopt, 'profile': profile}
+    context = {'form': form, 'adopt': adopt, 'profile': profile, 'custom_range': custom_range}
     return render(request, 'announcements/adopted-announce.html', context)
 
 def founded_page(request):
@@ -35,7 +35,7 @@ def founded_page(request):
             founded.save()
             return redirect('founded-announce')
 
-    context = {'form': form, 'founded': founded, 'profile': profile}
+    context = {'form': form, 'founded': founded, 'profile': profile, 'custom_range': custom_range}
     return render(request, 'announcements/founded-announce.html', context)
 
 def lost_page(request):
@@ -52,7 +52,7 @@ def lost_page(request):
             lost.save()
             return redirect('lost-announce')
 
-    context = {'form': form, 'lost': lost, 'profile': profile}
+    context = {'form': form, 'lost': lost, 'profile': profile, 'custom_range': custom_range}
     return render(request, 'announcements/lost-announce.html', context)
 
 def adopt_announce_page(request, pk):
