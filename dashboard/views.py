@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from users.models import User, Pet
 from forum.models import Forum
@@ -80,5 +80,74 @@ def admin_dashboard_lost(request):
     return render(request, 'dashboard/dashboard-lost.html', context)
 
 # @login_required(login_url='login')
-def admin_dashboard_announce_list(request):
-    return render(request, 'dashboard/dashboard-list-announce.html')
+def admin_dashboard_delete_user(request, pk):
+    profile = request.user
+    user = User.objects.get(user_id=pk)
+
+    if request.method == 'POST':
+        user.delete()
+        return redirect('admin-dashboard')
+
+    context = {'profile': profile, 'object': user}
+    return render(request, 'dashboard/delete-form.html', context)
+
+# @login_required(login_url='login')
+def admin_dashboard_delete_forum(request, pk):
+    profile = request.user
+    forum = Forum.objects.get(id=pk)
+
+    if request.method == 'POST':
+        forum.delete()
+        return redirect('admin-dashboard')
+
+    context = {'profile': profile, 'object': forum}
+    return render(request, 'dashboard/delete-form.html', context)
+
+# @login_required(login_url='login')
+def admin_dashboard_delete_blog(request, pk):
+    profile = request.user
+    blog = Blog.objects.get(id=pk)
+
+    if request.method == 'POST':
+        blog.delete()
+        return redirect('admin-dashboard')
+
+    context = {'profile': profile, 'object': blog}
+    return render(request, 'dashboard/delete-form.html', context)
+
+# @login_required(login_url='login')
+def admin_dashboard_delete_adopted(request, pk):
+    profile = request.user
+    adopted = AdoptPet.objects.get(id=pk)
+
+    if request.method == 'POST':
+        adopted.delete()
+        return redirect('admin-dashboard')
+
+    context = {'profile': profile, 'object': adopted}
+    return render(request, 'dashboard/delete-form.html', context)
+
+# @login_required(login_url='login')
+def admin_dashboard_delete_founded(request, pk):
+    profile = request.user
+    founded = FoundedPet.objects.get(id=pk)
+
+    if request.method == 'POST':
+        founded.delete()
+        return redirect('admin-dashboard')
+
+    context = {'profile': profile, 'object': founded}
+    return render(request, 'dashboard/delete-form.html', context)
+
+# @login_required(login_url='login')
+def admin_dashboard_delete_lost(request, pk):
+    profile = request.user
+    lost = LostPet.objects.get(id=pk)
+
+    if request.method == 'POST':
+        lost.delete()
+        return redirect('admin-dashboard')
+
+    context = {'profile': profile, 'object': lost}
+    return render(request, 'dashboard/delete-form.html', context)
+

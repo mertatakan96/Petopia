@@ -12,6 +12,13 @@ urlpatterns = [
     path('dashboard-founded/', views.admin_dashboard_founded, name="admin-dashboard-founded"),
     path('dashboard-lost/', views.admin_dashboard_lost, name="admin-dashboard-lost"),
 
-    path('dashboard-announce/', views.admin_dashboard_announce_list, name="admin-dashboard-announce")
+    path('dashboard-delete-user/<str:pk>', views.admin_dashboard_delete_user, name="admin-dashboard-delete-user"),
+    path('dashboard-delete-blog/<str:pk>', views.admin_dashboard_delete_blog, name="admin-dashboard-delete-blog"),
+    path('dashboard-delete-forum/<str:pk>', views.admin_dashboard_delete_forum, name="admin-dashboard-delete-forum"),
+    path('dashboard-delete-adopted/<str:pk>', views.admin_dashboard_delete_adopted, name="admin-dashboard-delete-adopted"),
+    path('dashboard-delete-founded/<str:pk>', views.admin_dashboard_delete_founded, name="admin-dashboard-delete-founded"),
+    path('dashboard-delete-lost/<str:pk>', views.admin_dashboard_delete_lost, name="admin-dashboard-delete-lost"),
+
+
 
 ]

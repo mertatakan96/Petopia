@@ -13,7 +13,7 @@
                         {% for pl in petlovers %}
                         <li class="list-group-item" style="display: flex;flex-wrap: nowrap;justify-content: space-between;">
                             {{ pl.username }}
-                            <button class="btn btn-danger" style="font-size: initial;">delete</button>
+                            <a href="{% url 'admin-dashboard-delete-user' pl.user_id %}"><button class="btn btn-danger" style="font-size: initial;">delete</button></a>
                         </li>
                         {% endfor %}
 

@@ -3,48 +3,52 @@
 
 
 {% block content %}
-    <div class="card" style="background-color: #ffc0cb00;display: flex;justify-content: flex-start;flex-direction: row;align-items: flex-start;">
+    <div class="card"
+         style="background-color: #ffc0cb00;display: flex;justify-content: flex-start;flex-direction: row;align-items: flex-start;">
 
         {% include 'sidebar-dashboard.html' %}
 
         <div class="card" style="width: 130rem;margin-left: 30px;margin-top: 27px;border-radius: 1%;height: 68rem;">
-                <div class="card-body">
-                    <ul class="list-group" style="font-size: initial; margin-top: 10px">
+            <div class="card-body">
+                <ul class="list-group" style="font-size: initial; margin-top: 10px">
 
-                        {% for adopt in adopted %}
-                        <li class="list-group-item" style="display: flex;flex-wrap: nowrap;justify-content: space-between;">
-                            {{ adopt.title }}
+                    {% for adopt in adopted %}
+                        <li class="list-group-item"
+                            style="display: flex;flex-wrap: nowrap;justify-content: space-between;">
+                            {{ adopt.title }} - ({{ adopt.status }})
                             {% if adopt.status != 'Closed' %}
-                            <button class="btn btn-success" style="font-size: initial;">close</button>
+                                <button class="btn btn-success" style="font-size: initial;">close</button>
                             {% endif %}
-                            <button class="btn btn-danger" style="font-size: initial;">delete</button>
+                            <a href="{% url 'admin-dashboard-delete-adopted' adopt.id %}"><button class="btn btn-danger" style="font-size: initial;">delete</button></a>
                         </li>
-                        {% endfor %}
+                    {% endfor %}
 
+                </ul>
+
+
+                <!-- pagination -->
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </li>
                     </ul>
-                        <!-- pagination -->
-                    <nav aria-label="Page navigation example">
-                            <ul class="pagination">
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                        <span class="sr-only">Next</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
+                </nav>
 
-                </div>
             </div>
+        </div>
 
     </div>
 
