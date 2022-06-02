@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'announcements.apps.AnnouncementsConfig',
     'maps.apps.MapsConfig',
+    'dashboard.apps.DashboardConfig',
 
     # Third-Part
 

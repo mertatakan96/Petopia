@@ -206,11 +206,4 @@ def edit_pet(request, pk):
 def forget_password(request):
     return render(request, 'users/forget-password-form.html')
 
-def admin_panel(request):
-    return render(request, 'users/admin-panel.html')
 
-def admin_panel_detail(request):
-    return render(request, 'users/admin-panel-detail.html')
-
-def admin_panel_announcement(request):
-    return render(request, 'users/admin-panel-announce.html')
