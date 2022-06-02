@@ -4,6 +4,7 @@ from users.models import User, Pet
 from forum.models import Forum
 from blog.models import Blog
 from announcements.models import AdoptPet, FoundedPet, LostPet
+from announcements.forms import FoundedPetEditForm, AdoptPetEditForm, LostPetEditForm
 
 # @login_required(login_url='login')
 def admin_dashboard(request):
@@ -150,4 +151,49 @@ def admin_dashboard_delete_lost(request, pk):
 
     context = {'profile': profile, 'object': lost}
     return render(request, 'dashboard/delete-form.html', context)
+
+# @login_required(login_url='login')
+def admin_dashboard_close_adopted(request, pk):
+    profile = request.user
+    adopted = AdoptPet.objects.get(id=pk)
+    form = AdoptPetEditForm(instance=adopted)
+
+    if request.method == 'POST':
+        form = AdoptPetEditForm(request.POST, instance=adopted)
+        if form.is_valid():
+            form.save()
+            return redirect('admin-dashboard')
+
+    context = {'profile': profile, 'object': adopted, 'form':form}
+    return render(request, 'dashboard/status-form.html', context)
+
+# @login_required(login_url='login')
+def admin_dashboard_close_founded(request, pk):
+    profile = request.user
+    founded = FoundedPet.objects.get(id=pk)
+    form = FoundedPetEditForm(instance=founded)
+
+    if request.method == 'POST':
+        form = AdoptPetEditForm(request.POST, instance=founded)
+        if form.is_valid():
+            form.save()
+            return redirect('admin-dashboard')
+
+    context = {'profile': profile, 'object': founded, 'form': form}
+    return render(request, 'dashboard/status-form.html', context)
+
+# @login_required(login_url='login')
+def admin_dashboard_close_lost(request, pk):
+    profile = request.user
+    lost = LostPet.objects.get(id=pk)
+    form = AdoptPetEditForm(instance=lost)
+
+    if request.method == 'POST':
+        form = AdoptPetEditForm(request.POST, instance=lost)
+        if form.is_valid():
+            form.save()
+            return redirect('admin-dashboard')
+
+    context = {'profile': profile, 'object': lost, 'form': form}
+    return render(request, 'dashboard/status-form.html', context)
 
