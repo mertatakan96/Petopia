@@ -13,14 +13,19 @@
 
                         {% for lost in lost %}
                         <li class="list-group-item" style="display: flex;flex-wrap: nowrap;justify-content: space-between;">
-                            {{ lost.title }} - ({{ lost.status }})
-
-                            <a href="{% url 'admin-dashboard-close-lost' lost.id %}">
+                            <div>
+                                {{ lost.title }} - ({{ lost.status }})
+                            </div>
+                            <div>
+                                <a href="{% url 'admin-dashboard-close-lost' lost.id %}">
                                     <button class="btn btn-success" style="font-size: initial;">Status</button>
                                 </a>
+                                <a href="{% url 'admin-dashboard-delete-lost' lost.id %}">
+                                    <button class="btn btn-danger" style="font-size: initial;">Delete</button>
+                                </a>
+                            </div>
 
-                            <a href="{% url 'admin-dashboard-delete-lost' lost.id %}"><button class="btn btn-danger" style="font-size: initial;">Delete</button></a>
-                        </li>
+                            </li>
                         {% endfor %}
 
                     </ul>

@@ -14,7 +14,7 @@
                         {% for forum in forums %}
                         <li class="list-group-item" style="display: flex;flex-wrap: nowrap;justify-content: space-between;">
                             {{ forum.title }}
-                            <a href="{% url 'admin-dashboard-delete-forum' forum.id %}"><button class="btn btn-danger" style="font-size: initial;">delete</button></a>
+                            <a href="{% url 'admin-dashboard-delete-forum' forum.id %} " style="max-width: 1100px"><button class="btn btn-danger" style="font-size: initial;">delete</button></a>
                         </li>
                         {% endfor %}
 
