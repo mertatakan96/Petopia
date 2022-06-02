@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="card mx-auto" style="width: 50rem; margin-top: 20rem">
+        <div class="card-body">
+            <h5 class="card-title">Are you sure to close announcement <b>({{ object }})</b>?</h5>
+            <form class="form" action="" method="post">
+                    {% csrf_token %}
+                {% for field in form %}
+                    <label>{{ field.label }}</label>
+                    <br>
+                    {{ field }}
+                {% endfor %}
+                    <input type="submit" class="btn btn-warning" value="Confirm">
+                </form>
+
+            <a href="{% url 'admin-dashboard' %}"><input type="submit" class="btn btn-grey" value="Close"></a>
+        </div>
+    </div>
+
+{% endblock %}

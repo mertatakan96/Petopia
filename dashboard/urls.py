@@ -19,6 +19,10 @@ urlpatterns = [
     path('dashboard-delete-founded/<str:pk>', views.admin_dashboard_delete_founded, name="admin-dashboard-delete-founded"),
     path('dashboard-delete-lost/<str:pk>', views.admin_dashboard_delete_lost, name="admin-dashboard-delete-lost"),
 
+    path('dashboard-close-adopted/<str:pk>', views.admin_dashboard_close_adopted, name="admin-dashboard-close-adopted"),
+    path('dashboard-close-founded/<str:pk>', views.admin_dashboard_close_founded, name="admin-dashboard-close-founded"),
+    path('dashboard-close-lost/<str:pk>', views.admin_dashboard_close_lost, name="admin-dashboard-close-lost"),
+
 
 
 ]
