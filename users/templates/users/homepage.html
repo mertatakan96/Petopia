@@ -18,7 +18,7 @@
         <div class="container" style="margin-bottom:10%">
             <div class="row">
                 <div clasS="col-md-6">
-                    <div class="card radius-15" style="background:white">
+                    <div class="card radius-15" style="background: url('{% static 'images/background.png' %}')">
                         <div class="card-body" style="height:500px">
                             <div class="widget-latest-posts widget">
                                 <div class="card-title" style="display: flex;">
@@ -43,14 +43,14 @@
                                         </span>
                                 </a>
                                 {% endfor %}
-                            <a href="{% url 'blog-page' %}"><h6 type="button" style="margin-top: 18px;text-align: end;color: black">View All </h6></a>
+                            <a href="{% url 'blog-page' %}"><h6 type="button" style="margin-top: auto;text-align: end;color: black">View All </h6></a>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-md-6">
-                    <div class="card radius-15" style="background:white">
+                    <div class="card radius-15" style="background: url('{% static 'images/background.png' %}')">
                         <div class="card-body" style="height:500px">
                             <div class="card-title" style="display: flex;">
                                 <a href="{% url 'forum-page' %}">
@@ -70,7 +70,7 @@
                                     {% for forum in forums %}
                                     <tr>
 
-                                        <td><a href="{% url 'forum-detail' forum.id %}">{{ forum.title|slice:"35" }}</a>
+                                        <td style="text-align-last: start;"><a style="color: black" href="{% url 'forum-detail' forum.id %}">{{ forum.title|slice:"35" }}</a>
                                         </td>
                                         <td>{{ forum.forumcomment_set.count }}</td>
                                     </tr>
@@ -81,7 +81,7 @@
                                 </table>
 
                             </div>
-                            <a href="{% url 'forum-page' %}"><h6 type="button" style="margin-top: 18px;text-align: end;color: black">View All </h6></a>
+                            <a href="{% url 'forum-page' %}"><h6 type="button" style="margin-top: auto;text-align: end;color: black">View All </h6></a>
                         </div>
                     </div>
                 </div>
@@ -95,34 +95,34 @@
             </div>
                 <div class="inner" style="margin-top: -140px;">
                     <!-- announcements -->
-                    <div class="category-thumbs clearfix" style="margin-top: 10px;max-width: 69%;margin-left: 267px;">
+                    <div class="category-thumbs clearfix" style="max-width: 80%;display: inline-block;">
                         <div class="cat-thumb">
                             <img src="{% static 'images/lostpetnew.jpg' %}" alt="dummy" style="border-radius: 10%;">
-                            <a href="">go to category</a>
+                            <a href="{% url 'lost-announce' %}">go to category</a>
                             <div class="cat-caption">
                                 <div class="bg2" style="border-radius: 50%;">
                                     <h3 style="font-size: 16px;">Lost Anoucements</h3>
-                                    <span>2,768 Anouncements</span>
+                                    <span>{{ lost.count }} Anouncements</span>
                                 </div>
                             </div>
                         </div>
                         <div class="cat-thumb">
                             <img src="{% static 'images/adoptnew.jpg' %}" alt="dummy" style="border-radius: 10%;">
-                            <a href="">go to category</a>
+                            <a href="{% url 'adopt-announce' %}">go to category</a>
                             <div class="cat-caption">
                                 <div class="bg2" style="border-radius: 50%;">
                                     <h3 style="font-size: 16px;">Adoptment Anoucements</h3>
-                                    <span>2,768 Anouncements</span>
+                                    <span>{{ adopt.count }} Anouncements</span>
                                 </div>
                             </div>
                         </div>
                         <div class="cat-thumb">
                             <img src="{% static 'images/foundednew.jpg' %}" alt="dummy" style="border-radius: 10%;">
-                            <a href="">go to category</a>
+                            <a href="{% url 'founded-announce' %}">go to category</a>
                             <div class="cat-caption">
                                 <div class="bg2" style="border-radius: 50%;">
                                     <h3 style="font-size: 16px;">Founded Anouncements</h3>
-                                    <span>2,768 Anouncements</span>
+                                    <span>{{ founded.count }} Anouncements</span>
                                 </div>
                             </div>
                         </div>

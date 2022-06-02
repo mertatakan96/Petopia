@@ -2,7 +2,7 @@ from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
 def paginatePets(request, pets, results):
-    page = request.GET.get('page')
+    page = request.GET.get('page2')
     paginator = Paginator(pets, results)
 
     try:

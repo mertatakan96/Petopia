@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import AdoptPet, FoundedPet, LostPet
 
-# Register your models here.
+admin.site.register(AdoptPet)
+admin.site.register(FoundedPet)
+admin.site.register(LostPet)

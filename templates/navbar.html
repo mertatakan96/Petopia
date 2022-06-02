@@ -67,7 +67,7 @@
                     </li>
                 </ul>
             </div>
-            <div style="max-width: 200px;;;">
+            <div style="max-width: 200px;">
                 <a href="/"><img src="{% static 'images/logo.png' %}" alt="adspot"></a>
             </div>
             <div class="dropdown">
@@ -80,23 +80,33 @@
                                      style="border-radius: 50%;width: 40px;height: 40px; margin-top: 27px;margin-left: 13px;margin-right: -54px;">
                             {% else %}
                                 <img src="{{ profile.profile_image.url }}" id="icon" alt="User Icon"
-                                 style="border-radius: 50%;width: 40px;height: 40px;">
+                                     style="border-radius: 50%;width: 40px;height: 40px;">
                             {% endif %}
                         {% elif profile.user_type == 'business' %}
                             {% if profile.logo == '' %}
                                 <img src="{% static 'images/profiles/store-default.png' %}" id="icon" alt="User Icon"
-                                     style="border-radius: 50%;width: 40px;height: 40px; margin-top: 27px;margin-left: 13px;margin-right: -54px;">
+                                     style="border-radius: 50%;width: 40px;height: 40px;">
                             {% else %}
                                 <img src="{{ profile.logo.url }}" id="icon" alt="User Icon"
-                                 style="border-radius: 50%;width: 40px;height: 40px;">
-                        {% endif %}
+                                     style="border-radius: 50%;width: 40px;height: 40px;">
+                            {% endif %}
 
-                        {% endif %} {{ profile.username }}</b>
+                        {% endif %}
+                        {{ profile.username }}
+                    </b>
                 </button>
                 <div class="dropdown-content">
-                    <a href="{% url 'profile' %}">
-                        <b>▶ Profile</b>
-                    </a>
+
+                    {% if profile.is_superuser %}
+                        <a href="{% url 'admin-dashboard' %}">
+                            <b>▶ Dashboard</b>
+                        </a>
+
+                    {% else %}
+                        <a href="{% url 'profile' %}">
+                            <b>▶ Profile</b>
+                        </a>
+                    {% endif %}
                     <a href="{% url 'logout' %}">
                         <b>▶ Log Out</b>
                     </a>

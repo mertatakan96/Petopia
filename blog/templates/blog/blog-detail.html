@@ -9,7 +9,7 @@
                 <div class="row">
                     <!-- blog detail -->
                     <div class="col-xs-12 col-md-8">
-                        <div class="blog-posts">
+                        <div class="card radius-15">
                             <article class="blog-post">
                             {% if blog.blog_image == '' %}
                                 <figure>
@@ -24,7 +24,7 @@
                                     {% if profile == blog.owner %}
                                         <a href="{% url 'blog-edit' blog.id %}">
                                             <input value="Edit" type="button" class="btn btn-dark"
-                                                   style="border-radius: 12%;margin-left: 568px;">
+                                                   style="border-radius: 12%;margin-left: 94%;">
                                         </a>
                                     {% endif %}
                                     <h3>{{ blog.title }}</h3>
@@ -143,7 +143,7 @@
 
                     <!-- about me -->
                     <div class="col-xs-12 col-md-4">
-                        <aside class="sidebar">
+                        <aside class="sidebar card radius-15">
                             <div class="widget-about widget">
                                 <header>
                                     <h4>About Me</h4>

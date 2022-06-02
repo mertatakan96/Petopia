@@ -90,6 +90,11 @@
                                         <button type="button" style="border-radius: 10%" class="btn btn-info">Edit
                                         </button>
                                     </a>
+                                    <a>
+                                        <button type="button" style="border-radius: 10%;color: white;" class="btn btn-warning">Change Password
+                                        </button>
+                                    </a>
+
                                 </div>
 
 
@@ -236,6 +241,10 @@
                                         <button type="button" style="border-radius: 10%" class="btn btn-info">Edit
                                         </button>
                                     </a>
+                                    <a>
+                                        <button type="button" style="border-radius: 10%;color: white;" class="btn btn-warning">Change Password
+                                        </button>
+                                    </a>
                                 </div>
                             </aside>
                         </div>
@@ -245,7 +254,7 @@
                 <!-- pet sub profile -->
                 <div class="col-md-4">
                     <div class="blog-page">
-                        <aside class="cardd radius-15 sidebar" style="height: 1150px;">
+                        <aside class="cardd radius-15 sidebar" style="height: 1310px;">
                             <div class="widget-about widget">
                                 <header>
                                     <h4>Pet Sub Profile</h4>
@@ -296,7 +305,7 @@
                             </div>
                             <div>
                                 {#        pagination                #}
-                                {% include 'pagination.html' with queryset=pets custom_range=custom_range %}
+                                {% include 'pagination2.html' with queryset=pets custom_range=custom_range %}
                                 <br>
                             </div>
 
@@ -309,7 +318,7 @@
                 <!-- My Forum -->
                 <div class="col-md-4">
                     <div class="blog-page">
-                        <aside class="cardd radius-15 sidebar" style="height: 1150px;">
+                        <aside class="cardd radius-15 sidebar" style="height: 1310px;">
                             <div class="widget-about widget">
                                 <header>
                                     <h4>My Forum</h4>
@@ -317,7 +326,7 @@
                                 </header>
 
                                 {% for forum in forums %}
-                                    <div style="display: flex;">
+                                    <div style="display: flex;flex-wrap: nowrap;justify-content: space-between;">
                                         <div style="text-align: left;">
                                             <a href="{% url 'forum-detail' forum.id %}" class="latest-post">
 
@@ -326,24 +335,20 @@
                                             </span>
                                             </a>
                                         </div>
-                                        <a href="{% url 'forum-edit' forum.id %}">
+                                        <a href="{% url 'forum-edit' forum.id %}" style="margin-inline-start: auto; margin-right: 4px;">
                                         <input value="Edit" type="button" class="btn btn-info"
-                                               style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px; margin-right: 4px;">
+                                               style="border-radius: 12%;padding: 0px 10px;height: 35px;">
                                         </a>
                                         <input value="Delete" type="button" class="btn btn-danger"
-                                               style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px;">
-
+                                               style="border-radius: 12%;padding: 0px 10px;height: 35px;">
                                     </div>
                                     <br>
                                     <hr>
                                 {% endfor %}
-
                                 <hr>
                                 {#        pagination                #}
                                 {% include 'pagination.html' with queryset=forums custom_range=custom_range %}
                                 <br>
-                                <hr>
-
                             </div>
                         </aside>
                     </div>

@@ -6,6 +6,7 @@ from .forms import BusinessCreationForm, PetLoverUserCreationForm, PetCreationFo
 from .models import User
 from blog.models import Blog
 from forum.models import Forum
+from announcements.models import FoundedPet, AdoptPet, LostPet
 from .utils import paginatePets, paginateBlogs, paginateForums
 
 
@@ -13,8 +14,11 @@ def home_page(request):
     profile = request.user
     blogs = Blog.objects.all()[0:3]
     forums = Forum.objects.all()[0:9]
+    founded = FoundedPet.objects.all()
+    adopt = AdoptPet.objects.all()
+    lost = LostPet.objects.all()
 
-    context = {'blogs': blogs, 'profile': profile, 'forums': forums}
+    context = {'blogs': blogs, 'profile': profile, 'forums': forums, 'founded': founded, 'adopt': adopt, 'lost': lost}
     return render(request, 'users/homepage.html', context)
 
 def loginPage(request):
@@ -201,3 +205,5 @@ def edit_pet(request, pk):
 
 def forget_password(request):
     return render(request, 'users/forget-password-form.html')
+
+

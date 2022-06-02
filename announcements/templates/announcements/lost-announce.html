@@ -4,172 +4,106 @@
 {% block content %}
 
     <div class="container" style="margin-top:50px">
-    <div class="row">
-        <!-- announcement -->
-        <div class="col-md-7">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card-deck">
-                        <div class="card golge" style="width: 18rem;">
-                            <img class="card-img-top" src="{% static 'images/dog1.jpg' %}" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Information of Pet</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Cat / Dog</li>
-                                <li class="list-group-item">Gender</li>
-                                <li class="list-group-item">City</li>
-                                <li class="list-group-item">Phone No</li>
-                            </ul>
+        <div class="row">
+
+            <!-- announcement -->
+            <div class="col-md-7">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card-deck">
+
+                            {% for l in lost %}
+                                {% if l.status == "Active" %}
+                                    <a href="{% url 'lost-announce-detail' l.id %}">
+                                        <div class="card golge" style="width: 18rem;max-width: 18rem;height: 46rem;max-height: 46rem;min-height: 46rem;min-width: 18rem; margin-bottom: 25px;">
+
+                                            <img class="card-img-top" src="{{ l.pet_image.url }}" alt="Card image cap" style="width: 178px;height: 117px;min-height: 117px;max-width: 178px;min-width: 178px;max-height: 117px;">
+                                            <div class="card-body" style="    max-height: 13rem;">
+                                                <h5 class="card-title">{{ l.title }}</h5>
+                                                <p class="card-text" style="color: black;">{{ l.info|slice:"50" }}</p>
+                                            </div>
+
+                                            <ul class="list-group list-group-flush" style="color: black;">
+                                                <li class="list-group-item">{{ l.type }}</li>
+                                                <li class="list-group-item">{{ l.gender }}</li>
+                                                <li class="list-group-item">{{ l.city }}</li>
+                                                {% if request.user.is_authenticated %}
+                                                    <li class="list-group-item">{{ l.phone }}</li>
+                                                {% endif %}
+                                                <li class="list-group-item">Status: {{ l.status }}</li>
+
+                                            </ul>
+
+                                        </div>
+
+                                    </a>
+                                {% else %}
+                                    <div class="card golge" style="width: 18rem;max-width: 18rem;height: 46rem;max-height: 46rem;min-height: 46rem;min-width: 18rem; margin-bottom: 25px;">
+
+                                            <img class="card-img-top" src="{{ l.pet_image.url }}" alt="Card image cap" style="width: 178px;height: 117px;min-height: 117px;max-width: 178px;min-width: 178px;max-height: 117px;  filter: grayscale(100%)">
+                                            <div class="card-body" style="    max-height: 13rem;">
+                                                <h5 class="card-title">{{ l.title }}</h5>
+                                                <p class="card-text" style="color: black;">{{ l.info|slice:"50" }}</p>
+                                            </div>
+
+                                            <ul class="list-group list-group-flush" style="color: black;">
+                                                <li class="list-group-item">{{ l.type }}</li>
+                                                <li class="list-group-item">{{ l.gender }}</li>
+                                                <li class="list-group-item">{{ l.city }}</li>
+                                                {% if request.user.is_authenticated %}
+                                                    <li class="list-group-item">{{ l.phone }}</li>
+                                                {% endif %}
+                                                <li class="list-group-item">Status: {{ l.status }}</li>
+
+                                            </ul>
+
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
 
                         </div>
-                        <div class="card golge" style="width: 18rem;">
-                            <img class="card-img-top" src="{% static 'images/dog1.jpg' %}" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Information of Pet</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Cat / Dog</li>
-                                <li class="list-group-item">Gender</li>
-                                <li class="list-group-item">City</li>
-                                <li class="list-group-item">Phone No</li>
-                            </ul>
-
-                        </div>
-                        <div class="card golge" style="width: 18rem;">
-                            <img class="card-img-top" src="{% static 'images/dog1.jpg' %}" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Information of Pet</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Cat / Dog</li>
-                                <li class="list-group-item">Gender</li>
-                                <li class="list-group-item">City</li>
-                                <li class="list-group-item">Phone No</li>
-                            </ul>
-
-                        </div>
-
                     </div>
                 </div>
+
+                {#        pagination                #}
+                {% include 'pagination.html' with queryset=lost custom_range=custom_range search_query=search_query %}
+
             </div>
-            <div class="row" style="margin-top:30px">
-                <div class="col-md-12">
-                    <div class="card-deck">
-                        <div class="card" style="width: 18rem;">
-                            <img class="card-img-top" src="{% static 'images/dog1.jpg' %}" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Information of Pet</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Cat / Dog</li>
-                                <li class="list-group-item">Gender</li>
-                                <li class="list-group-item">City</li>
-                                <li class="list-group-item">Phone No</li>
-                            </ul>
 
-                        </div>
-                        <div class="card" style="width: 18rem;">
-                            <img class="card-img-top" src="{% static 'images/dog1.jpg' %}" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Information of Pet</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Cat / Dog</li>
-                                <li class="list-group-item">Gender</li>
-                                <li class="list-group-item">City</li>
-                                <li class="list-group-item">Phone No</li>
-                            </ul>
+            <!-- create announcement -->
 
-                        </div>
-                        <div class="card" style="width: 18rem;">
-                            <img class="card-img-top" src="{% static 'images/dog1.jpg' %}" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Information of Pet</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </div>
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item">Cat / Dog</li>
-                                <li class="list-group-item">Gender</li>
-                                <li class="list-group-item">City</li>
-                                <li class="list-group-item">Phone No</li>
-                            </ul>
+            <div class="col-md-5">
+                <div class="blog-page">
+                    <aside class="cardd radius-15 sidebar">
+                        <div class="widget-about widget">
 
+                            <header>
+                                <h4>Share A Lost Pet</h4>
+                            </header>
+
+                            <img src="{% static 'images/petcircle.jpg' %}" id="icon" alt="User Icon"
+                                 style="border-radius: 50%;margin-top:10px;max-width: 40%;"/>
+
+                            <form method="post" action="" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {% for field in form %}
+
+                                    {{ field.label }}
+                                    {{ field }}
+
+                                {% endfor %}
+
+                                <input type="submit" class="fadeIn fourth" value="Share" style="margin-top:20px">
+                            </form>
                         </div>
 
-                    </div>
+
+                    </aside>
+
                 </div>
-            </div>
-            <nav aria-label="..." style="margin-top:50px">
-                <ul class="pagination">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">Previous</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item active">
-                        <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-        <!-- create announcement -->
-        <div class="col-md-5">
-            <div class="blog-page">
-                <aside class="cardd radius-15 sidebar">
-                    <div class="widget-about widget">
-                        <header>
-                            <h4>Share A Lost Pet</h4>
-                        </header>
-                            <img src="{% static 'images/petcircle.jpg' %}" id="icon" alt="User Icon" style="border-radius: 50%;margin-top:10px;max-width: 60%;" />
-                        <div class="p-image" style="margin-top:30px;">
-                            <i class="fa fa-camera upload-button"></i>
-                            <input accept="image/*" type="file" class="file-upload"></div>
-                        <div class="labeled-input" style="margin-top:30px">
-                            <label for="selectTheAnimal">Select The Animal</label>
-                            <input type="text" id="selectTheAnimal">
-                        </div>
-                        <div class="labeled-input" style="margin-top:10px">
-                            <label for="gender">Gender</label>
-                            <input type="text" id="gender">
-                        </div>
-                        <div class="labeled-input"style="margin-top:10px">
-                            <label for="describeThePet">Describe the pet</label>
-                            <input type="text" id="describeThePet">
-                        </div>
-                        <div class="labeled-input"style="margin-top:10px">
-                            <label for="w3review">More Info</label>
-                            <textarea id="w3review" name="w3review" rows="4" cols="50" style="height:100px"></textarea>
-
-                        </div>
-                        <div class="labeled-input"style="margin-top:10px">
-                            <label for="adressFounded">Adress</label>
-                            <textarea id="adressFounded" name="w3review" rows="4" cols="50" style="height:100px"></textarea>
-
-                        </div>
-
-
-                        <input type="submit" class="fadeIn fourth" value="Share" style="margin-top:20px">
-                    </div>
-
-
-
-
-
-                </aside>
 
             </div>
-
         </div>
     </div>
-</div>
 
 {% endblock %}

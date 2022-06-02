@@ -9,7 +9,7 @@
                 <div class="row">
                     <!-- forum detail -->
                     <div class="col-xs-12 col-md-8">
-                        <div class="blog-posts">
+                        <div class="card radius-15">
                             <article class="blog-post">
                                 {% if forum.forum_image == '' %}
                                     <figure>
@@ -25,7 +25,7 @@
                                     {% if profile == forum.owner %}
                                         <a href="{% url 'forum-edit' forum.id %}">
                                             <input value="Edit" type="button" class="btn btn-dark"
-                                                   style="border-radius: 12%;margin-left: 568px;">
+                                                   style="border-radius: 12%;margin-left: 95%">
                                         </a>
                                     {% endif %}
                                     <h3>{{ forum.title }}</h3>
@@ -136,18 +136,18 @@
                         </div>
 
                     </div>
-                    <!-- about me -->
+                    <!-- latest part -->
                     <div class="col-xs-12 col-md-4">
-                        <aside class="sidebar">
+                        <aside class="sidebar card radius-15">
 
-                            <div class="widget-latest-posts widget">
+                            <div class="widget-latest-posts widget" style="background: url('{% static 'images/petitos.jpg' %}'); background-blend-mode: overlay; background-size: cover;">
                                 <header>
-                                    <h4>Latest Questions</h4>
+                                    <h4 style="background-color: #f0f8ffb0;"> <b>Latest Questions </b> </h4>
                                 </header>
 
                                 {% for latest in latest %}
 
-                                    <a href="{% url 'forum-detail' latest.id %}" class="latest-post">
+                                    <a href="{% url 'forum-detail' latest.id %}" class="latest-post" style="background-color: #f0f8ffb0;     padding: 30px 0 30px 80px;">
 
                                         <span>{{ latest.title|slice:"50" }}
                                             <time>{{ latest.created }}</time>
