@@ -3,6 +3,7 @@
 
 
 {% block content %}
+    {% if profile.is_superuser %}
     <div class="card"
          style="background-color: #ffc0cb00;display: flex;justify-content: flex-start;flex-direction: row;align-items: flex-start;">
 
@@ -55,6 +56,18 @@
         </div>
 
     </div>
+
+          {% else %}
+
+        <div class="card mx-auto" style="width: 100%;
+                background: url('{% static 'images/error.jpg' %}');
+                margin-top: 0px; height: 100vh;background-position: center;
+                background-size: cover;z-index: 999;" >
+        </div>
+
+
+
+    {% endif %}
 
 
 {% endblock %}
