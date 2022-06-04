@@ -2,22 +2,35 @@
 {% load static %}
 
 {% block content %}
+    {% if profile.is_superuser %}
 
     <div class="card mx-auto" style="width: 50rem; margin-top: 20rem">
         <div class="card-body">
-            <h5 class="card-title">Are you sure to close announcement <b>({{ object }})</b>?</h5>
+            <h5 class="card-title">Are you sure to change announcement status <b>({{ object }})</b>?</h5>
             <form class="form" action="" method="post">
                     {% csrf_token %}
                 {% for field in form %}
                     <label>{{ field.label }}</label>
                     <br>
-                    {{ field }}
+                    <div style="font-size: 20px">
+                        {{ field }}
+                    </div>
                 {% endfor %}
-                    <input type="submit" class="btn btn-warning" value="Confirm">
+                    <input type="submit" class="btn btn-success" style="font-size: inherit; margin-top: 10px;" value="Confirm">
                 </form>
-
-            <a href="{% url 'admin-dashboard' %}"><input type="submit" class="btn btn-grey" value="Close"></a>
+            <a href="{% url 'admin-dashboard' %}"><input type="submit" class="btn btn-danger" value="Close" style="display: flex; flex-wrap: nowrap; margin-left: 17%; margin-top: -6.7%; font-size: inherit;"></a>
         </div>
     </div>
+    {% else %}
+
+        <div class="card mx-auto" style="width: 100%;
+                background: url('{% static 'images/error.jpg' %}');
+                margin-top: 0px; height: 100vh;background-position: center;
+                background-size: cover;z-index: 999;" >
+        </div>
+
+
+
+    {% endif %}
 
 {% endblock %}

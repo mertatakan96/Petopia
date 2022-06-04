@@ -3,6 +3,8 @@
 
 
 {% block content %}
+{% if profile.is_superuser %}
+
     <div class="card"
          style="background-color: #ffc0cb00;display: flex;justify-content: flex-start;flex-direction: row;align-items: flex-start;">
 
@@ -15,15 +17,17 @@
                     {% for adopt in adopted %}
                         <li class="list-group-item"
                             style="display: flex;flex-wrap: nowrap;justify-content: space-between;">
-                            {{ adopt.title }} - ({{ adopt.status }})
-
+                            <div>
+                                {{ adopt.title }} - ({{ adopt.status }})
+                            </div>
+                            <div>
                                 <a href="{% url 'admin-dashboard-close-adopted' adopt.id %}">
                                     <button class="btn btn-success" style="font-size: initial;">Status</button>
                                 </a>
-
-                            <a href="{% url 'admin-dashboard-delete-adopted' adopt.id %}">
+                                <a href="{% url 'admin-dashboard-delete-adopted' adopt.id %}">
                                 <button class="btn btn-danger" style="font-size: initial;">Delete</button>
-                            </a>
+                                </a>
+                            </div>
                         </li>
                     {% endfor %}
 
@@ -56,5 +60,16 @@
 
     </div>
 
+      {% else %}
+        {#  BUSINESS PROFİLE  #}
+        <div class="card mx-auto" style="width: 100%;
+                background: url('{% static 'images/error.jpg' %}');
+                margin-top: 0px; height: 100vh;background-position: center;
+                background-size: cover;z-index: 999;" >
+        </div>
+
+
+
+    {% endif %}
 
 {% endblock %}

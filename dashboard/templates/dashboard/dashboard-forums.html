@@ -3,6 +3,7 @@
 
 
 {% block content %}
+{% if profile.is_superuser %}
     <div class="card" style="background-color: #ffc0cb00;display: flex;justify-content: flex-start;flex-direction: row;align-items: flex-start;">
 
         {% include 'sidebar-dashboard.html' %}
@@ -14,7 +15,7 @@
                         {% for forum in forums %}
                         <li class="list-group-item" style="display: flex;flex-wrap: nowrap;justify-content: space-between;">
                             {{ forum.title }}
-                            <a href="{% url 'admin-dashboard-delete-forum' forum.id %}"><button class="btn btn-danger" style="font-size: initial;">delete</button></a>
+                            <a href="{% url 'admin-dashboard-delete-forum' forum.id %} " style="max-width: 1100px"><button class="btn btn-danger" style="font-size: initial;">delete</button></a>
                         </li>
                         {% endfor %}
 
@@ -44,6 +45,18 @@
             </div>
 
     </div>
+
+          {% else %}
+
+        <div class="card mx-auto" style="width: 100%;
+                background: url('{% static 'images/error.jpg' %}');
+                margin-top: 0px; height: 100vh;background-position: center;
+                background-size: cover;z-index: 999;" >
+        </div>
+
+
+
+    {% endif %}
 
 
 {% endblock %}
