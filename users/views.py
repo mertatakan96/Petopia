@@ -143,6 +143,12 @@ def user_profile(request):
     context = {'profile': profile, 'pets': pets, 'custom_range': custom_range, 'blogs': blogs, 'forums': forums}
     return render(request, 'users/profile.html', context)
 
+def user_profiles(request):
+    profile = request.user
+
+    context = {'profile': profile}
+    return render(request, 'users/other-profiles.html', context)
+
 
 @login_required(login_url='login')
 def edit_profile(request):
