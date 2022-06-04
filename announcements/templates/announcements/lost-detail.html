@@ -53,11 +53,11 @@
                                         {% if comment.owner.user_type == 'petlover' %}
 
                                             {% if comment.owner.profile_image == '' %}
-                                                <figure><a href=""><img
+                                                <figure style=" max-height: 75px; max-width: 75px;"><a href=""><img
                                                         src="{% static 'images/profiles/user-default.jpg' %}"
                                                         alt="dummy"></a></figure>
                                             {% else %}
-                                                <figure><a href=""><img
+                                                <figure style=" max-height: 75px; max-width: 75px;"><a href=""><img
                                                         src="{{ comment.owner.profile_image.url }}" alt="dummy"></a>
                                                 </figure>
                                             {% endif %}
@@ -65,22 +65,22 @@
                                         {% elif comment.owner.user_type == 'business' %}
 
                                             {% if comment.owner.logo == '' %}
-                                                <figure><a href=""><img
+                                                <figure style=" max-height: 75px; max-width: 75px;"><a href=""><img
                                                         src="{% static 'images/profiles/store-default.png' %}"
                                                         alt="dummy"></a></figure>
                                             {% else %}
-                                                <figure><a href=""><img
+                                                <figure style=" max-height: 75px; max-width: 75px;"><a href=""><img
                                                         src="{{ comment.owner.logo.url }}" alt="dummy"></a>
                                                 </figure>
                                             {% endif %}
 
                                         {% else %}
                                             {% if comment.owner.profile_image == '' %}
-                                                <figure><a href=""><img
+                                                <figure style=" max-height: 75px; max-width: 75px;"><a href=""><img
                                                         src="{% static 'images/profiles/user-default.jpg' %}"
                                                         alt="dummy"></a></figure>
                                             {% else %}
-                                                <figure><a href=""><img
+                                                <figure style=" max-height: 75px; max-width: 75px;"><a href=""><img
                                                         src="{{ comment.owner.profile_image.url }}" alt="dummy"></a>
                                                 </figure>
                                             {% endif %}
