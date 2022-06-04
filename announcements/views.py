@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from .forms import FoundedPetCreationForm, AdoptPetCreationForm, LostPetCreationForm
+from .forms import FoundedPetCreationForm, AdoptPetCreationForm, LostPetCreationForm,\
+    FoundedCommentForm, AdoptCommentForm, LostCommentForm
 from .models import AdoptPet, FoundedPet, LostPet
 from .utils import paginateAdopts, paginateLosts, paginateFoundeds
 
@@ -59,19 +60,52 @@ def adopt_announce_page(request, pk):
     profile = request.user
     adopt = AdoptPet.objects.get(id=pk)
 
-    context = {'adopt': adopt, 'profile': profile}
+    form = AdoptCommentForm()
+
+    if request.method == 'POST':
+        form = AdoptCommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.owner = profile
+            comment.announce = adopt
+            comment.save()
+            return redirect('adopt-announce-detail', pk=adopt.id)
+
+    context = {'adopt': adopt, 'profile': profile, 'form': form}
     return render(request, 'announcements/adopt-detail.html', context)
 
 def founded_announce_page(request, pk):
     profile = request.user
     found = FoundedPet.objects.get(id=pk)
 
-    context = {'found': found, 'profile': profile}
+    form = FoundedCommentForm()
+
+    if request.method == 'POST':
+        form = FoundedCommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.owner = profile
+            comment.announce = found
+            comment.save()
+            return redirect('founded-announce-detail', pk=found.id)
+
+    context = {'found': found, 'profile': profile, 'form': form}
     return render(request, 'announcements/founded-detail.html', context)
 
 def lost_announce_page(request, pk):
     profile = request.user
     lost = LostPet.objects.get(id=pk)
 
-    context = {'lost': lost, 'profile': profile}
+    form = LostCommentForm()
+
+    if request.method == 'POST':
+        form = LostCommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.owner = profile
+            comment.announce = lost
+            comment.save()
+            return redirect('lost-announce-detail', pk=lost.id)
+
+    context = {'lost': lost, 'profile': profile, 'form': form}
     return render(request, 'announcements/lost-detail.html', context)
