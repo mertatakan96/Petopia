@@ -15,7 +15,7 @@
                         {% for lost in lost %}
                         <li class="list-group-item" style="display: flex;flex-wrap: nowrap;justify-content: space-between;">
                             <div>
-                                {{ lost.title }} - ({{ lost.status }})
+                                <a href="{% url 'lost-announce-detail' lost.id %}">{{ lost.title }} - ({{ lost.status }})</a>
                             </div>
                             <div>
                                 <a href="{% url 'admin-dashboard-close-lost' lost.id %}">

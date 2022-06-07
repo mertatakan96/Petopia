@@ -17,7 +17,7 @@
                         <li class="list-group-item"
                             style="display: flex;flex-wrap: nowrap;justify-content: space-between;">
                             <div>
-                                {{ found.title }} - ({{ found.status }})
+                                <a href="{% url 'founded-announce-detail' found.id %}">{{ found.title }} - ({{ found.status }})</a>
                             </div>
                             <div>
                                 <a href="{% url 'admin-dashboard-close-founded' found.id %}">
