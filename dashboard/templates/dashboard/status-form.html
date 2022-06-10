@@ -18,7 +18,7 @@
                 {% endfor %}
                     <input type="submit" class="btn btn-success" style="font-size: inherit; margin-top: 10px;" value="Confirm">
                 </form>
-            <a href="{% url 'admin-dashboard' %}"><input type="submit" class="btn btn-danger" value="Close" style="display: flex; flex-wrap: nowrap; margin-left: 17%; margin-top: -6.7%; font-size: inherit;"></a>
+            <a href="{{ request.GET.next }}"><input type="submit" class="btn btn-danger" value="Close" style="display: flex; flex-wrap: nowrap; margin-left: 17%; margin-top: -6.7%; font-size: inherit;"></a>
         </div>
     </div>
     {% else %}

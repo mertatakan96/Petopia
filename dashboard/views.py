@@ -5,6 +5,8 @@ from forum.models import Forum
 from blog.models import Blog
 from announcements.models import AdoptPet, FoundedPet, LostPet
 from announcements.forms import FoundedPetEditForm, AdoptPetEditForm, LostPetEditForm
+from .utils import paginateBlogs, paginateForums, paginatePetlovers, paginateBusiness,\
+    paginateAdopted, paginateFounded, paginateLost
 
 @login_required(login_url='login')
 def admin_dashboard(request):
@@ -29,7 +31,9 @@ def admin_dashboard_petlover(request):
     profile = request.user
     pet_lover_accounts = User.objects.all().filter(user_type='petlover')
 
-    context= {'petlovers': pet_lover_accounts, 'profile': profile}
+    custom_range, pet_lover_accounts = paginatePetlovers(request, pet_lover_accounts, 13)
+
+    context= {'petlovers': pet_lover_accounts, 'profile': profile, 'custom_range': custom_range}
     return render(request, 'dashboard/dashboard-petlover.html', context)
 
 @login_required(login_url='login')
@@ -37,7 +41,9 @@ def admin_dashboard_business(request):
     profile = request.user
     business_accounts = User.objects.all().filter(user_type='business')
 
-    context = {'business': business_accounts, 'profile': profile}
+    custom_range, business_accounts = paginateBusiness(request, business_accounts, 13)
+
+    context = {'business': business_accounts, 'profile': profile, 'custom_range': custom_range}
     return render(request, 'dashboard/dashboard-business.html', context)
 
 @login_required(login_url='login')
@@ -45,7 +51,9 @@ def admin_dashboard_blogs(request):
     profile = request.user
     blogs = Blog.objects.all()
 
-    context = {'blogs': blogs, 'profile': profile}
+    custom_range, blogs = paginateBlogs(request, blogs, 13)
+
+    context = {'blogs': blogs, 'profile': profile, 'custom_range': custom_range}
     return render(request, 'dashboard/dashboard-blogs.html', context)
 
 @login_required(login_url='login')
@@ -53,7 +61,9 @@ def admin_dashboard_forums(request):
     profile = request.user
     forums = Forum.objects.all()
 
-    context = {'forums': forums, 'profile': profile}
+    custom_range, forums = paginateBlogs(request, forums, 13)
+
+    context = {'forums': forums, 'profile': profile, 'custom_range': custom_range}
     return render(request, 'dashboard/dashboard-forums.html', context)
 
 @login_required(login_url='login')
@@ -61,7 +71,9 @@ def admin_dashboard_adopted(request):
     profile = request.user
     adopted = AdoptPet.objects.all()
 
-    context = {'adopted': adopted, 'profile': profile}
+    custom_range, adopted = paginateBlogs(request, adopted, 13)
+
+    context = {'adopted': adopted, 'profile': profile, 'custom_range': custom_range}
     return render(request, 'dashboard/dashboard-adopted.html', context)
 
 @login_required(login_url='login')
@@ -69,7 +81,9 @@ def admin_dashboard_founded(request):
     profile = request.user
     founded = FoundedPet.objects.all()
 
-    context = {'founded': founded, 'profile': profile}
+    custom_range, founded = paginateBlogs(request, founded, 13)
+
+    context = {'founded': founded, 'profile': profile, 'custom_range': custom_range}
     return render(request, 'dashboard/dashboard-founded.html', context)
 
 @login_required(login_url='login')
@@ -77,7 +91,9 @@ def admin_dashboard_lost(request):
     profile = request.user
     lost = LostPet.objects.all()
 
-    context = {'lost': lost, 'profile': profile}
+    custom_range, lost = paginateBlogs(request, lost, 13)
+
+    context = {'lost': lost, 'profile': profile, 'custom_range': custom_range}
     return render(request, 'dashboard/dashboard-lost.html', context)
 
 @login_required(login_url='login')
@@ -186,10 +202,10 @@ def admin_dashboard_close_founded(request, pk):
 def admin_dashboard_close_lost(request, pk):
     profile = request.user
     lost = LostPet.objects.get(id=pk)
-    form = AdoptPetEditForm(instance=lost)
+    form = LostPetEditForm(instance=lost)
 
     if request.method == 'POST':
-        form = AdoptPetEditForm(request.POST, instance=lost)
+        form = LostPetEditForm(request.POST, instance=lost)
         if form.is_valid():
             form.save()
             return redirect('admin-dashboard')
