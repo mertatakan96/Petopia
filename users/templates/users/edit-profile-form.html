@@ -6,7 +6,7 @@
     {% if profile.user_type == 'business' %}
 
     <!-- business profile edit -->
-            <div class="col-md-4" style="margin-left: 508px;margin-top: 30px;">
+            <div class="col-md-4" style="margin-left: 35%; margin-top: 2%; min-width: 500px;">
                 <div class="row">
                     <div class="blog-page" style="width:100%">
                         <aside class="cardd radius-15 sidebar" style="background-color: #ffffffb0;">
@@ -27,7 +27,9 @@
                                 <hr>
                                     <input style="border-radius: 10%;margin-left: -133px;" class="btn btn-info" type="submit" value="Save">
                                 </form>
-                            <input style="border-radius: 10%;margin-left: 150px;margin-top: -60px;max-width: 92px;" class="btn btn-danger" type="cancel" value="Cancel">
+                                <a href="{% url 'profile' %}">
+                                    <input style="border-radius: 10%;margin-left: 150px;margin-top: -60px;max-width: 92px;" class="btn btn-danger" type="cancel" value="Cancel">
+                                </a>
                             </div>
                         </aside>
                     </div>
@@ -37,7 +39,7 @@
     {% elif profile.user_type == 'petlover' %}
 
          <!-- petlover profile edit -->
-            <div class="col-md-4" style="margin-left: 508px;margin-top: 30px;">
+            <div class="col-md-4" style="margin-left: 35%; margin-top: 2%; min-width: 500px;">
                 <div class="row">
                     <div class="blog-page" style="width:100%">
                         <aside class="cardd radius-15 sidebar" style="background-color: #ffffffb0;">
@@ -58,7 +60,9 @@
                                 <hr>
                                     <input style="border-radius: 10%;margin-left: -133px;" class="btn btn-info" type="submit" value="Save">
                                 </form>
-                            <input style="border-radius: 10%;margin-left: 150px;margin-top: -60px;max-width: 92px;" class="btn btn-danger" type="cancel" value="Cancel">
+                                <a href="{% url 'profile' %}">
+                                    <input style="border-radius: 10%;margin-left: 150px;margin-top: -60px;max-width: 92px;" class="btn btn-danger" type="cancel" value="Cancel">
+                                </a>
                             </div>
                         </aside>
                     </div>

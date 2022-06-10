@@ -143,6 +143,20 @@ def user_profile(request):
     context = {'profile': profile, 'pets': pets, 'custom_range': custom_range, 'blogs': blogs, 'forums': forums}
     return render(request, 'users/profile.html', context)
 
+def user_profiles(request, pk):
+    profile = request.user
+    user = User.objects.get(user_id=pk)
+    blogs = user.blog_set.all()
+    forums = user.forum_set.all()
+    pets = user.pet_set.all()
+
+    custom_range, pets = paginatePets(request, pets, 2)
+    custom_range, blogs = paginateBlogs(request, blogs, 6)
+    custom_range, forums = paginateBlogs(request, forums, 10)
+
+    context = {'profile': profile, 'user': user, 'blogs': blogs, 'forums': forums, 'pets': pets, 'custom_range': custom_range}
+    return render(request, 'users/other-profiles.html', context)
+
 
 @login_required(login_url='login')
 def edit_profile(request):

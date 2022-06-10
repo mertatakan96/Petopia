@@ -18,7 +18,7 @@
                         <li class="list-group-item"
                             style="display: flex;flex-wrap: nowrap;justify-content: space-between;">
                             <div>
-                                {{ adopt.title }} - ({{ adopt.status }})
+                                <a href="{% url 'adopt-announce-detail' adopt.id %}">{{ adopt.title }} - ({{ adopt.status }})</a>
                             </div>
                             <div>
                                 <a href="{% url 'admin-dashboard-close-adopted' adopt.id %}">
@@ -61,11 +61,12 @@
     </div>
 
       {% else %}
-        {#  BUSINESS PROFİLE  #}
-        <div class="card mx-auto" style="width: 100%;
-                background: url('{% static 'images/error.jpg' %}');
-                margin-top: 0px; height: 100vh;background-position: center;
-                background-size: cover;z-index: 999;" >
+
+        <div class="card mx-auto"  >
+        <img src="{% static 'images/error.jpg' %}" id="icon" alt="User Icon"
+                             style="width: 100%;
+                margin-top: 0px;background-position: center;
+                background-size: cover; min-height: 600px;"/>
         </div>
 
 
