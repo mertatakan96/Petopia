@@ -19,6 +19,7 @@ urlpatterns = [
 
     path('delete-forum/<str:pk>', views.delete_forum, name="delete-forum"),
     path('delete-pet/<str:pk>', views.delete_pet, name="delete-pet"),
+    path('delete-blog/<str:pk>', views.delete_blog, name="delete-blog"),
 
     path('forget-password', views.forget_password, name="forget-password"),
 

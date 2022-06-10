@@ -133,8 +133,9 @@
                                         <a href="{% url 'blog-edit' blog.id %}">
                                             <input value="Edit" type="button" class="btn btn-info"
                                                    style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px;margin-left: 50px;"></a>
+                                    <a href="{% url 'delete-blog' blog.id %}?next=/profile">
                                         <input value="Delete" type="button" class="btn btn-danger"
-                                               style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px;">
+                                               style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px;"></a>
                                     </div>
                                     <br>
                                     <hr>

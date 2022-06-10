@@ -3,7 +3,7 @@
 
 {% block content %}
 
-
+    {% if profile.user_id == object.owner.user_id %}
     <div class="card mx-auto" style="width: 50rem; margin-top: 20rem">
         <div class="card-body">
             <h5 class="card-title">Are you sure to delete <b>({{ object }})</b>?</h5>
@@ -15,6 +15,16 @@
             <a href="{{ request.GET.next }}"><input type="submit" class="btn btn-danger" value="Close" style="display: flex; flex-wrap: nowrap; margin-left: 17%; margin-top: -6.7%; font-size: inherit;"></a>
         </div>
     </div>
+    {% else %}
+
+        <div class="card mx-auto"  >
+        <img src="{% static 'images/error.jpg' %}" id="icon" alt="User Icon"
+                             style="width: 100%;
+                margin-top: 0px;background-position: center;
+                background-size: cover; min-height: 600px;"/>
+        </div>
+
+    {% endif %}
 
 
 {% endblock %}

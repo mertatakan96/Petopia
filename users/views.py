@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import BusinessCreationForm, PetLoverUserCreationForm, PetCreationForm, BusinessEditForm, PetLoverEditForm, PetEditForm
-from .models import User
+from .models import User, Pet
 from blog.models import Blog
 from forum.models import Forum
 from announcements.models import FoundedPet, AdoptPet, LostPet
@@ -232,13 +232,25 @@ def delete_forum(request, pk):
 @login_required(login_url='login')
 def delete_pet(request, pk):
     profile = request.user
-    pet = profile.pet_set.get(id=pk)
+    pet = Pet.objects.get(id=pk)
 
     if request.method == 'POST':
         pet.delete()
         return redirect('profile')
 
     context = {'profile': profile, 'object': pet}
+    return render(request, 'delete-form.html', context)
+
+@login_required(login_url='login')
+def delete_blog(request, pk):
+    profile = request.user
+    blog = Blog.objects.get(id=pk)
+
+    if request.method == 'POST':
+        blog.delete()
+        return redirect('profile')
+
+    context = {'profile': profile, 'object': blog}
     return render(request, 'delete-form.html', context)
 
 def forget_password(request):
