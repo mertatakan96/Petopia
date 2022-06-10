@@ -217,6 +217,30 @@ def edit_pet(request, pk):
 
     return render(request, 'users/edit-pet-form.html', context)
 
+@login_required(login_url='login')
+def delete_forum(request, pk):
+    profile = request.user
+    forum = Forum.objects.get(id=pk)
+
+    if request.method == 'POST':
+        forum.delete()
+        return redirect('profile')
+
+    context = {'profile': profile, 'object': forum}
+    return render(request, 'delete-form.html', context)
+
+@login_required(login_url='login')
+def delete_pet(request, pk):
+    profile = request.user
+    pet = profile.pet_set.get(id=pk)
+
+    if request.method == 'POST':
+        pet.delete()
+        return redirect('profile')
+
+    context = {'profile': profile, 'object': pet}
+    return render(request, 'delete-form.html', context)
+
 def forget_password(request):
     return render(request, 'users/forget-password-form.html')
 

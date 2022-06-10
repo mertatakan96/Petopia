@@ -278,8 +278,9 @@
                                             </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a href="{% url 'delete-pet' pet.id %}?next=/profile">
                                             <button type="button" class="btn btn-danger" style="border-radius: 100%">X
-                                            </button>
+                                            </button></a>
                                         </p>
                                         <br>
                                         {% if pet.pet_image == '' %}
@@ -339,8 +340,9 @@
                                         <input value="Edit" type="button" class="btn btn-info"
                                                style="border-radius: 12%;padding: 0px 10px;height: 35px;">
                                         </a>
+                                        <a href="{% url 'delete-forum' forum.id %}?next=/profile">
                                         <input value="Delete" type="button" class="btn btn-danger"
-                                               style="border-radius: 12%;padding: 0px 10px;height: 35px;">
+                                               style="border-radius: 12%;padding: 0px 10px;height: 35px;"></a>
                                     </div>
                                     <br>
                                     <hr>

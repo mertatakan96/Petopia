@@ -1,0 +1,20 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+
+    <div class="card mx-auto" style="width: 50rem; margin-top: 20rem">
+        <div class="card-body">
+            <h5 class="card-title">Are you sure to delete <b>({{ object }})</b>?</h5>
+            <form class="form" action="" method="post">
+                    {% csrf_token %}
+                <input type="submit" class="btn btn-success" style="font-size: inherit;" value="Confirm">
+                </form>
+
+            <a href="{{ request.GET.next }}"><input type="submit" class="btn btn-danger" value="Close" style="display: flex; flex-wrap: nowrap; margin-left: 17%; margin-top: -6.7%; font-size: inherit;"></a>
+        </div>
+    </div>
+
+
+{% endblock %}

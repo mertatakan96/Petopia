@@ -17,6 +17,9 @@ urlpatterns = [
     path('add-pet/', views.add_pet, name="add-pet"),
     path('edit-pet/<str:pk>/', views.edit_pet, name="edit-pet"),
 
+    path('delete-forum/<str:pk>', views.delete_forum, name="delete-forum"),
+    path('delete-pet/<str:pk>', views.delete_pet, name="delete-pet"),
+
     path('forget-password', views.forget_password, name="forget-password"),
 
 ]
