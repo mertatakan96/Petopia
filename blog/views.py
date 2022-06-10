@@ -29,7 +29,9 @@ def blog_detail(request, pk):
     profile = request.user
     blog = Blog.objects.get(id=pk)
     # limiting the latest post div and exclude that blog
-    latest = blog.owner.blog_set.exclude(id=blog.id)[0:5]
+    latest = None
+    if(blog.owner != None):
+        latest = blog.owner.blog_set.exclude(id=blog.id)[0:5]
 
     form = BlogCommentForm()
 

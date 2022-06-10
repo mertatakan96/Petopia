@@ -5,6 +5,7 @@ from datetime import datetime
 from .models import User, Pet
 
 class BusinessCreationForm(UserCreationForm):
+
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2', 'business_name',
@@ -16,8 +17,8 @@ class BusinessCreationForm(UserCreationForm):
             'password2': forms.PasswordInput(attrs={'class': 'unicorn'}),
             'business_name': forms.TextInput(attrs={'class': 'unicorn'}),
             'business_type': forms.Select(attrs={'class': 'unicorn', 'style': "width:340px"}),
-            'tax_id': forms.TextInput(attrs={'class': 'unicorn'}),
-            'phone': forms.TextInput(attrs={'class': 'unicorn', 'placeholder': '( )___ ___ __ __'}),
+            'tax_id': forms.TextInput(attrs={'class': 'unicorn', 'minlength': 10}),
+            'phone': forms.TextInput(attrs={'class': 'unicorn', 'placeholder': '( )___ ___ __ __', 'minlength': 11}),
             'address': forms.Textarea(attrs={'class': 'unicorn', 'style': "background:#f6f6f6"}),
             'information': forms.Textarea(attrs={'class': 'unicorn', 'style': "background:#f6f6f6"}),
         }
@@ -32,8 +33,8 @@ class BusinessEditForm(ModelForm):
             'email': forms.TextInput(attrs={'class': 'unicorn'}),
             'business_name': forms.TextInput(attrs={'class': 'unicorn'}),
             'business_type': forms.Select(attrs={'class': 'unicorn', 'style': "width:340px"}),
-            'tax_id': forms.TextInput(attrs={'class': 'unicorn'}),
-            'phone': forms.TextInput(attrs={'class': 'unicorn', 'placeholder': '( )___ ___ __ __'}),
+            'tax_id': forms.TextInput(attrs={'class': 'unicorn', 'minlength': 10}),
+            'phone': forms.TextInput(attrs={'class': 'unicorn', 'placeholder': '( )___ ___ __ __','minlength': 11}),
             'address': forms.Textarea(attrs={'class': 'unicorn', 'style': "background:#f6f6f6"}),
             'information': forms.Textarea(attrs={'class': 'unicorn', 'style': "background:#f6f6f6"}),
         }
@@ -50,8 +51,8 @@ class PetLoverUserCreationForm(UserCreationForm):
             'password1': forms.PasswordInput(attrs={'class': 'unicorn', 'type': 'password2'}),
             'password2': forms.PasswordInput(attrs={'class': 'unicorn', 'type': 'password2'}),
             'location': forms.TextInput(attrs={'class': 'unicorn'}),
-            'tckn': forms.TextInput(attrs={'class': 'unicorn'}),
-            'phone': forms.TextInput(attrs={'class': 'unicorn', 'placeholder': '( )___ ___ __ __'}),
+            'tckn': forms.TextInput(attrs={'class': 'unicorn', 'minlength': 11}),
+            'phone': forms.TextInput(attrs={'class': 'unicorn', 'placeholder': '( )___ ___ __ __', 'minlength': 11}),
             'birthDate': forms.DateInput(attrs={'class': 'unicorn', 'type': 'date', 'max': datetime.now().date()}),
             'gender': forms.Select(attrs={'class': 'unicorn', 'style': 'width: 324px; background-color: #f6f6f6'}),
         }
@@ -65,8 +66,8 @@ class PetLoverEditForm(ModelForm):
             'full_name': forms.TextInput(attrs={'class': 'unicorn'}),
             'email': forms.TextInput(attrs={'class': 'unicorn'}),
             'location': forms.TextInput(attrs={'class': 'unicorn'}),
-            'tckn': forms.TextInput(attrs={'class': 'unicorn'}),
-            'phone': forms.TextInput(attrs={'class': 'unicorn', 'placeholder': '( )___ ___ __ __'}),
+            'tckn': forms.TextInput(attrs={'class': 'unicorn', 'minlength': 11}),
+            'phone': forms.TextInput(attrs={'class': 'unicorn', 'placeholder': '( )___ ___ __ __', 'minlength': 11}),
             'birthDate': forms.DateInput(attrs={'class': 'unicorn', 'type': 'date', 'max': datetime.now().date()}),
             'gender': forms.Select(attrs={'class': 'unicorn', 'style': 'width: 324px; background-color: #f6f6f6'}),
         }

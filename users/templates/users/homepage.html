@@ -10,74 +10,90 @@
                  style="background-image: url('{% static 'images/DogDog.jpg' %}'); height: 1900px">
 
                 <!-- profile, announcements (lost, adopt,found) -->
-            <div class="section">
+                <div class="section">
 
-                <div class="container">
+                    <div class="container">
 
-                                <!-- blog, post cards -->
-                    <div class="container" style="margin-bottom:10%">
-                        <div class="row">
-                            <div clasS="col-md-6">
-                                <div class="card radius-15" style="background: url('{% static 'images/background.png' %}')">
-                                    <div class="card-body" style="height:500px">
-                                        <div class="widget-latest-posts widget">
-                                            <div class="card-title" style="display: flex;">
-                                                <a href="{% url 'blog-page' %}">
-                                                    <h5 class="mb-0" style="margin-left:10px" type="button">Blog</h5></a>
-                                            </div>
-                                            {% for blog in blogs %}
-                                                <a href="{% url 'blog-detail' blog.id %}" class="latest-post" style="margin-left:10px;text-align: left;">
-                                                    {% if blog.blog_image == '' %}
-                                                        <figure class="imgAsBg" style="background-image: url('{% static 'images/dog1.jpg' %}');"></figure>
-                                                    {% else %}
-                                                        <figure class="imgAsBg" style="background-image: url('{{ blog.blog_image.url }}');"></figure>
-                                                    {% endif %}
-                                                    <span>
+                        <!-- blog, post cards -->
+                        <div class="container" style="margin-bottom:10%">
+                            <div class="row">
+                                <div clasS="col-md-6">
+                                    <div class="card radius-15"
+                                         style="background: url('{% static 'images/background.png' %}')">
+                                        <div class="card-body" style="height:500px">
+                                            <div class="widget-latest-posts widget">
+                                                <div class="card-title" style="display: flex;">
+                                                    <a href="{% url 'blog-page' %}">
+                                                        <h5 class="mb-0" style="margin-left:10px" type="button">
+                                                            Blog</h5></a>
+                                                </div>
+                                                {% for blog in blogs %}
+                                                    <a href="{% url 'blog-detail' blog.id %}" class="latest-post"
+                                                       style="margin-left:10px;text-align: left;">
+                                                        {% if blog.blog_image == '' %}
+                                                            <figure class="imgAsBg"
+                                                                    style="background-image: url('{% static 'images/dog1.jpg' %}');"></figure>
+                                                        {% else %}
+                                                            <figure class="imgAsBg"
+                                                                    style="background-image: url('{{ blog.blog_image.url }}');"></figure>
+                                                        {% endif %}
+                                                        <span>
                                                         {{ blog.title }}
-                                                        <p>Writer : {{ blog.owner.business_name }} </p>
-                                                        <time>{{ blog.created }}</time>
+                                                            {% if blog.owner != NULL %}
+                                                                <p>Writer : {{ blog.owner.business_name }} </p>
+                                                            {% else %}
+                                                                <p>Writer : [<s>Deleted User</s>} </p>
+                                                            {% endif %}
+                                                            <time>{{ blog.created }}</time>
                                                     </span>
-                                                </a>
-                                            {% endfor %}
-                                            <a href="{% url 'blog-page' %}"><h6 type="button" style="margin-top: auto;text-align: end;color: black">View All </h6></a>
+                                                    </a>
+                                                {% endfor %}
+                                                <a href="{% url 'blog-page' %}"><h6 type="button"
+                                                                                    style="margin-top: auto;text-align: end;color: black">
+                                                    View All </h6></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card radius-15" style="background: url('{% static 'images/background.png' %}')">
-                                    <div class="card-body" style="height:500px">
-                                        <div class="card-title" style="display: flex;">
-                                            <a href="{% url 'forum-page' %}">
-                                                <h5 class="mb-0" style="margin-left:10px" type="button">Forum </h5></a>
-                                        </div>
-                                        <div class="table-responsive">
-                                            <table class="table mb-0">
-                                                <thead class="thead-dark">
-                                                <tr>
-                                                    <th>Title</th>
-                                                    <th>Answer</th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                {% for forum in forums %}
+                                <div class="col-md-6">
+                                    <div class="card radius-15"
+                                         style="background: url('{% static 'images/background.png' %}')">
+                                        <div class="card-body" style="height:500px">
+                                            <div class="card-title" style="display: flex;">
+                                                <a href="{% url 'forum-page' %}">
+                                                    <h5 class="mb-0" style="margin-left:10px" type="button">Forum </h5>
+                                                </a>
+                                            </div>
+                                            <div class="table-responsive">
+                                                <table class="table mb-0">
+                                                    <thead class="thead-dark">
                                                     <tr>
-                                                        <td style="text-align-last: start;"><a style="color: black" href="{% url 'forum-detail' forum.id %}">{{ forum.title|slice:"35" }}</a>
-                                                        </td>
-                                                        <td>{{ forum.forumcomment_set.count }}</td>
+                                                        <th>Title</th>
+                                                        <th>Answer</th>
                                                     </tr>
-                                                {% endfor %}
-                                                </tbody>
-                                            </table>
+                                                    </thead>
+                                                    <tbody>
+                                                    {% for forum in forums %}
+                                                        <tr>
+                                                            <td style="text-align-last: start;"><a style="color: black"
+                                                                                                   href="{% url 'forum-detail' forum.id %}">{{ forum.title|slice:"35" }}</a>
+                                                            </td>
+                                                            <td>{{ forum.forumcomment_set.count }}</td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <a href="{% url 'forum-page' %}"><h6 type="button"
+                                                                                 style="margin-top: auto;text-align: end;color: black">
+                                                View All </h6></a>
                                         </div>
-                                        <a href="{% url 'forum-page' %}"><h6 type="button" style="margin-top: auto;text-align: end;color: black">View All </h6></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            <!-- announcements -->
+                    <!-- announcements -->
                     <div class="category-thumbs clearfix" style="max-width: 80%;display: inline-block;">
                         <div class="cat-thumb">
                             <img src="{% static 'images/lostpetnew.jpg' %}" alt="dummy" style="border-radius: 10%;">
@@ -110,7 +126,7 @@
                             </div>
                         </div>
                     </div>
-            </div>
+                </div>
                 <div class="inner" style="margin-top: -1%;">
 
                 </div>

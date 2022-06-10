@@ -18,7 +18,7 @@ class Blog(models.Model):
 
 
 class BlogComment(models.Model):
-    owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
+    owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
     blog = models.ForeignKey(Blog, null=True, on_delete=models.CASCADE)
     body = models.TextField(max_length=120, null=True)
     created = models.DateTimeField(auto_now_add=True)

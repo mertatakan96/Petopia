@@ -30,15 +30,24 @@
                                     {% endif %}
                                     <h3>{{ forum.title }}</h3>
                                     <ul class="info-list">
-                                        {% if profile.user_id == forum.owner.user_id %}
+                                        {% if forum.owner != NULL %}
+                                            {% if profile.user_id == forum.owner.user_id %}
                                                 <li>
                                                     <a href="{% url 'profile' %}">Writer: {{ forum.owner.username }}</a>
                                                 </li>
                                             {% else %}
+
                                                 <li>
                                                     <a href="{% url 'profiles' forum.owner.user_id %}">Writer: {{ forum.owner.username }}</a>
                                                 </li>
+
+
                                             {% endif %}
+                                        {% else %}
+                                            <li>
+                                                Writer: [<s>Deleted User</s>]
+                                            </li>
+                                        {% endif %}
 
                                     </ul>
                                 </header>
@@ -95,9 +104,9 @@
                                                         <h6>
                                                             {% if profile.user_id == comment.owner.user_id %}
                                                                 <a href="{% url 'profile' %}">{{ comment.owner.business_name }}</a>
-                                                                {% else %}
+                                                            {% else %}
                                                                 <a href="{% url 'profiles' comment.owner.user_id %}">{{ comment.owner.business_name }}</a>
-                                                                {% endif %}
+                                                            {% endif %}
 
                                                             <time datetime="2022-03-28">{{ comment.created }}</time>
                                                         </h6>
@@ -113,9 +122,9 @@
                                                         <h6>
                                                             {% if profile.user_id == comment.owner.user_id %}
                                                                 <a href="{% url 'profile' %}">{{ comment.owner.full_name }}</a>
-                                                                {% else %}
+                                                            {% else %}
                                                                 <a href="{% url 'profiles' comment.owner.user_id %}">{{ comment.owner.full_name }}</a>
-                                                                {% endif %}
+                                                            {% endif %}
 
                                                             <time datetime="2022-03-28">{{ comment.created }}</time>
                                                         </h6>
@@ -131,11 +140,11 @@
                                 </ul>
 
                             </div>
-                           {% if request.user.is_authenticated %}
-                            <div class="add-comment">
-                                <header><h3>Leave an Answer</h3></header>
-                                <form action="" method="post" class="clearfix">
-                                    {% csrf_token %}
+                            {% if request.user.is_authenticated %}
+                                <div class="add-comment">
+                                    <header><h3>Leave an Answer</h3></header>
+                                    <form action="" method="post" class="clearfix">
+                                        {% csrf_token %}
 
                                         <div class="labeled-input">
 
@@ -143,11 +152,11 @@
 
                                         </div>
 
-                                    <button class="btn btn-green btn-small">Submit</button>
-                                </form>
-                            </div>
-                        {% else %}
-                        <div class="add-comment">
+                                        <button class="btn btn-green btn-small">Submit</button>
+                                    </form>
+                                </div>
+                            {% else %}
+                                <div class="add-comment">
 
                                     <a href="{% url 'login' %}?next={{ request.path }}">Please login to leave a
                                         answer</a>
@@ -157,18 +166,21 @@
                         </div>
 
                     </div>
+                {% if forum.owner != NULL %}
                     <!-- latest part -->
                     <div class="col-xs-12 col-md-4">
                         <aside class="sidebar card radius-15">
 
-                            <div class="widget-latest-posts widget" style="background: url('{% static 'images/petitos.jpg' %}'); background-blend-mode: overlay; background-size: cover;">
+                            <div class="widget-latest-posts widget"
+                                 style="background: url('{% static 'images/petitos.jpg' %}'); background-blend-mode: overlay; background-size: cover;">
                                 <header>
-                                    <h4 style="background-color: #f0f8ffb0;"> <b>Latest Questions </b> </h4>
+                                    <h4 style="background-color: #f0f8ffb0;"><b>Latest Questions </b></h4>
                                 </header>
 
                                 {% for latest in latest %}
 
-                                    <a href="{% url 'forum-detail' latest.id %}" class="latest-post" style="background-color: #f0f8ffb0;     padding: 30px 0 30px 80px;">
+                                    <a href="{% url 'forum-detail' latest.id %}" class="latest-post"
+                                       style="background-color: #f0f8ffb0;     padding: 30px 0 30px 80px;">
 
                                         <span>{{ latest.title|slice:"50" }}
                                             <time>{{ latest.created }}</time>
@@ -182,6 +194,7 @@
 
                         </aside>
                     </div>
+                {% endif %}
                 </div>
             </div>
         </div>

@@ -15,7 +15,7 @@
             <div class="col-xs-12 ">
                 <div class="container" style="margin-bottom:10%">
                     <div class="row">
-                        <div clasS="col-md-8 mx-auto" >
+                        <div clasS="col-md-8 mx-auto">
                             <div class="card radius-15" style="background:white;">
                                 <div class="card-body" style="">
                                     <div class="widget-latest-posts widget" style="padding: 0px;">
@@ -45,24 +45,30 @@
 
                                             <a href="{% url 'blog-detail' blog.id %}" class="latest-post"
                                                style="margin-left:10px">
-                                            {% if blog.blog_image == '' %}
-                                                <figure class="imgAsBg"
-                                                        style="background-image: url('{% static 'images/dog1.jpg' %}');">
-                                                    <img src="{% static 'images/dog1.jpg' %}" alt="dummy">
-                                                </figure>
+                                                {% if blog.blog_image == '' %}
+                                                    <figure class="imgAsBg"
+                                                            style="background-image: url('{% static 'images/dog1.jpg' %}');">
+                                                        <img src="{% static 'images/dog1.jpg' %}" alt="dummy">
+                                                    </figure>
 
-                                            {% else %}
-                                                <figure class="imgAsBg"
-                                                        style="background-image: url('{% static 'images/dog1.jpg' %}');">
-                                                    <img src="{{ blog.blog_image.url }}" alt="dummy">
-                                                </figure>
-                                            {% endif %}
+                                                {% else %}
+                                                    <figure class="imgAsBg"
+                                                            style="background-image: url('{% static 'images/dog1.jpg' %}');">
+                                                        <img src="{{ blog.blog_image.url }}" alt="dummy">
+                                                    </figure>
+                                                {% endif %}
                                                 <span>
                                             {{ blog.title }}
-                                                    {% if blog.owner.is_superuser %}
-                                                        <p>Writer : {{ blog.owner.username }} </p>
+                                                    {% if blog.owner != NULL %}
+                                                        {% if blog.owner.is_superuser %}
+                                                            <p>Writer : {{ blog.owner.username }} </p>
+                                                        {% else %}
+
+                                                            <p>Writer : {{ blog.owner.business_name }} </p>
+
+                                                        {% endif %}
                                                     {% else %}
-                                                        <p>Writer : {{ blog.owner.business_name }} </p>
+                                                        <p>Writer : [<s>Deleted User</s>] </p>
                                                     {% endif %}
                                                     <time>{{ blog.created }}</time>
                                         </span>
@@ -122,24 +128,30 @@
 
                                             <a href="{% url 'blog-detail' blog.id %}" class="latest-post"
                                                style="margin-left:10px">
-                                            {% if blog.blog_image == '' %}
-                                                <figure class="imgAsBg"
-                                                        style="background-image: url('{% static 'images/dog1.jpg' %}');">
-                                                    <img src="{% static 'images/dog1.jpg' %}" alt="dummy">
-                                                </figure>
+                                                {% if blog.blog_image == '' %}
+                                                    <figure class="imgAsBg"
+                                                            style="background-image: url('{% static 'images/dog1.jpg' %}');">
+                                                        <img src="{% static 'images/dog1.jpg' %}" alt="dummy">
+                                                    </figure>
 
-                                            {% else %}
-                                                <figure class="imgAsBg"
-                                                        style="background-image: url('{% static 'images/dog1.jpg' %}');">
-                                                    <img src="{{ blog.blog_image.url }}" alt="dummy">
-                                                </figure>
-                                            {% endif %}
+                                                {% else %}
+                                                    <figure class="imgAsBg"
+                                                            style="background-image: url('{% static 'images/dog1.jpg' %}');">
+                                                        <img src="{{ blog.blog_image.url }}" alt="dummy">
+                                                    </figure>
+                                                {% endif %}
                                                 <span>
                                             {{ blog.title }}
-                                                    {% if blog.owner.is_superuser %}
-                                                        <p>Writer : {{ blog.owner.username }} </p>
+                                                    {% if blog.owner != NULL %}
+                                                        {% if blog.owner.is_superuser %}
+                                                            <p>Writer : {{ blog.owner.username }} </p>
+                                                        {% else %}
+
+                                                            <p>Writer : {{ blog.owner.business_name }} </p>
+
+                                                        {% endif %}
                                                     {% else %}
-                                                        <p>Writer : {{ blog.owner.business_name }} </p>
+                                                        <p>Writer : [<s>Deleted User</s>] </p>
                                                     {% endif %}
                                                     <time>{{ blog.created }}</time>
                                         </span>
@@ -231,24 +243,31 @@
 
                                                         <a href="{% url 'blog-detail' blog.id %}" class="latest-post"
                                                            style="margin-left:10px">
-                                                        {% if blog.blog_image == '' %}
-                                                            <figure class="imgAsBg"
-                                                                    style="background-image: url('{% static 'images/dog1.jpg' %}');">
-                                                                <img src="{% static 'images/dog1.jpg' %}" alt="dummy">
-                                                            </figure>
+                                                            {% if blog.blog_image == '' %}
+                                                                <figure class="imgAsBg"
+                                                                        style="background-image: url('{% static 'images/dog1.jpg' %}');">
+                                                                    <img src="{% static 'images/dog1.jpg' %}"
+                                                                         alt="dummy">
+                                                                </figure>
 
-                                                        {% else %}
-                                                            <figure class="imgAsBg"
-                                                                    style="background-image: url('{% static 'images/dog1.jpg' %}');">
-                                                                <img src="{{ blog.blog_image.url }}" alt="dummy">
-                                                            </figure>
-                                                        {% endif %}
+                                                            {% else %}
+                                                                <figure class="imgAsBg"
+                                                                        style="background-image: url('{% static 'images/dog1.jpg' %}');">
+                                                                    <img src="{{ blog.blog_image.url }}" alt="dummy">
+                                                                </figure>
+                                                            {% endif %}
                                                             <span>
-                                            {{ blog.title }}
-                                                                {% if blog.owner.is_superuser %}
-                                                                    <p>Writer : {{ blog.owner.username }} </p>
+                                                                {{ blog.title }}
+                                                                {% if blog.owner != NULL %}
+                                                                    {% if blog.owner.is_superuser %}
+                                                                        <p>Writer : {{ blog.owner.username }} </p>
+                                                                    {% else %}
+
+                                                                        <p>Writer : {{ blog.owner.business_name }} </p>
+
+                                                                    {% endif %}
                                                                 {% else %}
-                                                                    <p>Writer : {{ blog.owner.business_name }} </p>
+                                                                    <p>Writer : [<s>Deleted User</s>] </p>
                                                                 {% endif %}
                                                                 <time>{{ blog.created }}</time>
                                         </span>
