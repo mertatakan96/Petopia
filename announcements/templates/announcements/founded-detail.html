@@ -87,19 +87,31 @@
                                         {% endif %}
                                         {% if comment.owner.user_type == 'business' %}
                                             <header>
-                                                <h6><a href="">{{ comment.owner.business_name }}</a>
+                                                <h6>
+                                                    {% if profile.user_id == comment.owner.user_id %}
+                                                        <a href="{% url 'profile' %}">{{ comment.owner.business_name }}</a>
+                                                    {% else %}
+                                                        <a href="{% url 'profiles' comment.owner.user_id %}">{{ comment.owner.business_name }}</a>
+                                                    {% endif %}
+
                                                     <time datetime="2022-03-28">{{ comment.created }}</time>
                                                 </h6>
                                             </header>
                                         {% elif comment.owner.is_superuser %}
                                             <header>
-                                                <h6><a href="">{{ comment.owner.username }}</a>
+                                                <h6>{{ comment.owner.username }}
                                                     <time datetime="2022-03-28">{{ comment.created }}</time>
                                                 </h6>
                                             </header>
                                         {% else %}
                                             <header>
-                                                <h6><a href="">{{ comment.owner.full_name }}</a>
+                                                <h6>
+                                                    {% if profile.user_id == comment.owner.user_id %}
+                                                        <a href="{% url 'profile' %}">{{ comment.owner.full_name }}</a>
+                                                    {% else %}
+                                                        <a href="{% url 'profiles' comment.owner.user_id %}">{{ comment.owner.full_name }}</a>
+                                                    {% endif %}
+
                                                     <time datetime="2022-03-28">{{ comment.created }}</time>
                                                 </h6>
                                             </header>
