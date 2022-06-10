@@ -2,13 +2,16 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.template import RequestContext
+from django.urls import reverse_lazy
 from .forms import BusinessCreationForm, PetLoverUserCreationForm, PetCreationForm, BusinessEditForm, PetLoverEditForm, PetEditForm
 from .models import User, Pet
 from blog.models import Blog
 from forum.models import Forum
 from announcements.models import FoundedPet, AdoptPet, LostPet
 from .utils import paginatePets, paginateBlogs, paginateForums
-
+from django.contrib.auth.views import PasswordChangeView
+from django.contrib.auth.forms import PasswordChangeForm
 
 def home_page(request):
     profile = request.user
@@ -138,7 +141,7 @@ def user_profile(request):
 
     custom_range, pets = paginatePets(request, pets, 2)
     custom_range, blogs = paginateBlogs(request, blogs, 7)
-    custom_range, forums = paginateBlogs(request, forums, 10)
+    custom_range, forums = paginateForums(request, forums, 10)
 
     context = {'profile': profile, 'pets': pets, 'custom_range': custom_range, 'blogs': blogs, 'forums': forums}
     return render(request, 'users/profile.html', context)
@@ -152,7 +155,7 @@ def user_profiles(request, pk):
 
     custom_range, pets = paginatePets(request, pets, 2)
     custom_range, blogs = paginateBlogs(request, blogs, 6)
-    custom_range, forums = paginateBlogs(request, forums, 10)
+    custom_range, forums = paginateForums(request, forums, 10)
 
     context = {'profile': profile, 'user': user, 'blogs': blogs, 'forums': forums, 'pets': pets, 'custom_range': custom_range}
     return render(request, 'users/other-profiles.html', context)
@@ -253,7 +256,20 @@ def delete_blog(request, pk):
     context = {'profile': profile, 'object': blog}
     return render(request, 'delete-form.html', context)
 
-def forget_password(request):
-    return render(request, 'users/forget-password-form.html')
+class PasswordChangeView(PasswordChangeView):
+    form_class = PasswordChangeForm
+    success_url = reverse_lazy('password_success')
+    def get_context_data(self, **kwargs):
+        profile = self.request.user
+        context = super(PasswordChangeView, self).get_context_data(**kwargs)
+        context["profile"] = profile
+        return context
+
+@login_required(login_url='login')
+def password_success(request):
+    profile = request.user
+    context = {'profile': profile}
+
+    return render(request, 'users/password_change_done.html', context)
 
 
