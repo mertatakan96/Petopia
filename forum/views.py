@@ -29,7 +29,9 @@ def forum_detail(request, pk):
     profile = request.user
     forum = Forum.objects.get(id=pk)
     # limiting the latest post div and exclude that blog
-    latest = forum.owner.forum_set.exclude(id=forum.id)[0:5]
+    latest = None
+    if(forum.owner != None):
+        latest = forum.owner.forum_set.exclude(id=forum.id)[0:5]
 
     form = ForumCommentForm()
 

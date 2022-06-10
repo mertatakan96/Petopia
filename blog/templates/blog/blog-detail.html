@@ -29,19 +29,27 @@
                                     {% endif %}
                                     <h3>{{ blog.title }}</h3>
                                     <ul class="info-list">
-                                        {% if blog.owner.is_superuser %}
-                                            <p>Writer : {{ blog.owner.username }} </p>
-                                        {% else %}
-                                            {% if profile.user_id == blog.owner.user_id %}
-                                                <li>
-                                                    <a href="{% url 'profile' %}">Writer: {{ blog.owner.business_name }}</a>
-                                                </li>
+                                        {% if blog.owner != NULL %}
+                                            {% if blog.owner.is_superuser %}
+                                                <p>Writer : {{ blog.owner.username }} </p>
                                             {% else %}
-                                                <li>
-                                                    <a href="{% url 'profiles' blog.owner.user_id %}">Writer: {{ blog.owner.business_name }}</a>
-                                                </li>
-                                            {% endif %}
+                                                {% if profile.user_id == blog.owner.user_id %}
+                                                    <li>
+                                                        <a href="{% url 'profile' %}">Writer: {{ blog.owner.business_name }}</a>
+                                                    </li>
+                                                {% else %}
 
+                                                    <li>
+                                                        <a href="{% url 'profiles' blog.owner.user_id %}">Writer: {{ blog.owner.business_name }}</a>
+                                                    </li>
+
+                                                {% endif %}
+
+                                            {% endif %}
+                                        {% else %}
+                                            <li>
+                                                Writer: [<s>Deleted User</s>]
+                                            </li>
                                         {% endif %}
 
                                     </ul>
@@ -98,9 +106,9 @@
                                                         <h6>
                                                             {% if profile.user_id == comment.owner.user_id %}
                                                                 <a href="{% url 'profile' %}">{{ comment.owner.business_name }}</a>
-                                                                {% else %}
+                                                            {% else %}
                                                                 <a href="{% url 'profiles' comment.owner.user_id %}">{{ comment.owner.business_name }}</a>
-                                                                {% endif %}
+                                                            {% endif %}
 
                                                             <time datetime="2022-03-28">{{ comment.created }}</time>
                                                         </h6>
@@ -116,9 +124,9 @@
                                                         <h6>
                                                             {% if profile.user_id == comment.owner.user_id %}
                                                                 <a href="{% url 'profile' %}">{{ comment.owner.full_name }}</a>
-                                                                {% else %}
+                                                            {% else %}
                                                                 <a href="{% url 'profiles' comment.owner.user_id %}">{{ comment.owner.full_name }}</a>
-                                                                {% endif %}
+                                                            {% endif %}
 
                                                             <time datetime="2022-03-28">{{ comment.created }}</time>
                                                         </h6>
@@ -161,60 +169,62 @@
                             {% endif %}
                         </div>
                     </div>
+                    {% if blog.owner != NULL %}
+                        <!-- about me -->
+                        <div class="col-xs-12 col-md-4">
+                            <aside class="sidebar card radius-15">
+                                <div class="widget-about widget">
+                                    <header>
+                                        <h4>About Me</h4>
+                                    </header>
 
-                    <!-- about me -->
-                    <div class="col-xs-12 col-md-4">
-                        <aside class="sidebar card radius-15">
-                            <div class="widget-about widget">
-                                <header>
-                                    <h4>About Me</h4>
-                                </header>
-
-                                {#      admin de photo olmayacak                #}
-                                {% if blog.owner.user_type == 'business' %}
-                                    {% if blog.owner.logo == '' %}
-                                        <figure><img src="{% static 'images/profiles/store-default.png' %}" alt="dummy">
-                                        </figure>
-                                    {% else %}
-                                        <figure><img src="{{ blog.owner.logo.url }}" alt="dummy"></figure>
-                                    {% endif %}
-                                    <p>{{ blog.owner.information }}</p>
-                                {% endif %}
-                                <footer>
-                                </footer>
-                            </div>
-
-
-                            <div class="widget-latest-posts widget">
-                                <header>
-                                    <h4>Latest posts</h4>
-                                </header>
-
-                                {% for latest in latest %}
-                                    <a href="{% url 'blog-detail' latest.id %}" class="latest-post">
-                                        {% if latest.blog_image == '' %}
-                                            <figure class="imgAsBg"
-                                                    style="background-image: url('{% static 'images/dog1.jpg' %}');">
-                                                <img src="{% static 'images/dog1.jpg' %}" alt="dummy">
+                                    {#      admin de photo olmayacak                #}
+                                    {% if blog.owner.user_type == 'business' %}
+                                        {% if blog.owner.logo == '' %}
+                                            <figure><img src="{% static 'images/profiles/store-default.png' %}"
+                                                         alt="dummy">
                                             </figure>
                                         {% else %}
-                                            <figure class="imgAsBg"
-                                                    style="background-image: url('{{ latest.blog_image.url }}');">
-                                                <img src="{{ latest.blog_image.url }}" alt="dummy">
-                                            </figure>
+                                            <figure><img src="{{ blog.owner.logo.url }}" alt="dummy"></figure>
                                         {% endif %}
-                                        <span>
+                                        <p>{{ blog.owner.information }}</p>
+                                    {% endif %}
+                                    <footer>
+                                    </footer>
+                                </div>
+
+
+                                <div class="widget-latest-posts widget">
+                                    <header>
+                                        <h4>Latest posts</h4>
+                                    </header>
+
+                                    {% for latest in latest %}
+                                        <a href="{% url 'blog-detail' latest.id %}" class="latest-post">
+                                            {% if latest.blog_image == '' %}
+                                                <figure class="imgAsBg"
+                                                        style="background-image: url('{% static 'images/dog1.jpg' %}');">
+                                                    <img src="{% static 'images/dog1.jpg' %}" alt="dummy">
+                                                </figure>
+                                            {% else %}
+                                                <figure class="imgAsBg"
+                                                        style="background-image: url('{{ latest.blog_image.url }}');">
+                                                    <img src="{{ latest.blog_image.url }}" alt="dummy">
+                                                </figure>
+                                            {% endif %}
+                                            <span>
                                             {{ latest.title }}
                                             <time>{{ latest.created }}</time>
                                         </span>
-                                    </a>
-                                {% endfor %}
+                                        </a>
+                                    {% endfor %}
 
-                            </div>
+                                </div>
 
 
-                        </aside>
-                    </div>
+                            </aside>
+                        </div>
+                    {% endif %}
                 </div>
 
             </div>

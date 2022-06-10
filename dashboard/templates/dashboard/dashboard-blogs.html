@@ -16,8 +16,14 @@
                         {% for blog in blogs %}
                             <li class="list-group-item"
                                 style="display: flex;flex-wrap: nowrap;justify-content: space-between;">
-                                <a href="{% url 'blog-detail' blog.id %}">{{ blog.title }}</a>
-                                <a href="{% url 'admin-dashboard-delete-blog' blog.id %}">
+                                {% if blog.owner != NULL %}
+                                    <a href="{% url 'blog-detail' blog.id %}">{{ blog.title|slice:"100" }} -
+                                        ({{ blog.owner.username }})</a>
+                                {% else %}
+                                    <a href="{% url 'blog-detail' blog.id %}">{{ blog.title|slice:"100" }} -
+                                        ([<s>Deleted User</s>])</a>
+                                {% endif %}
+                                <a href="{% url 'admin-dashboard-delete-blog' blog.id %}?next=/dashboard-blogs">
                                     <button class="btn btn-danger" style="font-size: initial;">delete</button>
                                 </a>
                             </li>
@@ -25,25 +31,7 @@
 
                     </ul>
                     <!-- pagination -->
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination">
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                    <span class="sr-only">Previous</span>
-                                </a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                    <span class="sr-only">Next</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
+                    {% include 'pagination.html' with queryset=blogs custom_range=custom_range search_query=search_query %}
 
                 </div>
             </div>

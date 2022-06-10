@@ -90,7 +90,7 @@
                                         <button type="button" style="border-radius: 10%" class="btn btn-info">Edit
                                         </button>
                                     </a>
-                                    <a>
+                                    <a href="{% url 'password_change' %}">
                                         <button type="button" style="border-radius: 10%;color: white;" class="btn btn-warning">Change Password
                                         </button>
                                     </a>
@@ -133,8 +133,9 @@
                                         <a href="{% url 'blog-edit' blog.id %}">
                                             <input value="Edit" type="button" class="btn btn-info"
                                                    style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px;margin-left: 50px;"></a>
+                                    <a href="{% url 'delete-blog' blog.id %}?next=/profile">
                                         <input value="Delete" type="button" class="btn btn-danger"
-                                               style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px;">
+                                               style="margin-top: 10px;border-radius: 12%;padding: 0px 10px;height: 35px;"></a>
                                     </div>
                                     <br>
                                     <hr>
@@ -241,7 +242,7 @@
                                         <button type="button" style="border-radius: 10%" class="btn btn-info">Edit
                                         </button>
                                     </a>
-                                    <a>
+                                    <a href="{% url 'password_change' %}">
                                         <button type="button" style="border-radius: 10%;color: white;" class="btn btn-warning">Change Password
                                         </button>
                                     </a>
@@ -278,8 +279,9 @@
                                             </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a href="{% url 'delete-pet' pet.id %}?next=/profile">
                                             <button type="button" class="btn btn-danger" style="border-radius: 100%">X
-                                            </button>
+                                            </button></a>
                                         </p>
                                         <br>
                                         {% if pet.pet_image == '' %}
@@ -339,8 +341,9 @@
                                         <input value="Edit" type="button" class="btn btn-info"
                                                style="border-radius: 12%;padding: 0px 10px;height: 35px;">
                                         </a>
+                                        <a href="{% url 'delete-forum' forum.id %}?next=/profile">
                                         <input value="Delete" type="button" class="btn btn-danger"
-                                               style="border-radius: 12%;padding: 0px 10px;height: 35px;">
+                                               style="border-radius: 12%;padding: 0px 10px;height: 35px;"></a>
                                     </div>
                                     <br>
                                     <hr>

@@ -11,7 +11,7 @@ class User(AbstractUser):
     BUSINESS_TYPE = (
         ('Pet Shop', 'Pet Shop'),
         ('Pet Stylists', 'Pet Stylists'),
-        ('Pet Hotel', 'Pet Stylists'),
+        ('Pet Hotel', 'Pet Hotel'),
         ('Veterinary', 'Veterinary'),
         ('Other', 'Other'),
     )
@@ -31,7 +31,7 @@ class User(AbstractUser):
 
     # business
     business_name = models.CharField(max_length=200, null=True)
-    tax_id = models.CharField(max_length=11, null=True, unique=True)
+    tax_id = models.CharField(max_length=10, null=True, unique=True)
     # phone
     information = models.TextField(max_length=500, null=True)
     address = models.TextField(max_length=500, null=True)

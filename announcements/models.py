@@ -34,7 +34,7 @@ class FoundedPet(models.Model):
         ordering = ['status', '-created']
 
 class FoundedPetComment(models.Model):
-    owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
+    owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
     announce = models.ForeignKey(FoundedPet, null=True, on_delete=models.CASCADE)
     body = models.TextField(max_length=120, null=True)
     created = models.DateTimeField(auto_now_add=True)
@@ -65,7 +65,7 @@ class AdoptPet(models.Model):
         ordering = ['status', '-created']
 
 class AdoptPetComment(models.Model):
-    owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
+    owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
     announce = models.ForeignKey(AdoptPet, null=True, on_delete=models.CASCADE)
     body = models.TextField(max_length=120, null=True)
     created = models.DateTimeField(auto_now_add=True)
@@ -96,7 +96,7 @@ class LostPet(models.Model):
         ordering = ['status', '-created']
 
 class LostPetComment(models.Model):
-    owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.SET_NULL)
+    owner = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
     announce = models.ForeignKey(LostPet, null=True, on_delete=models.CASCADE)
     body = models.TextField(max_length=120, null=True)
     created = models.DateTimeField(auto_now_add=True)
