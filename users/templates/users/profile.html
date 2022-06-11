@@ -117,7 +117,7 @@
                                 {% for blog in blogs %}
                                     <div style="display: flex; justify-content: space-between;">
                                         <div style="text-align: left;width: 345px;">
-                                            <a href="{% url 'blog-detail' blog.id %}" class="latest-post">
+                                            <a href="{% url 'blog-detail' blog.id %}" class="latest-post" style="color: black">
                                                 {% if blog.blog_image == '' %}
                                                     <img style="border-radius: 70%;height: 70px;width: 70px;"
                                                          src="{% static 'images/dog1.jpg' %}" alt="dummy">
