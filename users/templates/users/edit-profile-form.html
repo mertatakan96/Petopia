@@ -6,7 +6,7 @@
     {% if profile.user_type == 'business' %}
 
     <!-- business profile edit -->
-            <div class="col-md-4" style="margin-left: 35%; margin-top: 2%; min-width: 500px;">
+            <div class="col-md-4" style="margin-left: 35%; margin-top: 2%; min-width: 500px; font-family: cursive">
                 <div class="row">
                     <div class="blog-page" style="width:100%">
                         <aside class="cardd radius-15 sidebar" style="background-color: #ffffffb0;">
@@ -22,6 +22,7 @@
                                         <label>{{ field.label }}</label>
                                             <br>
                                             {{ field }}
+                                        <br> <br>
                                         </div>
                                     {% endfor %}
                                 <hr>
@@ -39,7 +40,7 @@
     {% elif profile.user_type == 'petlover' %}
 
          <!-- petlover profile edit -->
-            <div class="col-md-4" style="margin-left: 35%; margin-top: 2%; min-width: 500px;">
+            <div class="col-md-4" style="margin-left: 35%; margin-top: 2%; min-width: 500px; font-family: cursive">
                 <div class="row">
                     <div class="blog-page" style="width:100%">
                         <aside class="cardd radius-15 sidebar" style="background-color: #ffffffb0;">
@@ -55,6 +56,7 @@
                                         <label>{{ field.label }}</label>
                                             <br>
                                             {{ field }}
+                                        <br> <br>
                                         </div>
                                     {% endfor %}
                                 <hr>

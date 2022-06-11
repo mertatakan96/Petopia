@@ -49,7 +49,7 @@
 
         <!-- nav -->
         <nav class="navbar navbar-expand-lg"
-             style="background-color: white;display: flex;justify-content: space-between;">
+             style="background-color: white;display: flex;justify-content: space-between; font-family: cursive">
 
             <div id="navbarNavDropdown">
                 <ul class="navbar-nav">
@@ -99,16 +99,16 @@
 
                     {% if profile.is_superuser %}
                         <a href="{% url 'admin-dashboard' %}">
-                            <b>▶ Dashboard</b>
+                            <b style="font-family: cursive">▶ Dashboard</b>
                         </a>
 
                     {% else %}
                         <a href="{% url 'profile' %}">
-                            <b>▶ Profile</b>
+                            <b style="font-family: cursive">▶ Profile</b>
                         </a>
                     {% endif %}
                     <a href="{% url 'logout' %}">
-                        <b>▶ Log Out</b>
+                        <b style="font-family: cursive">▶ Log Out</b>
                     </a>
                 </div>
             </div>
@@ -118,7 +118,7 @@
     {% else %}
         <!-- nav -->
         <nav class="navbar navbar-expand-lg"
-             style="background-color: white;display: flex;justify-content: space-between;">
+             style="background-color: white;display: flex;justify-content: space-between;font-family: cursive">
 
             <div id="navbarNavDropdown">
                 <ul class="navbar-nav">
@@ -146,10 +146,10 @@
                 </button>
                 <div class="dropdown-content">
                     <a href="{% url 'login' %}">
-                        <b>▶ Log In</b>
+                        <b style="font-family: cursive">▶ Log In</b>
                     </a>
                     <a href="{% url 'register-choose' %}">
-                        <b>▶ Register</b>
+                        <b style="font-family: cursive">▶ Register</b>
                     </a>
                 </div>
             </div>

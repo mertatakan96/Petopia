@@ -7,11 +7,10 @@
 
         {% if profile.user_type == 'business' %}
 
-            <div class="app-canvas">
+            <div class="app-canvas" style="font-family: cursive">
                 <div class="container">
                     <div class="blog-page">
                         <div class="row">
-
                             <!-- forum card -->
                             <div class="col-xs-12 ">
                                 <div class="container" style="margin-bottom:10%">
@@ -49,7 +48,7 @@
 
                                                                 <tr>
                                                                     <td>
-                                                                        <a href="{% url 'forum-detail' forum.id %}">{{ forum.title|slice:"60" }}</a>
+                                                                        <a href="{% url 'forum-detail' forum.id %}" style="color: black">{{ forum.title|slice:"60" }}</a>
                                                                     </td>
                                                                     <td>{{ forum.forumcomment_set.count }}</td>
                                                                 </tr>
@@ -77,7 +76,7 @@
 
         {% elif profile.user_type == 'petlover' or profile.is_superuser %}
 
-            <div class="app-canvas">
+            <div class="app-canvas" style="font-family: cursive">
                 <div class="container">
                     <div class="blog-page">
                         <div class="row">
@@ -119,7 +118,7 @@
 
                                                                 <tr>
                                                                     <td>
-                                                                        <a href="{% url 'forum-detail' forum.id %}">{{ forum.title|slice:"60" }}</a>
+                                                                        <a href="{% url 'forum-detail' forum.id %}" style="color: black">{{ forum.title|slice:"60" }}</a>
                                                                     </td>
                                                                     <td>{{ forum.forumcomment_set.count }}</td>
                                                                 </tr>
@@ -177,7 +176,7 @@
 
     {% else %}
 
-        <div class="app-canvas">
+        <div class="app-canvas" style="font-family: cursive">
             <div class="container">
                 <div class="blog-page">
                     <div class="row">
@@ -219,7 +218,7 @@
 
                                                             <tr>
                                                                 <td>
-                                                                    <a href="{% url 'forum-detail' forum.id %}">{{ forum.title|slice:"60" }}</a>
+                                                                    <a href="{% url 'forum-detail' forum.id %}" style="color:black">{{ forum.title|slice:"60" }}</a>
                                                                 </td>
                                                                 <td>{{ forum.forumcomment_set.count }}</td>
                                                             </tr>

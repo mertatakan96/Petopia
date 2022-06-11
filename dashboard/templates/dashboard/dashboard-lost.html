@@ -9,13 +9,14 @@
         {% include 'sidebar-dashboard.html' %}
 
         <div class="card" style="width: 130rem;margin-left: 30px;margin-top: 27px;border-radius: 1%;height: 68rem;">
+            <h4 style="font-family: cursive;">Lost Announces</h4>
                 <div class="card-body">
                     <ul class="list-group" style="font-size: initial; margin-top: 10px">
 
                         {% for lost in lost %}
                         <li class="list-group-item" style="display: flex;flex-wrap: nowrap;justify-content: space-between;">
                             <div>
-                                <a href="{% url 'lost-announce-detail' lost.id %}">{{ lost.title }} - ({{ lost.status }})</a>
+                                <a href="{% url 'lost-announce-detail' lost.id %}" style="color: black; font-family: cursive">{{ lost.title }} - ({{ lost.status }})</a>
                             </div>
                             <div>
                                 <a href="{% url 'admin-dashboard-close-lost' lost.id %}?next=/dashboard-lost">

@@ -10,13 +10,14 @@
             {% include 'sidebar-dashboard.html' %}
 
             <div class="card" style="width: 130rem;margin-left: 30px;margin-top: 27px;border-radius: 1%;height: 68rem;">
+                <h4 style="font-family: cursive;">Business Accounts</h4>
                 <div class="card-body">
                     <ul class="list-group" style="font-size: initial; margin-top: 10px">
 
                         {% for busi in business %}
                             <li class="list-group-item"
                                 style="display: flex;flex-wrap: nowrap;justify-content: space-between;">
-                                <a href="{% url 'profiles' busi.user_id %}">{{ busi.username }}</a>
+                                <a href="{% url 'profiles' busi.user_id %}" style="color: black; font-family: cursive">{{ busi.username }}</a>
                                 <a href="{% url 'admin-dashboard-delete-user' busi.user_id %}?next=/dashboard-business">
                                     <button class="btn btn-danger" style="font-size: initial;">delete</button>
                                 </a>
