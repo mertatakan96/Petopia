@@ -8,7 +8,7 @@
 
         {% include 'sidebar-dashboard.html' %}
 
-        <div class="card" style="width: 130rem;margin-left: 30px;margin-top: 27px;border-radius: 1%;height: 68rem;">
+        <div class="card" style="width: 130rem;margin-left: 30px;margin-top: 27px;border-radius: 1%;height: 76rem;">
             <h4 style="font-family: cursive;">Petlover Users</h4>
                 <div class="card-body">
                     <ul class="list-group" style="font-size: initial; margin-top: 10px">
@@ -21,7 +21,9 @@
 
                     </ul>
                         <!-- pagination -->
+                <div style="text-align: end">
                     {% include 'pagination.html' with queryset=petlovers custom_range=custom_range search_query=search_query %}
+                </div>
 
                 </div>
             </div>
