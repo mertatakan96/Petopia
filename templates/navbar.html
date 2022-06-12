@@ -49,20 +49,20 @@
 
         <!-- nav -->
         <nav class="navbar navbar-expand-lg"
-             style="background-color: white;display: flex;justify-content: space-between;">
+             style="background-color: white;display: flex;justify-content: space-between; font-family: cursive">
 
             <div id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
                         <a class="nav-link" href="/"
                            style="color: #424242;font-size: 26px;font-family: cursive;margin-left: 10px;margin-top: -6px;">
-                            <b>☖ Home</b>
+                            <p>☖ Home</p>
                             <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="mailto:petopia@support.com"
+                        <a class="nav-link" href="mailto:petopiasite@outlook.com"
                            style="color: #424242;font-size: 26px;font-family: cursive;margin-left: 10px;margin-top: -6px;">
-                            <b>✉ Contact</b>
+                            <p>✉ Contact</p>
                             <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
@@ -73,7 +73,7 @@
             <div class="dropdown">
                 <button class="dropbtn" style="margin-right: 30px;background-color:
         white;color: #424242;font-size: 26px;font-family: cursive;">
-                    <b style="">
+                    <p style="">
                         {% if profile.user_type == 'petlover' %}
                             {% if profile.profile_image == '' %}
                                 <img src="{% static 'images/profiles/user-default.jpg' %}" id="icon" alt="User Icon"
@@ -93,22 +93,22 @@
 
                         {% endif %}
                         {{ profile.username }}
-                    </b>
+                    </p>
                 </button>
                 <div class="dropdown-content">
 
                     {% if profile.is_superuser %}
                         <a href="{% url 'admin-dashboard' %}">
-                            <b>▶ Dashboard</b>
+                            <p style="font-family: cursive">▶ Dashboard</p>
                         </a>
 
                     {% else %}
                         <a href="{% url 'profile' %}">
-                            <b>▶ Profile</b>
+                            <p style="font-family: cursive">▶ Profile</p>
                         </a>
                     {% endif %}
                     <a href="{% url 'logout' %}">
-                        <b>▶ Log Out</b>
+                        <p style="font-family: cursive">▶ Log Out</p>
                     </a>
                 </div>
             </div>
@@ -118,20 +118,20 @@
     {% else %}
         <!-- nav -->
         <nav class="navbar navbar-expand-lg"
-             style="background-color: white;display: flex;justify-content: space-between;">
+             style="background-color: white;display: flex;justify-content: space-between;font-family: cursive">
 
             <div id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
                         <a class="nav-link" href="/"
                            style="color: #424242;font-size: 26px;font-family: cursive;margin-left: 10px;margin-top: -6px;">
-                            <b>☖ Home</b>
+                            <p>☖ Home</p>
                             <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="mailto:petopia@support.com"
+                        <a class="nav-link" href="mailto:petopiasite@outlook.com"
                            style="color: #424242;font-size: 26px;font-family: cursive;margin-left: 10px;margin-top: -6px;">
-                            <b>✉ Contact</b>
+                            <p>✉ Contact</p>
                             <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
@@ -142,14 +142,14 @@
             <div class="dropdown">
                 <button class="dropbtn" style="margin-right: 30px;background-color:
         white;color: #424242;font-size: 26px;font-family: cursive;">
-                    <b style="">Log In ≡</b>
+                    <p style="">Log In ≡</p>
                 </button>
                 <div class="dropdown-content">
                     <a href="{% url 'login' %}">
-                        <b>▶ Log In</b>
+                        <p style="font-family: cursive">▶ Log In</p>
                     </a>
                     <a href="{% url 'register-choose' %}">
-                        <b>▶ Register</b>
+                        <p style="font-family: cursive">▶ Register</p>
                     </a>
                 </div>
             </div>

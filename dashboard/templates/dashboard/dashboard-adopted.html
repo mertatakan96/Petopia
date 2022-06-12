@@ -11,6 +11,7 @@
         {% include 'sidebar-dashboard.html' %}
 
         <div class="card" style="width: 130rem;margin-left: 30px;margin-top: 27px;border-radius: 1%;height: 68rem;">
+            <h4 style="font-family: cursive;">Adopted Announces</h4>
             <div class="card-body">
                 <ul class="list-group" style="font-size: initial; margin-top: 10px">
 
@@ -18,7 +19,7 @@
                         <li class="list-group-item"
                             style="display: flex;flex-wrap: nowrap;justify-content: space-between;">
                             <div>
-                                <a href="{% url 'adopt-announce-detail' adopt.id %}">{{ adopt.title }} - ({{ adopt.status }})</a>
+                                <a href="{% url 'adopt-announce-detail' adopt.id %}" style="color: black; font-family: cursive">{{ adopt.title }} - ({{ adopt.status }})</a>
                             </div>
                             <div>
                                 <a href="{% url 'admin-dashboard-close-adopted' adopt.id %}?next=/dashboard-adopted">
